@@ -15,5 +15,7 @@
       @yield('content')
       @include('partials.footer')
 
+      <script src="{{ URL::asset('js/app.js') }}" charset="utf-8"></script>
+
   </body>
 </html>

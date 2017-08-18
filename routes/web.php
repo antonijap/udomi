@@ -25,5 +25,4 @@ Route::post('/login', 'SessionsController@login');
 Route::get('/logout', 'SessionsController@logout');
 
 Route::get('/dashboard', 'UserController@show')->name('dashboard');
-// Route::get('/profile/{user}', 'UserController@profile');
 Route::get('/{username}', 'UserController@profile')->where('profile', '[a-z]+');

@@ -23,8 +23,12 @@ class AdsController extends Controller
         return view('new');
     }
 
-    public function create()
+    public function create(Request $request)
     {
+
+        $path = $request->file('file')->store('/public/thumbnails');
+        return $path;
+
         $this->validate(request(), [
             'name' => 'required|min:2',
             'description' => 'required|min:20|max:140',
@@ -47,7 +51,6 @@ class AdsController extends Controller
 
     public function filter(Request $request)
     {
-        // return view('search')-with('request', $request);
         $sex = request('sex');
         $age = request('age');
         $location = request('location');

@@ -12,4 +12,5 @@ let mix = require('laravel-mix');
  */
 
 mix.sass('resources/assets/sass/app.scss', 'public/css')
-   .browserSync('udomi.dev');
+   .browserSync('udomi-laravel.dev')
+   .js('resources/assets/js/app.js', 'public/js');
