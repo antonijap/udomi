@@ -19,7 +19,7 @@ class UserController extends Controller
         return view('dashboard')->with('ads', $ads);
         // return $ads;
     }
-    
+
     public function profile($username)
     {
         $user = User::where('username', $username)->first();
