@@ -76,17 +76,14 @@ class AdsController extends Controller
         ]);
 
         foreach ($request->photos as $photo) {
-            // open and resize an image file
+
             $img = Image::make($photo)->resize(800, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
-            // save file as jpg with medium quality
-            $filename = str_random(10) . Carbon::now()->timestamp . '.jpeg';
-            $path = 'storage/' . $filename;
-            $img->save($path, 60);
 
-            // $save = $photo->store('public/photos');
-            // $filename = str_replace('public/photos/', '', $save);
+            $filename = str_random(10) . Carbon::now()->timestamp . '.jpeg';
+            $path = 'images/' . $filename;
+            $img->save($path, 60);
 
             AdPhotos::create([
                 'ad_id' => $ad->id,
