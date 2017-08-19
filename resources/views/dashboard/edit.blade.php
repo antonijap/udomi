@@ -6,13 +6,9 @@
     <div class="hero-body">
       <div class="container">
 
-        <h1 class="title is-size-1">
-          Novi Oglas
+        <h1 class="title is-size-2">
+          Uređivanje oglasa <i>{{$ad->name}}</i>
         </h1>
-
-        <h2 class="subtitle">
-          Budite kreativni i probajte nabaviti kvalitetne fotografije.
-        </h2>
 
       </div>
     </div>
@@ -32,7 +28,7 @@
             <div class="field">
               <label class="label">Ime</label>
               <div class="control">
-                <input class="input" type="text" name="name">
+                <input class="input" type="text" name="name" value="{{$ad->name}}">
               </div>
             </div>
 
@@ -110,7 +106,7 @@
             <div class="field">
               <label class="label">Opis</label>
               <div class="control">
-                <textarea name="description" class="textarea"></textarea><br>
+                <textarea name="description" class="textarea">{{$ad->description}}</textarea><br>
               </div>
             </div>
 
@@ -124,7 +120,7 @@
             <div class="field">
               <div class="file has-name is-fullwidth">
                 <label class="file-label">
-                  <input class="file-input" id="first" type="file" name="photos[]" multiple>
+                  <input class="file-input" value="storage/{{$ad->photos->first()->filename}}" id="first" type="file" name="photos[]" multiple>
                   <span class="file-cta">
                     <span class="file-icon">
                       <i class="ion-image"></i>
@@ -134,11 +130,11 @@
                     </span>
                   </span>
                   <span class="file-name" id="first-filename">
+                    {{$ad->photos->first()->filename}}
                   </span>
                 </label>
               </div>
             </div>
-
 
             <div class="field">
               <div class="file has-name is-fullwidth">
@@ -153,6 +149,7 @@
                     </span>
                   </span>
                   <span class="file-name" id="second-filename">
+
                   </span>
                 </label>
               </div>
@@ -176,7 +173,7 @@
               </div>
             </div>
 
-            <div class="field extra">
+            <div class="field">
               <label class="additional-title">Dodatno</label>
               <label class="additional-subtitle">
                 Ukoliko životinja ima invaliditet molimo da objasnite što se točno dogodilo u opisu.
@@ -186,21 +183,36 @@
             <div class="field">
               <div class="control">
                 <label class="checkbox">
-                  <input name="invalidity" type="checkbox">
+                  @if ($ad->invalidity == 'on')
+                    <input name="invalidity" type="checkbox" checked>
+                  @else
+                    <input name="invalidity" type="checkbox">
+                  @endif
+
                   Invaliditet
                 </label>
               </div>
 
               <div class="control">
                 <label class="checkbox">
-                  <input name="castration" type="checkbox">
+                  @if ($ad->invalidity == 'on')
+                    <input name="invalidity" type="checkbox" checked>
+                  @else
+                    <input name="invalidity" type="checkbox">
+                  @endif
+
                   Kastracija
                 </label>
               </div>
 
               <div class="control">
                 <label class="checkbox">
-                  <input name="sterilization" type="checkbox">
+                  @if ($ad->sterilization == 'on')
+                    <input name="sterilization" type="checkbox" checked>
+                  @else
+                    <input name="sterilization" type="checkbox">
+                  @endif
+
                   Sterilizacija
                 </label>
               </div>
@@ -227,5 +239,4 @@
 
 
   </section>
-
 @endsection

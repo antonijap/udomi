@@ -10,12 +10,12 @@ class UserController extends Controller
     public function __construct()
     {
         // $this->middleware('guest', ['except' => 'logout']);
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['profile']);
     }
 
     public function show()
     {
-        $ads = auth()->user()->ads;
+        $ads = auth()->user()->ads->sortByDesc('updated_at');
         return view('dashboard')->with('ads', $ads);
         // return $ads;
     }
@@ -23,7 +23,7 @@ class UserController extends Controller
     public function profile($username)
     {
         $user = User::where('username', $username)->first();
-        $ads = $user->ads;
+        $ads = $user->ads->sortByDesc('updated_at');
         return view('profile')->with('user', $user)->with('ads', $ads);
     }
 }

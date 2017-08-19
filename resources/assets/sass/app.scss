@@ -6,11 +6,6 @@ footer {
     min-height: 10em;
 }
 
-.search {
-    background: #f7f7f7;
-    margin-bottom: 3em;
-}
-
 .intro {
     margin-bottom: 3em;
 
@@ -24,7 +19,20 @@ footer {
   margin: 0 0 2em;
 }
 
+.additional-title {
+  display: block;
+  font-weight: bold;
+}
 
-.has-margin {
-  margin-top: 3em;
+.additional-subtitle {
+  display: block;
+  color: #a9a9a9;
+}
+
+.extra {
+  margin-top: 2em;
+}
+
+.gallery {
+  max-width: 100%;
 }

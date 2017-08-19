@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Ad;
 
 class DashboardController extends Controller
 {
@@ -11,9 +12,9 @@ class DashboardController extends Controller
     $this->middleware('auth');
   }
 
-  public function show()
+  public function show(Ad $ad)
   {
-    $ads = auth()->user()->ads;
-    return view('dashboard')->with('ads', $ads);
+    // return $ad;
+    return view('dashboard.edit')->with('ad', $ad);
   }
 }

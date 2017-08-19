@@ -10,36 +10,39 @@
           </h1>
           {{-- <h2 class="subtitle">
 
-          </h2> --}}
-        </div>
+        </h2> --}}
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
+</div>
 
 
+<section class="section">
   <div class="container">
-    <div class="columns is-multiline">
-      @foreach($ads as $ad)
-        <div class="column is-12">
-          <div class="columns">
-            <div class="column is-narrow">
-              <img src="" alt="">
-            </div>
-
-            <div class="column">
-              <h2><strong>{{$ad->name}}</strong></h2>
-              <h2>{{$ad->description}}</h2>
-            </div>
-
-            <div class="column is-pulled-right">
-              <button type="button" name="uredi" class="button">Uredi</button>
-              <button type="button" name="uredi" class="button">Udomljen</button>
-              <button type="button" name="uredi" class="button is-danger">Obriši</button>
-              <button type="button" name="uredi" class="button is-success">Boost</button>
-            </div>
+    @foreach($ads as $ad)
+      <article class="media">
+        {{-- <figure class="media-left">
+          <p class="image is-64x64">
+            <img src="http://bulma.io/images/placeholders/128x128.png">
+          </p>
+        </figure> --}}
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>{{$ad->name}}</strong>
+              <br>
+              {{$ad->description}}
+            </p>
           </div>
         </div>
-      @endforeach
-    </div>
+        <div class="media-right">
+          <a href="ad/{{$ad->id}}/edit" type="button" name="uredi" class="button">Uredi</a>
+          <button type="button" name="uredi" class="button">Udomljen</button>
+          <button type="button" name="uredi" class="button is-danger">Obriši</button>
+          <button type="button" name="uredi" class="button is-success">Boost</button>
+        </div>
+      </article>
+    @endforeach
   </div>
+</section>
 @endsection

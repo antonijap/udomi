@@ -13,11 +13,21 @@ class Ad extends Model
       'user_id',
       'sex',
       'age',
+      'type',
+      'castration',
+      'sterilization',
+      'invalidity',
+      'slug',
       'location'
   ];
 
   public function user()
   {
     return $this->belongsTo(User::class);
+  }
+
+  public function photos()
+  {
+    return $this->hasMany(AdPhotos::class);
   }
 }

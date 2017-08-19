@@ -16,11 +16,16 @@ class CreateAdsTable extends Migration
         Schema::create('ads', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('type');
             $table->string('description');
             $table->string('sex');
             $table->string('age');
             $table->string('location');
             $table->integer('user_id');
+            $table->string('invalidity');
+            $table->string('castration');
+            $table->string('sterilization');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
