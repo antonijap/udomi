@@ -22,7 +22,7 @@
         <div class="column is-6">
 
 
-          <form action="/ads/new" method="post" enctype="multipart/form-data">
+          <form action="/ad/{{$ad->id}}/edit" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
 
             <div class="field">
@@ -120,7 +120,7 @@
             <div class="field">
               <div class="file has-name is-fullwidth">
                 <label class="file-label">
-                  <input class="file-input" value="storage/{{$ad->photos->first()->filename}}" id="first" type="file" name="photos[]" multiple>
+                  <input class="file-input" id="first" type="file" name="photos[]" multiple>
                   <span class="file-cta">
                     <span class="file-icon">
                       <i class="ion-image"></i>
@@ -133,13 +133,17 @@
                     {{$ad->photos->first()->filename}}
                   </span>
                 </label>
+
+                <button class="delete-first button" type="button" name="button">
+                  <i class="ion-close-round"></i>
+                </button>
               </div>
             </div>
 
             <div class="field">
               <div class="file has-name is-fullwidth">
                 <label class="file-label">
-                  <input class="file-input" type="file" id="second" name="photos[]" multiple>
+                  <input class="file-input" id="second" type="file" name="photos[]" multiple>
                   <span class="file-cta">
                     <span class="file-icon">
                       <i class="ion-image"></i>
@@ -149,16 +153,20 @@
                     </span>
                   </span>
                   <span class="file-name" id="second-filename">
-
+                    {{$ad->photos[1]->filename}}
                   </span>
                 </label>
+
+                <button class="delete-second button" type="button" name="button">
+                  <i class="ion-close-round"></i>
+                </button>
               </div>
             </div>
 
             <div class="field">
               <div class="file has-name is-fullwidth">
                 <label class="file-label">
-                  <input class="file-input" type="file" id="third" name="photos[]" multiple>
+                  <input class="file-input" id="third" type="file" name="photos[]" multiple>
                   <span class="file-cta">
                     <span class="file-icon">
                       <i class="ion-image"></i>
@@ -168,8 +176,13 @@
                     </span>
                   </span>
                   <span class="file-name" id="third-filename">
+                    {{$ad->photos[2]->filename}}
                   </span>
                 </label>
+
+                <button class="delete-third button" type="button" name="button">
+                  <i class="ion-close-round"></i>
+                </button>
               </div>
             </div>
 

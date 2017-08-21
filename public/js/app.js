@@ -102,6 +102,21 @@ $(function () {
     fade: true,
     cssEase: 'linear'
   });
+
+  $('.delete-first').click(function () {
+    document.getElementById("first").value = "";
+    $("#first-filename").html('');
+  });
+
+  $('.delete-second').click(function () {
+    document.getElementById("second").value = "";
+    $("#second-filename").html('');
+  });
+
+  $('.delete-third').click(function () {
+    document.getElementById("third").value = "";
+    $("#third-filename").html('');
+  });
 });
 
 /***/ }),

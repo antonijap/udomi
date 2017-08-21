@@ -1,7 +1,3 @@
-.field-body {
-    margin: 0 .3em;
-}
-
 footer {
     min-height: 10em;
 }
@@ -35,4 +31,9 @@ footer {
 
 .gallery {
   max-width: 100%;
+}
+
+.helper-label {
+  display: block;
+  font-weight: bold;
 }

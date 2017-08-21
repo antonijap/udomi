@@ -100,6 +100,7 @@ class AdsController extends Controller
         $sex = request('sex');
         $age = request('age');
         $location = request('location');
+        $type = request('type');
 
         $dropdownData = [request('sex'), request('age'), request('location')];
 
@@ -111,6 +112,10 @@ class AdsController extends Controller
 
         if ($age == 'all') {
             $age = ['junior', 'adult'];
+        }
+
+        if ($type == 'all') {
+            $type = ['cat', 'dog'];
         }
 
         if ($location == 'all') {
@@ -139,7 +144,7 @@ class AdsController extends Controller
             ];
         }
 
-        $results = $ads->whereIn('sex', (array) $sex)->whereIn('age', (array) $age)->whereIn('location', (array) $location);
+        $results = $ads->whereIn('sex', (array) $sex)->whereIn('age', (array) $age)->whereIn('location', (array) $location)->whereIn('type', (array) $type);
 
         // return $results;
         return view('results')->with('ads', $results)->with('data', $dropdownData);

@@ -17,11 +17,11 @@
         <div class="gallery">
           @foreach ($ad->photos as $photo)
             <div>
-              <img src="/storage/{{$photo->filename}}" alt="{{$ad->name}}">
+              <img src="/images/{{$photo->filename}}" alt="{{$ad->name}}">
             </div>
           @endforeach
         </div>
-        
+
       </div>
     </div>
   </div>
