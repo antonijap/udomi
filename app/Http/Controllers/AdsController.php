@@ -102,7 +102,7 @@ class AdsController extends Controller
         $location = request('location');
         $type = request('type');
 
-        $dropdownData = [request('sex'), request('age'), request('location')];
+        $dropdownData = [request('type'), request('sex'), request('age'), request('location')];
 
         $ads = Ad::all();
 

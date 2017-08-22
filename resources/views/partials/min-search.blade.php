@@ -4,7 +4,6 @@
       {{ csrf_field() }}
       <div class="field is-horizontal">
         <div class="field-body">
-
           <div class="field">
             <p class="control">
               <span class="helper-label">Vrsta</span>
