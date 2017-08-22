@@ -2,6 +2,8 @@
 
 return [
 
+    $url = parse_url(getenv('postgres://ouhdoiihensalq:1031233ecbb5e70cd9a055964e044fd5bf36852ecfb8ef8efccceeee3a53d609@ec2-79-125-125-97.eu-west-1.compute.amazonaws.com:5432/d1i1n577lenk9k'));
+
     /*
     |--------------------------------------------------------------------------
     | Default Database Connection Name
@@ -56,11 +58,11 @@ return [
 
         'pgsql' => [
             'driver' => 'pgsql',
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => $host = $url["host"],
             'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'database' => $database = substr($url["path"], 1),
+            'username' => $username = $url["user"],
+            'password' => $password = $url["pass"],
             'charset' => 'utf8',
             'prefix' => '',
             'schema' => 'public',
