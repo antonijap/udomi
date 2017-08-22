@@ -2,7 +2,7 @@
 
 return [
 
-    $url = parse_url(getenv('postgres://ouhdoiihensalq:1031233ecbb5e70cd9a055964e044fd5bf36852ecfb8ef8efccceeee3a53d609@ec2-79-125-125-97.eu-west-1.compute.amazonaws.com:5432/d1i1n577lenk9k'));
+    $url = parse_url(getenv('postgres://ouhdoiihensalq:1031233ecbb5e70cd9a055964e044fd5bf36852ecfb8ef8efccceeee3a53d609@ec2-79-125-125-97.eu-west-1.compute.amazonaws.com:5432/d1i1n577lenk9k')),
 
     /*
     |--------------------------------------------------------------------------
