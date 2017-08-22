@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\Http\Requests\UploadRequest;
 use App\Ad;
@@ -9,6 +10,8 @@ use App\AdPhotos;
 use App\User;
 use Image;
 use Carbon\Carbon;
+use App\Classes\Fileuploader;
+use File;
 
 class AdsController extends Controller
 {
@@ -75,20 +78,71 @@ class AdsController extends Controller
             'invalidity' => $invalidity
         ]);
 
-        foreach ($request->photos as $photo) {
+        // foreach ($request->photos as $photo) {
+        //
+        //     $img = Image::make($photo)->resize(800, null, function ($constraint) {
+        //         $constraint->aspectRatio();
+        //     });
+        //
+        //     $filename = str_random(10) . Carbon::now()->timestamp . '.jpeg';
+        //     $path = 'images/' . $filename;
+        //     $img->save($path, 60);
+        //
+        //     AdPhotos::create([
+        //         'ad_id' => $ad->id,
+        //         'filename' => $filename
+        //     ]);
+        // }
 
-            $img = Image::make($photo)->resize(800, null, function ($constraint) {
-                $constraint->aspectRatio();
-            });
 
-            $filename = str_random(10) . Carbon::now()->timestamp . '.jpeg';
-            $path = 'images/' . $filename;
-            $img->save($path, 60);
+        $images = public_path() . '/images/';
+        $userDir = public_path() . '/images/' . $ad->user->username . '/';
 
-            AdPhotos::create([
-                'ad_id' => $ad->id,
-                'filename' => $filename
-            ]);
+        if (file_exists($userDir)) {
+            $path = public_path() . '/images/' . $ad->user->username . '/';
+
+            // initialize FileUploader
+            $FileUploader = new FileUploader('files', array(
+              'uploadDir' => $path,
+              'title' => 'name'
+            ));
+        } else {
+            File::makeDirectory($images . $ad->user->username, 0777, true);
+            $path = public_path() . '/images/' . $ad->user->username . '/';
+
+            // initialize FileUploader
+            $FileUploader = new FileUploader('files', array(
+              'uploadDir' => $path,
+              'title' => 'name'
+            ));
+        }
+
+
+        // call to upload the files
+        $data = $FileUploader->upload();
+
+        // if uploaded and success
+        if($data['isSuccess'] && count($data['files']) > 0) {
+
+          $uploadedFiles = $data['files'];
+
+          foreach ($uploadedFiles as $photo) {
+              AdPhotos::create([
+                  'ad_id' => $ad->id,
+                  'filename' => $photo['file']
+              ]);
+          }
+
+        }
+        // if warnings
+        if($data['hasWarnings']) {
+          // get warnings
+          $warnings = $data['warnings'];
+
+          echo '<pre>';
+          print_r($warnings);
+          echo '</pre>';
+          exit;
         }
 
         return redirect('/dashboard');

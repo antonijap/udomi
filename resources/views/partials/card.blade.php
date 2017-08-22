@@ -3,7 +3,7 @@
     <figure class="image is-4by3">
       <a href="{{$ad->user->username}}/{{$ad->slug}}">
 
-        <img src="images/{{$ad->photos->first()->filename}}" alt="{{$ad->name}}">
+        <img src="{{$ad->photos->first()->filename}}" alt="{{$ad->name}}">
 
       </a>
     </figure>

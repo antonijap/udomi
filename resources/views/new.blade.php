@@ -121,59 +121,9 @@
               </label>
             </div>
 
-            <div class="field">
-              <div class="file has-name is-fullwidth">
-                <label class="file-label">
-                  <input class="file-input" id="first" type="file" name="photos[]" multiple>
-                  <span class="file-cta">
-                    <span class="file-icon">
-                      <i class="ion-image"></i>
-                    </span>
-                    <span class="file-label">
-                      Odaberi sliku
-                    </span>
-                  </span>
-                  <span class="file-name" id="first-filename">
-                  </span>
-                </label>
-              </div>
-            </div>
 
-
-            <div class="field">
-              <div class="file has-name is-fullwidth">
-                <label class="file-label">
-                  <input class="file-input" type="file" id="second" name="photos[]" multiple>
-                  <span class="file-cta">
-                    <span class="file-icon">
-                      <i class="ion-image"></i>
-                    </span>
-                    <span class="file-label">
-                      Odaberi sliku
-                    </span>
-                  </span>
-                  <span class="file-name" id="second-filename">
-                  </span>
-                </label>
-              </div>
-            </div>
-
-            <div class="field">
-              <div class="file has-name is-fullwidth">
-                <label class="file-label">
-                  <input class="file-input" type="file" id="third" name="photos[]" multiple>
-                  <span class="file-cta">
-                    <span class="file-icon">
-                      <i class="ion-image"></i>
-                    </span>
-                    <span class="file-label">
-                      Odaberi sliku
-                    </span>
-                  </span>
-                  <span class="file-name" id="third-filename">
-                  </span>
-                </label>
-              </div>
+            <div class="field extra">
+              <input type="file" name="files">
             </div>
 
             <div class="field extra">

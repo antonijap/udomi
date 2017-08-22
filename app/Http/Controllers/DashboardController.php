@@ -10,6 +10,8 @@ use App\User;
 use Image;
 use Carbon\Carbon;
 
+
+
 class DashboardController extends Controller
 {
   public function __construct()
@@ -19,12 +21,14 @@ class DashboardController extends Controller
 
   public function show(Ad $ad)
   {
-    // return $ad;
+
     return view('dashboard.edit')->with('ad', $ad);
   }
 
   public function update(Ad $ad, Request $request)
   {
+
+    return $request->photos;
     if (request('castration') == '') {
       $castration = 'off';
     } else {
@@ -52,7 +56,7 @@ class DashboardController extends Controller
       'type' => 'required'
     ]);
 
-    $ad = Ad::update([
+    Ad::find($ad['id'])->update([
       'name' => request('name'),
       'description' => request('description'),
       'sex' => request('sex'),
@@ -60,11 +64,28 @@ class DashboardController extends Controller
       'location' => request('location'),
       'user_id' => auth()->id(),
       'type' => request('type'),
-      'slug' => $slug,
       'castration' => $castration,
       'sterilization' => $sterilization,
       'invalidity' => $invalidity
     ]);
+
+    // if ($request->photos->count() > 0) {
+    //   foreach ($request->photos as $photo) {
+    //
+    //     $img = Image::make($photo)->resize(800, null, function ($constraint) {
+    //       $constraint->aspectRatio();
+    //     });
+    //
+    //     $filename = str_random(10) . Carbon::now()->timestamp . '.jpeg';
+    //     $path = 'images/' . $filename;
+    //     $img->save($path, 60);
+    //
+    //     AdPhotos::find($photo['id'])->update([
+    //       'ad_id' => $ad->id,
+    //       'filename' => $filename
+    //     ]);
+    //   }
+    // }
 
     foreach ($request->photos as $photo) {
 
@@ -76,11 +97,47 @@ class DashboardController extends Controller
       $path = 'images/' . $filename;
       $img->save($path, 60);
 
-      AdPhotos::update([
+      AdPhotos::find($photo['id'])->update([
         'ad_id' => $ad->id,
         'filename' => $filename
       ]);
     }
+
+    // initialize FileUploader
+    $FileUploader = new FileUploader('files', array(
+      'uploadDir' => '/public/images/',
+      'title' => 'name'
+    ));
+
+    // call to upload the files
+    $data = $FileUploader->upload();
+
+    // if uploaded and success
+    if($data['isSuccess'] && count($data['files']) > 0) {
+      // get uploaded files
+      $uploadedFiles = $data['files'];
+    }
+    // if warnings
+    if($data['hasWarnings']) {
+      // get warnings
+      $warnings = $data['warnings'];
+
+      echo '<pre>';
+      print_r($warnings);
+      echo '</pre>';
+      exit;
+    }
+
+    // unlink the files
+    // !important only for appended files
+    // you will need to give the array with appendend files in 'files' option of the FileUploader
+    foreach($FileUploader->getRemovedFiles('file') as $key=>$value) {
+      unlink('/public/images/' . $value['name']);
+    }
+
+    // get the fileList
+    $fileList = $FileUploader->getFileList();
+
 
     return redirect('/dashboard');
   }

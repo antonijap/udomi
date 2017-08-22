@@ -117,74 +117,26 @@
               </label>
             </div>
 
-            <div class="field">
-              <div class="file has-name is-fullwidth">
-                <label class="file-label">
-                  <input class="file-input" id="first" type="file" name="photos[]" multiple>
-                  <span class="file-cta">
-                    <span class="file-icon">
-                      <i class="ion-image"></i>
-                    </span>
-                    <span class="file-label">
-                      Odaberi sliku
-                    </span>
-                  </span>
-                  <span class="file-name" id="first-filename">
-                    {{$ad->photos->first()->filename}}
-                  </span>
-                </label>
+            @php
+              $json = array();
+            @endphp
 
-                <button class="delete-first button" type="button" name="button">
-                  <i class="ion-close-round"></i>
-                </button>
-              </div>
-            </div>
+            @foreach ($ad->photos as $photo)
+              @php
+                $item = [$ad->name, $photo->filename];
+                $json = array_push($item, $json);
+              @endphp
+            @endforeach
 
-            <div class="field">
-              <div class="file has-name is-fullwidth">
-                <label class="file-label">
-                  <input class="file-input" id="second" type="file" name="photos[]" multiple>
-                  <span class="file-cta">
-                    <span class="file-icon">
-                      <i class="ion-image"></i>
-                    </span>
-                    <span class="file-label">
-                      Odaberi sliku
-                    </span>
-                  </span>
-                  <span class="file-name" id="second-filename">
-                    {{$ad->photos[1]->filename}}
-                  </span>
-                </label>
+            {{$json}}
 
-                <button class="delete-second button" type="button" name="button">
-                  <i class="ion-close-round"></i>
-                </button>
-              </div>
-            </div>
+            {{-- @foreach ($json as $j)
+              {{$j}}
+            @endforeach --}}
 
-            <div class="field">
-              <div class="file has-name is-fullwidth">
-                <label class="file-label">
-                  <input class="file-input" id="third" type="file" name="photos[]" multiple>
-                  <span class="file-cta">
-                    <span class="file-icon">
-                      <i class="ion-image"></i>
-                    </span>
-                    <span class="file-label">
-                      Odaberi sliku
-                    </span>
-                  </span>
-                  <span class="file-name" id="third-filename">
-                    {{$ad->photos[2]->filename}}
-                  </span>
-                </label>
+           {{-- {{$ad->photos->toJson()}} --}}
 
-                <button class="delete-third button" type="button" name="button">
-                  <i class="ion-close-round"></i>
-                </button>
-              </div>
-            </div>
+            <input type="file" name="files">
 
             <div class="field">
               <label class="additional-title">Dodatno</label>

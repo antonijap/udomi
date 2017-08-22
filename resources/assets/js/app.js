@@ -42,4 +42,12 @@ $(function() {
     $("#third-filename").html('');
   });
 
+  // enable fileuploader plugin
+	$('input[name="files"]').fileuploader({
+        addMore: true,
+        fileMaxSize: 2,
+        extensions: ['jpg', 'jpeg', 'png'],
+        limit: 3,
+  });
+
 });
