@@ -9,7 +9,8 @@ use App\AdPhotos;
 use App\User;
 use Image;
 use Carbon\Carbon;
-
+use App\Classes\Fileuploader;
+use File;
 
 
 class DashboardController extends Controller
@@ -22,13 +23,29 @@ class DashboardController extends Controller
   public function show(Ad $ad)
   {
 
-    return view('dashboard.edit')->with('ad', $ad);
+    $userDir = public_path() . '/images/' . $ad->user->username . '/';
+
+    foreach($ad->photos as $file) {
+      $appendedFiles[] = array(
+        "name" => $file['name'],
+        "type" => $file['type'],
+        "size" => $file['size'],
+        "file" => '/' . $file['filename'],
+        "data" => array(
+          "url" => '/' . $file['filename']
+        )
+      );
+
+    }
+
+    $appendedFiles = json_encode($appendedFiles);
+    return view('dashboard.edit')->with('ad', $ad)->with('photos', $appendedFiles);
+
   }
 
   public function update(Ad $ad, Request $request)
   {
 
-    return $request->photos;
     if (request('castration') == '') {
       $castration = 'off';
     } else {
@@ -69,76 +86,50 @@ class DashboardController extends Controller
       'invalidity' => $invalidity
     ]);
 
-    // if ($request->photos->count() > 0) {
-    //   foreach ($request->photos as $photo) {
-    //
-    //     $img = Image::make($photo)->resize(800, null, function ($constraint) {
-    //       $constraint->aspectRatio();
-    //     });
-    //
-    //     $filename = str_random(10) . Carbon::now()->timestamp . '.jpeg';
-    //     $path = 'images/' . $filename;
-    //     $img->save($path, 60);
-    //
-    //     AdPhotos::find($photo['id'])->update([
-    //       'ad_id' => $ad->id,
-    //       'filename' => $filename
-    //     ]);
-    //   }
-    // }
+    $images = public_path() . '/images/';
 
-    foreach ($request->photos as $photo) {
 
-      $img = Image::make($photo)->resize(800, null, function ($constraint) {
-        $constraint->aspectRatio();
-      });
-
-      $filename = str_random(10) . Carbon::now()->timestamp . '.jpeg';
-      $path = 'images/' . $filename;
-      $img->save($path, 60);
-
-      AdPhotos::find($photo['id'])->update([
-        'ad_id' => $ad->id,
-        'filename' => $filename
-      ]);
+    foreach ($ad->photos as $photo) {
+      AdPhotos::where('id', $photo['id'])->first()->delete();
     }
+
+    $path = public_path() . '/images/' . $ad->user->username . '/';
 
     // initialize FileUploader
     $FileUploader = new FileUploader('files', array(
-      'uploadDir' => '/public/images/',
+      'uploadDir' => $path,
       'title' => 'name'
     ));
 
     // call to upload the files
-    $data = $FileUploader->upload();
+    $upload = $FileUploader->upload();
 
     // if uploaded and success
-    if($data['isSuccess'] && count($data['files']) > 0) {
-      // get uploaded files
-      $uploadedFiles = $data['files'];
-    }
-    // if warnings
-    if($data['hasWarnings']) {
-      // get warnings
-      $warnings = $data['warnings'];
-
-      echo '<pre>';
-      print_r($warnings);
-      echo '</pre>';
-      exit;
+    if($upload['isSuccess'] && count($upload['files']) > 0) {
+      foreach ($upload['files'] as $photo) {
+        AdPhotos::create([
+          'ad_id' => $ad->id,
+          'filename' => $photo['file'],
+          'name' => $photo['title'],
+          'size' => $photo['size'],
+          'type' => $photo['type']
+        ]);
+      }
     }
 
-    // unlink the files
-    // !important only for appended files
-    // you will need to give the array with appendend files in 'files' option of the FileUploader
-    foreach($FileUploader->getRemovedFiles('file') as $key=>$value) {
-      unlink('/public/images/' . $value['name']);
-    }
+    if($upload['hasWarnings']) {
+      $warnings = $upload['warnings'];
+      return $warnings;
+    };
 
-    // get the fileList
-    $fileList = $FileUploader->getFileList();
+    // return$FileUploader->getListInput();
+    return $FileUploader->getRemovedFiles();
 
-
-    return redirect('/dashboard');
+    // foreach($FileUploader->getRemovedFiles('file') as $key => $value) {
+    //   return $value;
+    //   AdPhotos::where('filename', $value['file'])->first()->delete();
+    // }
+    //
+    // return redirect('/dashboard');
   }
 }

@@ -37,9 +37,13 @@
               <div class="control">
                 <span class="select">
                   <select name="type">
-                    <option disabled selected>Odaberi vrstu</option>
-                    <option value="dog">Pas</option>
-                    <option value="cat">Mačka</option>
+                    @if ($ad->type == 'cat')
+                      <option value="cat" checked>Mačka</option>
+                      <option value="dog">Pas</option>
+                    @elseif ($ad->type == 'dog')
+                      <option value="cat">Mačka</option>
+                      <option value="dog" checked>Pas</option>
+                    @endif
                   </select>
                 </span>
               </div>
@@ -50,9 +54,13 @@
               <div class="control">
                 <span class="select">
                   <select name="sex">
-                    <option disabled selected>Odaberi spol</option>
-                    <option value="female">Ženka</option>
-                    <option value="male">Mužjak</option>
+                    @if ($ad->sex == 'female')
+                      <option value="female" checked>Ženka</option>
+                      <option value="male">Mužjak</option>
+                    @elseif ($ad->type == 'male')
+                      <option value="female">Ženka</option>
+                      <option value="male" checked>Mužjak</option>
+                    @endif
                   </select>
                 </span>
               </div>
@@ -63,9 +71,13 @@
               <div class="control">
                 <span class="select">
                   <select name="age">
-                    <option disabled selected>Odaberi starost</option>
-                    <option value="junior">Mladi</option>
-                    <option value="adult">Odrasli</option>
+                    @if ($ad->age == 'junior')
+                      <option value="junior" checked>Mladi</option>
+                      <option value="adult">Odrasli</option>
+                    @elseif ($ad->type == 'adult')
+                      <option value="junior">Mladi</option>
+                      <option value="adult" checked>Odrasli</option>
+                    @endif
                   </select>
                 </span>
               </div>
@@ -117,26 +129,8 @@
               </label>
             </div>
 
-            @php
-              $json = array();
-            @endphp
-
-            @foreach ($ad->photos as $photo)
-              @php
-                $item = [$ad->name, $photo->filename];
-                $json = array_push($item, $json);
-              @endphp
-            @endforeach
-
-            {{$json}}
-
-            {{-- @foreach ($json as $j)
-              {{$j}}
-            @endforeach --}}
-
            {{-- {{$ad->photos->toJson()}} --}}
-
-            <input type="file" name="files">
+            <input type="file" name="files" data-fileuploader-files='{{ $photos }}'>
 
             <div class="field">
               <label class="additional-title">Dodatno</label>

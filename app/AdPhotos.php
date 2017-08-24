@@ -8,7 +8,10 @@ class AdPhotos extends Model
 {
   protected $fillable = [
     'ad_id',
-    'filename'
+    'filename',
+    'name',
+    'type',
+    'size'
   ];
 
   public function ad()

@@ -78,23 +78,6 @@ class AdsController extends Controller
             'invalidity' => $invalidity
         ]);
 
-        // foreach ($request->photos as $photo) {
-        //
-        //     $img = Image::make($photo)->resize(800, null, function ($constraint) {
-        //         $constraint->aspectRatio();
-        //     });
-        //
-        //     $filename = str_random(10) . Carbon::now()->timestamp . '.jpeg';
-        //     $path = 'images/' . $filename;
-        //     $img->save($path, 60);
-        //
-        //     AdPhotos::create([
-        //         'ad_id' => $ad->id,
-        //         'filename' => $filename
-        //     ]);
-        // }
-
-
         $images = public_path() . '/images/';
         $userDir = public_path() . '/images/' . $ad->user->username . '/';
 
@@ -129,20 +112,13 @@ class AdsController extends Controller
           foreach ($uploadedFiles as $photo) {
               AdPhotos::create([
                   'ad_id' => $ad->id,
-                  'filename' => $photo['file']
+                  'filename' => $photo['file'],
+                  'name' => $photo['title'],
+                  'size' => $photo['size'],
+                  'type' => $photo['type']
               ]);
           }
 
-        }
-        // if warnings
-        if($data['hasWarnings']) {
-          // get warnings
-          $warnings = $data['warnings'];
-
-          echo '<pre>';
-          print_r($warnings);
-          echo '</pre>';
-          exit;
         }
 
         return redirect('/dashboard');

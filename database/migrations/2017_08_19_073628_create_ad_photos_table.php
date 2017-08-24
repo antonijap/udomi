@@ -18,6 +18,9 @@ class CreateAdPhotosTable extends Migration
       $table->integer('ad_id')->unsigned();
       $table->foreign('ad_id')->references('id')->on('ads');
       $table->string('filename');
+      $table->string('name');
+      $table->string('type');
+      $table->integer('size');
       $table->timestamps();
     });
   }
