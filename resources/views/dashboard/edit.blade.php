@@ -71,12 +71,12 @@
               <div class="control">
                 <span class="select">
                   <select name="age">
-                    @if ($ad->age == 'junior')
-                      <option value="junior" checked>Mladi</option>
-                      <option value="adult">Odrasli</option>
-                    @elseif ($ad->type == 'adult')
+                    @if ($ad->age == 'adult')
                       <option value="junior">Mladi</option>
                       <option value="adult" checked>Odrasli</option>
+                    @else 
+                      <option value="junior" checked>Mladi</option>
+                      <option value="adult">Odrasli</option>
                     @endif
                   </select>
                 </span>
@@ -129,7 +129,6 @@
               </label>
             </div>
 
-           {{-- {{$ad->photos->toJson()}} --}}
             <input type="file" name="files" data-fileuploader-files='{{ $photos }}'>
 
             <div class="field">

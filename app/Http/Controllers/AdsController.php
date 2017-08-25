@@ -79,7 +79,7 @@ class AdsController extends Controller
         ]);
 
         $images = public_path() . '/images/';
-        $userDir = public_path() . '/images/' . $ad->user->username . '/';
+        $userDir = $images . $ad->user->username . '/';
 
         if (file_exists($userDir)) {
             $path = public_path() . '/images/' . $ad->user->username . '/';
