@@ -95,7 +95,7 @@ class DashboardController extends Controller
         "name" => $photo['name'],
         "type" => $photo['type'],
         "size" => $photo['size'],
-        "file" => '/' . $photo['filename'],
+        "file" => $photo['filename'],
         "data" => array(
           "url" => '/' . $photo['filename']
         )
@@ -114,52 +114,46 @@ class DashboardController extends Controller
 
     // if uploaded and success
     if($upload['isSuccess'] && count($upload['files']) > 0) {
-      // Delete all
-      // foreach ($ad->photos as $photo) {
-      //   AdPhotos::where('id', $photo['id'])->first()->delete();
-      // }
-
-      // foreach ($finalPhotos as $photo) {
-      //   AdPhotos::create([
-      //     'ad_id' => $ad->id,
-      //     'filename' => $photo['file'],
-      //     'name' => $photo['name'],
-      //     'size' => $photo['size'],
-      //     'type' => $photo['type']
-      //   ]);
-      // }
+      $fileList = $FileUploader->getFileList();
+      foreach ($fileList as $photo) {
+        // Check if some photos exist and avoid them
+        $existingPhoto = [];
+        $existingPhoto = AdPhotos::where('filename', $photo['file'])->get();
+        if ($existingPhoto->isEmpty()) {
+           // Upload new photos
+          AdPhotos::create([
+            'ad_id' => $ad->id,
+            'filename' => substr($photo['file'], 0),
+            // 'filename' => $photo['file'],
+            'name' => $photo['title'],
+            'size' => $photo['size'],
+            'type' => $photo['type']
+          ]);
+        }
+      }
     }
 
     if($upload['hasWarnings']) {
       $warnings = $upload['warnings'];
-      return $warnings;
+      echo $warnings;
     };
 
+    // return $FileUploader->getRemovedFiles();
+    // return $FileUploader->getListInput();
+    $filesToRemove = [];
+    foreach ($ad->photos as $photo) {
+      foreach ($FileUploader->getListInput() as $file) {
+        $filesToRemove[] = AdPhotos::where('filename', $file);
+      }
+    }
+
+    return $filesToRemove;
+
     foreach($FileUploader->getRemovedFiles('file') as $key => $value) {
-
-      // Delete from disk
-      $delete = File::delete(public_path()  . $value['file']);
-      $burek = AdPhotos::where('filename', $photo)->firstOrFail();
-
-      // Delete from AdPhotos model
-      return $burek;
-
+      return $value['file'];
+      File::delete(public_path()  . $value['file']);
+      $photo = AdPhotos::where('filename', $value['file'])->first();
     }
-
-    $fileList = $FileUploader->getFileList();
-
-    foreach ($fileList as $photo) {
-      // Upload new photos
-        AdPhotos::create([
-          'ad_id' => $ad->id,
-          'filename' => str_replace("/","",$photo['file']),
-          'name' => $photo['name'],
-          'size' => $photo['size'],
-          'type' => $photo['type']
-        ]);
-    }
-
     return redirect('/dashboard');
-
   }
 }
