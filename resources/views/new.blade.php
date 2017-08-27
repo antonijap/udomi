@@ -123,14 +123,7 @@
 
 
             <div class="field extra">
-              <input type="file" name="files">
-            </div>
-
-            <div class="field extra">
-              <label class="additional-title">Dodatno</label>
-              <label class="additional-subtitle">
-                Ukoliko životinja ima invaliditet molimo da objasnite što se točno dogodilo u opisu.
-              </label>
+              <input type="file" name="files" data-fileuploader-listInput="photos">
             </div>
 
             <div class="field">

@@ -25,6 +25,7 @@ class CreateAdsTable extends Migration
             $table->string('invalidity');
             $table->string('castration');
             $table->string('sterilization');
+            $table->boolean('is_adopted');
             $table->string('slug')->unique();
             $table->timestamps();
         });

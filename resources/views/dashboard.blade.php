@@ -19,6 +19,39 @@
 
 <section class="section">
   <div class="container">
+    <div class="tabs is-large">
+      <ul>
+        <li class="is-active" id="one"><a id="active">Aktivni</a></li>
+        <li id="two"><a id="adopted">Udomljeni</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container" id="udomljeni">
+    @foreach($ads as $ad)
+      <article class="media">
+        <figure class="media-left">
+          <p class="image is-64x64">
+            <img src="http://bulma.io/images/placeholders/128x128.png">
+          </p>
+        </figure>
+        <div class="media-content">
+          <div class="content">
+            <p>
+              <strong>{{$ad->name}}</strong>
+              <br>
+              {{$ad->description}}
+            </p>
+          </div>
+        </div>
+        <div class="media-right">
+          <a href="ad/{{$ad->id}}/restore" type="button" name="restore" class="button">Vrati u aktivne</a>
+        </div>
+      </article>
+    @endforeach
+  </div>
+
+  <div class="container" id="aktivni">
     @foreach($ads as $ad)
       <article class="media">
         {{-- <figure class="media-left">

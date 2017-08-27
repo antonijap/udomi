@@ -3,12 +3,13 @@
 <head>
   <meta charset="utf-8">
   <title>Udomi.net</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css">
+  <link rel="stylesheet" href="{{ URL::asset('css/jquery.fileuploader.css') }}">
+  <link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.css">
   <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="{{ URL::asset('css/slick.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('css/slick-theme.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('css/jquery.fileuploader.css') }}">
 </head>
 <body>
 

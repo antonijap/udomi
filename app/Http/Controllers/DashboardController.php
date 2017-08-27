@@ -43,7 +43,7 @@ class DashboardController extends Controller
 
   }
 
-  public function update(Ad $ad, Request $request)
+  public function update(Ad $ad, UploadRequest $request)
   {
 
     if (request('castration') == '') {
@@ -102,29 +102,25 @@ class DashboardController extends Controller
       );
     }
 
-    // initialize FileUploader
     $FileUploader = new FileUploader('files', array(
       'uploadDir' => $path,
       'title' => 'name',
       'files' => $appendedFiles
     ));
-
-    // call to upload the files
     $upload = $FileUploader->upload();
 
-    // if uploaded and success
+    // Upload new photos
     if($upload['isSuccess'] && count($upload['files']) > 0) {
       $fileList = $FileUploader->getFileList();
       foreach ($fileList as $photo) {
-        // Check if some photos exist and avoid them
+        // Check if photos exist and avoid them
         $existingPhoto = [];
         $existingPhoto = AdPhotos::where('filename', $photo['file'])->get();
         if ($existingPhoto->isEmpty()) {
            // Upload new photos
           AdPhotos::create([
             'ad_id' => $ad->id,
-            'filename' => substr($photo['file'], 0),
-            // 'filename' => $photo['file'],
+            'filename' => $photo['file'],
             'name' => $photo['title'],
             'size' => $photo['size'],
             'type' => $photo['type']
@@ -138,22 +134,23 @@ class DashboardController extends Controller
       echo $warnings;
     };
 
-    // return $FileUploader->getRemovedFiles();
-    // return $FileUploader->getListInput();
-    $filesToRemove = [];
-    foreach ($ad->photos as $photo) {
-      foreach ($FileUploader->getListInput() as $file) {
-        $filesToRemove[] = AdPhotos::where('filename', $file);
-      }
+    // Scan for photos
+    $photosSurvivedPotentialRemoving = $FileUploader->getListInput('photos');
+
+    $photos = [];
+    foreach ($photosSurvivedPotentialRemoving as $photo) {
+      $photos[] = AdPhotos::where('filename', substr($photo, 1))->first();
     }
 
-    return $filesToRemove;
+    // Extract removed photos and do model and storage cleanup
+    $removedPhotos = $ad->photos->diff(array_filter($photos));
 
-    foreach($FileUploader->getRemovedFiles('file') as $key => $value) {
-      return $value['file'];
-      File::delete(public_path()  . $value['file']);
-      $photo = AdPhotos::where('filename', $value['file'])->first();
+    foreach ($removedPhotos as $key => $value) {
+      AdPhotos::where('id', $value['id'])->first()->delete();
+      $path = public_path() . '/';
+      File::delete($path . $value['filename']);
     }
+
     return redirect('/dashboard');
   }
 }

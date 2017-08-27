@@ -18,6 +18,7 @@ footer {
 .additional-title {
   display: block;
   font-weight: bold;
+  margin-top: 2em;
 }
 
 .additional-subtitle {
@@ -36,5 +37,31 @@ footer {
 .helper-label {
   display: block;
   font-weight: bold;
+}
+
+p.photos-error {
+  color: red;
+}
+
+.fileuploader {
+  padding: 0;
+}
+
+.fileuploader .fileuploader-input {
+  margin-bottom: 1em;
+}
+
+.fileuploader .columns {
+  margin-left: 0;
+  margin-bottom: 0;
+}
+
+img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.tabs {
+  margin-bottom: 1em;
 }
 

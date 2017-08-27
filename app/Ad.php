@@ -18,7 +18,9 @@ class Ad extends Model
       'sterilization',
       'invalidity',
       'slug',
-      'location'
+      'location',
+      'fileuploader-list-files',
+      'is_adopted'
   ];
 
   public function user()

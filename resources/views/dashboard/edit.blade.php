@@ -57,7 +57,7 @@
                     @if ($ad->sex == 'female')
                       <option value="female" checked>Ženka</option>
                       <option value="male">Mužjak</option>
-                    @elseif ($ad->type == 'male')
+                    @elseif ($ad->sex == 'male')
                       <option value="female">Ženka</option>
                       <option value="male" checked>Mužjak</option>
                     @endif
@@ -74,7 +74,7 @@
                     @if ($ad->age == 'adult')
                       <option value="junior">Mladi</option>
                       <option value="adult" checked>Odrasli</option>
-                    @else 
+                    @else
                       <option value="junior" checked>Mladi</option>
                       <option value="adult">Odrasli</option>
                     @endif
@@ -92,7 +92,7 @@
                     <option value="bjelovarsko-bilogorska">Bjelovarsko-bilogorska</option>
                     <option value="brodsko-posavska">Brodsko-posavska</option>
                     <option value="dubrovacko-neretvanska">Dubrovačko-neretvanska</option>
-                    <option value="grad-zagreb">Grad Zagreb</option>
+                    <option value="grad-zagreb" selected>Grad Zagreb</option>
                     <option value="istarska">Istarska</option>
                     <option value="karlovacka">Karlovačka</option>
                     <option value="koprivnicko-krizevacka">Koprivničko-križevačka</option>
@@ -130,6 +130,10 @@
             </div>
 
             <input type="file" name="files" data-fileuploader-files='{{ $photos }}'>
+
+            <div class="field">
+              <p class="photos-error"></p>
+            </div>
 
             <div class="field">
               <label class="additional-title">Dodatno</label>

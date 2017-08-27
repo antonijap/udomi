@@ -61,7 +61,8 @@ class AdsController extends Controller
             'sex' => 'required',
             'age' => 'required',
             'location' => 'required',
-            'type' => 'required'
+            'type' => 'required',
+            'photos' => 'required'
         ]);
 
         $ad = Ad::create([
@@ -75,7 +76,8 @@ class AdsController extends Controller
             'slug' => $slug,
             'castration' => $castration,
             'sterilization' => $sterilization,
-            'invalidity' => $invalidity
+            'invalidity' => $invalidity,
+            'is_adopted' => false
         ]);
 
         $images = public_path() . '/images/';
