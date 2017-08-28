@@ -37,13 +37,8 @@
               <div class="control">
                 <span class="select">
                   <select name="type">
-                    @if ($ad->type == 'cat')
-                      <option value="cat" checked>Mačka</option>
-                      <option value="dog">Pas</option>
-                    @elseif ($ad->type == 'dog')
-                      <option value="cat">Mačka</option>
-                      <option value="dog" checked>Pas</option>
-                    @endif
+                    <option value="cat" {{ $ad->type == 'cat' ? 'selected' : '' }}>Mačka</option>
+                    <option value="dog" {{ $ad->type == 'dog' ? 'selected' : '' }}>Pas</option>
                   </select>
                 </span>
               </div>
@@ -54,13 +49,8 @@
               <div class="control">
                 <span class="select">
                   <select name="sex">
-                    @if ($ad->sex == 'female')
-                      <option value="female" checked>Ženka</option>
-                      <option value="male">Mužjak</option>
-                    @elseif ($ad->sex == 'male')
-                      <option value="female">Ženka</option>
-                      <option value="male" checked>Mužjak</option>
-                    @endif
+                    <option value="female" {{ $ad->sex == 'female' ? 'selected' : '' }}>Ženka</option>
+                    <option value="male" {{ $ad->sex == 'male' ? 'selected' : '' }}>Mužjak</option>
                   </select>
                 </span>
               </div>
@@ -71,13 +61,8 @@
               <div class="control">
                 <span class="select">
                   <select name="age">
-                    @if ($ad->age == 'adult')
-                      <option value="junior">Mladi</option>
-                      <option value="adult" checked>Odrasli</option>
-                    @else
-                      <option value="junior" checked>Mladi</option>
-                      <option value="adult">Odrasli</option>
-                    @endif
+                    <option value="junior" {{ $ad->age == 'junior' ? 'selected' : '' }}>Mladi</option>
+                    <option value="adult" {{ $ad->age == 'adult' ? 'selected' : '' }}>Odrasli</option>
                   </select>
                 </span>
               </div>
@@ -88,28 +73,28 @@
               <div class="control">
                 <span class="select">
                   <select name="location">
-                    <option disabled selected>Odaberi lokaciju</option>
-                    <option value="bjelovarsko-bilogorska">Bjelovarsko-bilogorska</option>
-                    <option value="brodsko-posavska">Brodsko-posavska</option>
-                    <option value="dubrovacko-neretvanska">Dubrovačko-neretvanska</option>
-                    <option value="grad-zagreb" selected>Grad Zagreb</option>
-                    <option value="istarska">Istarska</option>
-                    <option value="karlovacka">Karlovačka</option>
-                    <option value="koprivnicko-krizevacka">Koprivničko-križevačka</option>
-                    <option value="krapinsko-zagorska">Krapinsko-zagorska</option>
-                    <option value="licko-senjska">Ličko-senjska</option>
-                    <option value="medimurska">Međimurska</option>
-                    <option value="osjecko-baranjska">Osječko-baranjska</option>
-                    <option value="pozesko-slavonska">Požeško-slavonska</option>
-                    <option value="primorsko-goranska">Primorsko-goranska</option>
-                    <option value="sisasko-moslavcka">Sisačko-moslavačka</option>
-                    <option value="splitsko-dalmatinska">Splitsko-dalmatinska</option>
-                    <option value="sibensko-kninska">Šibensko-kninska</option>
-                    <option value="varazdinska">Varaždinska</option>
-                    <option value="viroviticko-podravska">Virovitičko-podravska</option>
-                    <option value="vukovarsko-srijemska">Vukovarsko-srijemska</option>
-                    <option value="zadarska">Zadarska</option>
-                    <option value="zagrebacka">Zagrebačka</option>
+                    <option value="all" {{ $ad->location == 'svejedno' ? 'selected' : '' }}>Svejedno</option>
+                    <option value="bjelovarsko-bilogorska" {{ $ad->location == 'bjelovarsko-bilogorska' ? 'selected' : '' }}>Bjelovarsko-bilogorska</option>
+                    <option value="brodsko-posavska" {{ $ad->location == 'brodsko-posavska' ? 'selected' : '' }}>Brodsko-posavska</option>
+                    <option value="dubrovacko-neretvanska" {{ $ad->location == 'dubrovacko-neretvanska' ? 'selected' : '' }}>Dubrovačko-neretvanska</option>
+                    <option value="grad-zagreb" {{ $ad->location == 'grad-zagreb' ? 'selected' : '' }}>Grad Zagreb</option>
+                    <option value="istarska" {{ $ad->location == 'istarska' ? 'selected' : '' }}>Istarska</option>
+                    <option value="karlovacka" {{ $ad->location == 'karlovacka' ? 'selected' : '' }}>Karlovačka</option>
+                    <option value="koprivnicko-krizevacka" {{ $ad->location == 'koprivnicko-krizevacka' ? 'selected' : '' }}>Koprivničko-križevačka</option>
+                    <option value="krapinsko-zagorska" {{ $ad->location == 'krapinsko-zagorska' ? 'selected' : '' }}>Krapinsko-zagorska</option>
+                    <option value="licko-senjska" {{ $ad->location == 'licko-senjska' ? 'selected' : '' }}>Ličko-senjska</option>
+                    <option value="medimurska" {{ $ad->location == 'medimurska' ? 'selected' : '' }}>Međimurska</option>
+                    <option value="osjecko-baranjska" {{ $ad->location == 'osjecko-baranjska' ? 'selected' : '' }}>Osječko-baranjska</option>
+                    <option value="pozesko-slavonska" {{ $ad->location == 'pozesko-slavonska' ? 'selected' : '' }}>Požeško-slavonska</option>
+                    <option value="primorsko-goranska" {{ $ad->location == 'primorsko-goranska' ? 'selected' : '' }}>Primorsko-goranska</option>
+                    <option value="sisasko-moslavcka" {{ $ad->location == 'sisasko-moslavcka' ? 'selected' : '' }}>Sisačko-moslavačka</option>
+                    <option value="splitsko-dalmatinska" {{ $ad->location == 'splitsko-dalmatinska' ? 'selected' : '' }}>Splitsko-dalmatinska</option>
+                    <option value="sibensko-kninska" {{ $ad->location == 'sibensko-kninska' ? 'selected' : '' }}>Šibensko-kninska</option>
+                    <option value="varazdinska" {{ $ad->location == 'varazdinska' ? 'selected' : '' }}>Varaždinska</option>
+                    <option value="viroviticko-podravska" {{ $ad->location == 'viroviticko-podravska' ? 'selected' : '' }}>Virovitičko-podravska</option>
+                    <option value="vukovarsko-srijemska" {{ $ad->location == 'vukovarsko-srijemska' ? 'selected' : '' }}>Vukovarsko-srijemska</option>
+                    <option value="zadarska" {{ $ad->location == 'zadarska' ? 'selected' : '' }}>Zadarska</option>
+                    <option value="zagrebacka" {{ $ad->location == 'zagrebacka' ? 'selected' : '' }}>Zagrebačka</option>
                   </select>
                 </span>
               </div>
@@ -145,11 +130,7 @@
             <div class="field">
               <div class="control">
                 <label class="checkbox">
-                  @if ($ad->invalidity == 'on')
-                    <input name="invalidity" type="checkbox" checked>
-                  @else
-                    <input name="invalidity" type="checkbox">
-                  @endif
+                  <input name="invalidity" type="checkbox" {{ $ad->invalidity == 'on' ? 'checked' : '' }}>
 
                   Invaliditet
                 </label>
@@ -157,11 +138,7 @@
 
               <div class="control">
                 <label class="checkbox">
-                  @if ($ad->invalidity == 'on')
-                    <input name="invalidity" type="checkbox" checked>
-                  @else
-                    <input name="invalidity" type="checkbox">
-                  @endif
+                  <input name="castration" type="checkbox" {{ $ad->castration == 'on' ? 'checked' : '' }}>
 
                   Kastracija
                 </label>
@@ -169,11 +146,7 @@
 
               <div class="control">
                 <label class="checkbox">
-                  @if ($ad->sterilization == 'on')
-                    <input name="sterilization" type="checkbox" checked>
-                  @else
-                    <input name="sterilization" type="checkbox">
-                  @endif
+                  <input name="sterilization" type="checkbox" {{ $ad->sterilization == 'on' ? 'checked' : '' }}>
 
                   Sterilizacija
                 </label>

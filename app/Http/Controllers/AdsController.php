@@ -135,7 +135,12 @@ class AdsController extends Controller
         $location = request('location');
         $type = request('type');
 
-        $dropdownData = [request('type'), request('sex'), request('age'), request('location')];
+        $dropdownData = [
+            'type' => request('type'),
+            'sex' => request('sex'),
+            'age' => request('age'),
+            'location' => request('location')
+        ];
 
         $ads = Ad::all();
 
@@ -179,7 +184,7 @@ class AdsController extends Controller
 
         $results = $ads->whereIn('sex', (array) $sex)->whereIn('age', (array) $age)->whereIn('location', (array) $location)->whereIn('type', (array) $type);
 
-        // return $results;
+        // return $dropdownData;
         return view('results')->with('ads', $results)->with('data', $dropdownData);
 
     }

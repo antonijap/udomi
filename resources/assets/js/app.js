@@ -10,28 +10,28 @@ $(function() {
     cssEase: 'linear'
   });
 
-	var input = $('input[name="files"]').fileuploader({
-        addMore: true,
-        fileMaxSize: 2,
-        extensions: ['jpg', 'jpeg', 'png'],
-        limit: 3,
-        enableApi: true,
-        onRemove: function(item, listEl, parentEl, newInputEl, inputEl) {
-          if (api.getFiles().length == 1) {
-            // Disable Button
-            $(':input[type="submit"]').prop('disabled', true);
-            $(".photos-error").append('Obavezno mora biti barem jedna slika.');
-          } else {
-            // Enable Button
-            $(':input[type="submit"]').prop('disabled', false);
-            $(".photos-error").append('');
-          }
-          return true;
-        },
-        onSelect: function(item, listEl, parentEl, newInputEl, inputEl) {
-          $(".photos-error").empty();
-          $(':input[type="submit"]').prop('disabled', false);
-        },
+  var input = $('input[name="files"]').fileuploader({
+    addMore: true,
+    fileMaxSize: 2,
+    extensions: ['jpg', 'jpeg', 'png'],
+    limit: 3,
+    enableApi: true,
+    onRemove: function(item, listEl, parentEl, newInputEl, inputEl) {
+      if (api.getFiles().length == 1) {
+        // Disable Button
+        $(':input[type="submit"]').prop('disabled', true);
+        $(".photos-error").append('Obavezno mora biti barem jedna slika.');
+      } else {
+        // Enable Button
+        $(':input[type="submit"]').prop('disabled', false);
+        $(".photos-error").append('');
+      }
+      return true;
+    },
+    onSelect: function(item, listEl, parentEl, newInputEl, inputEl) {
+      $(".photos-error").empty();
+      $(':input[type="submit"]').prop('disabled', false);
+    },
   });
 
   // get API methods
@@ -56,5 +56,4 @@ $(function() {
     $('#one').addClass('is-active');
     $('#two').removeClass('is-active');
   });
-
 });

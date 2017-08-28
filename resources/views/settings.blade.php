@@ -17,9 +17,23 @@
       <div class="columns">
 
         <div class="column ">
-          Moje postavke
-          <h2>{{$user->name}}</h2>
-          <h2>{{$user->email}}</h2>
+          <form action="/settings" method="post">
+
+            <div class="field">
+              <label class="label">Ime</label>
+              <div class="control">
+                <input class="input" type="text" name="name" value="{{$user->name}}">
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Opis (opcionalno)</label>
+              <div class="control">
+                <textarea class="textarea" name="description" value="{{$user->description}}"></textarea>
+              </div>
+            </div>
+
+          </form>
         </div>
 
       </div>
