@@ -31,8 +31,9 @@
           <a class="navbar-link " href="/dashboard">{{Auth::user()->name}}</a>
 
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="/{{Auth::user()->username}}">Profile</a>
+            <a class="navbar-item" href="/{{Auth::user()->username}}">Moj Profil</a>
             <a class="navbar-item" href="/dashboard">Dashboard</a>
+            <a class="navbar-item" href="/settings">Postavke</a>
             <a class="navbar-item" href="/logout">Logout</a>
           </div>
         </div>

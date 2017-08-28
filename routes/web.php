@@ -25,7 +25,12 @@ Route::post('/login', 'SessionsController@login');
 Route::get('/logout', 'SessionsController@logout');
 
 Route::get('/dashboard', 'UserController@show')->name('dashboard');
+Route::get('/settings', 'UserController@showSettings');
 Route::get('/{username}', 'UserController@profile');
 
 Route::get('/ad/{ad}/edit', 'DashboardController@show');
 Route::post('/ad/{ad}/edit', 'DashboardController@update');
+Route::get('/ad/{ad}/adopted', 'DashboardController@markAdopted');
+Route::get('/ad/{ad}/restore', 'DashboardController@restore');
+Route::get('/ad/{ad}/delete', 'DashboardController@delete');
+Route::get('/ad/{ad}/boost', 'DashboardController@boost');

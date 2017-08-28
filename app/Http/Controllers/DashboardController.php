@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\UploadRequest;
 use App\Ad;
+use App\Boost;
 use App\AdPhotos;
 use App\User;
 use Image;
@@ -22,9 +23,6 @@ class DashboardController extends Controller
 
   public function show(Ad $ad)
   {
-
-    $userDir = public_path() . '/images/' . $ad->user->username . '/';
-
     foreach($ad->photos as $file) {
       $appendedFiles[] = array(
         "name" => $file['name'],
@@ -35,7 +33,6 @@ class DashboardController extends Controller
           "url" => '/' . $file['filename']
         )
       );
-
     }
 
     $appendedFiles = json_encode($appendedFiles);
@@ -45,7 +42,6 @@ class DashboardController extends Controller
 
   public function update(Ad $ad, UploadRequest $request)
   {
-
     if (request('castration') == '') {
       $castration = 'off';
     } else {
@@ -117,7 +113,7 @@ class DashboardController extends Controller
         $existingPhoto = [];
         $existingPhoto = AdPhotos::where('filename', $photo['file'])->get();
         if ($existingPhoto->isEmpty()) {
-           // Upload new photos
+          // Upload new photos
           AdPhotos::create([
             'ad_id' => $ad->id,
             'filename' => $photo['file'],
@@ -153,4 +149,55 @@ class DashboardController extends Controller
 
     return redirect('/dashboard');
   }
+
+  public function markAdopted(Ad $ad)
+  {
+    Ad::where('id', $ad->id)
+        ->update(['is_adopted' => 1]);
+
+    $ads = auth()->user()->ads->sortByDesc('updated_at');
+    return redirect('/dashboard')->with('ads', $ads);
+  }
+
+  public function restore(Ad $ad)
+  {
+    Ad::where('id', $ad->id)
+        ->update(['is_adopted' => 0]);
+
+    $ads = auth()->user()->ads->sortByDesc('updated_at');
+    return redirect('/dashboard')->with('ads', $ads);
+  }
+
+  public function delete(Ad $ad)
+  {
+
+    foreach ($ad->photos as $photo) {
+      AdPhotos::where('id', $photo->id)
+          ->delete();
+
+      $path = public_path() . '/' . $ad->username . $photo->filename;
+      File::delete($path);
+    }
+
+    Ad::where('id', $ad->id)
+        ->delete();
+
+    // Delete all photos from disk
+
+    $ads = auth()->user()->ads->sortByDesc('updated_at');
+    return redirect('/dashboard')->with('ads', $ads);
+  }
+
+  public function boost(Ad $ad)
+  {
+    Ad::where('id', $ad->id)
+        ->update(['updated_at' => Carbon::now()]);
+
+    Boost::where('user_id', $ad->user->id)
+        ->update(['updated_at' => Carbon::now()]);
+
+    $ads = auth()->user()->ads->sortByDesc('updated_at');
+    return redirect('/dashboard')->with('ads', $ads);
+  }
+
 }

@@ -12,6 +12,7 @@ use Image;
 use Carbon\Carbon;
 use App\Classes\Fileuploader;
 use File;
+use Illuminate\Pagination\Paginator;
 
 class AdsController extends Controller
 {
@@ -22,7 +23,7 @@ class AdsController extends Controller
 
     public function index()
     {
-        $ads = Ad::orderBy('updated_at', 'desc')->get();
+        $ads = Ad::orderBy('updated_at', 'desc')->simplePaginate(30);
         return view('index')->with('ads', $ads);
     }
 

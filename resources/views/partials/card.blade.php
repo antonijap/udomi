@@ -21,19 +21,19 @@
     <div class="content">{{$ad->description}}</div>
     <div class="tags">
       @if ($ad->sex == 'female')
-          <span class="tag is-info">ženka</span>
+          <span class="tag is-primary">Ž</span>
       @elseif ($ad->sex == 'male')
-          <span class="tag is-info">mužjak</span>
+          <span class="tag is-primary">M</span>
       @endif
 
       @if ($ad->age == 'junior')
-          <span class="tag is-info">junior</span>
-      @elseif ($ad->age == 'adult')
-          <span class="tag is-info">odrasli</span>
+          <span class="tag is-info">Mladi</span>
+      {{-- @elseif ($ad->age == 'adult')
+          <span class="tag is-info">odrasli</span> --}}
       @endif
 
       @if ($ad->invalidity == 'on')
-          <span class="tag is-warning">Invaliditet</span>
+          <span class="tag is-warning">Posebna</span>
       @endif
 
       @if ($ad->castration == 'on')

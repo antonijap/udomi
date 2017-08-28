@@ -9,15 +9,14 @@ class UserController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware('guest', ['except' => 'logout']);
         $this->middleware('auth')->except(['profile']);
     }
 
     public function show()
     {
         $ads = auth()->user()->ads->sortByDesc('updated_at');
-        return view('dashboard')->with('ads', $ads);
-        // return $ads;
+        $user = auth()->user();
+        return view('dashboard')->with('ads', $ads)->with('user', $user);
     }
 
     public function profile($username)
@@ -26,4 +25,11 @@ class UserController extends Controller
         $ads = $user->ads->sortByDesc('updated_at');
         return view('profile')->with('user', $user)->with('ads', $ads);
     }
+
+    public function showSettings()
+    {
+        $user = auth()->user();
+        return view('settings')->with('user', $user);
+    }
+    
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Boost;
 
 class RegistrationController extends Controller
 {
@@ -36,6 +37,11 @@ class RegistrationController extends Controller
             'email' => request('email'),
             'username' => $username,
             'password' => bcrypt(request('password'))
+        ]);
+
+        Boost::create([
+            'user_id' => $user->id,
+            'cooldown' => 48
         ]);
 
         // Sign in

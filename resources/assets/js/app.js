@@ -57,5 +57,4 @@ $(function() {
     $('#two').removeClass('is-active');
   });
 
-
 });
