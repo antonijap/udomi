@@ -26,6 +26,7 @@ Route::get('/logout', 'SessionsController@logout');
 
 Route::get('/dashboard', 'UserController@show')->name('dashboard');
 Route::get('/settings', 'UserController@showSettings');
+Route::post('/settings', 'UserController@update');
 Route::get('/{username}', 'UserController@profile');
 
 Route::get('/ad/{ad}/edit', 'DashboardController@show');

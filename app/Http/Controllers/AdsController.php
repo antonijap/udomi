@@ -23,7 +23,7 @@ class AdsController extends Controller
 
     public function index()
     {
-        $ads = Ad::orderBy('updated_at', 'desc')->simplePaginate(30);
+        $ads = Ad::orderBy('updated_at', 'desc')->where('is_adopted', 0)->simplePaginate(30);
         return view('index')->with('ads', $ads);
     }
 

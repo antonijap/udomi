@@ -31,5 +31,10 @@ class UserController extends Controller
         $user = auth()->user();
         return view('settings')->with('user', $user);
     }
-    
+
+    public function update(User $user)
+    {
+      return $user;
+    }
+
 }

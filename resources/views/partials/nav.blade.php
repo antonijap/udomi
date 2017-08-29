@@ -3,11 +3,18 @@
     <a class="navbar-item" href="/" style="font-weight:bold;">
       UDOMI
     </a>
+
+    <div class="navbar-burger" data-target="navMenu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </div>
-  <div class="navbar-menu">
+
+  <div class="navbar-menu" id="navMenu">
     <div class="navbar-start">
       <div class="navbar-item">
-        <a href="/">Home</a>
+        <a href="/">Početna</a>
       </div>
 
       @if (! Auth::check())
