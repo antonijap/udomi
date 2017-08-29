@@ -82,8 +82,9 @@ class DashboardController extends Controller
       'invalidity' => $invalidity
     ]);
 
-    $images = public_path() . '/images/';
-    $path = $images . $ad->user->username . '/';
+    // $images = public_path() . '/images/';
+    // $path = $images . $ad->user->username . '/';
+    $path = storage_path('/app/public/' . $ad->user->username . '/');
 
     $appendedFiles = [];
     foreach ($ad->photos as $photo) {
@@ -116,7 +117,7 @@ class DashboardController extends Controller
           // Upload new photos
           AdPhotos::create([
             'ad_id' => $ad->id,
-            'filename' => $photo['file'],
+            'filename' => $photo['name'],
             'name' => $photo['title'],
             'size' => $photo['size'],
             'type' => $photo['type']

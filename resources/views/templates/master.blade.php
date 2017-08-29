@@ -17,12 +17,8 @@
 
   @yield('content')
   @include('partials.footer')
-
-  <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-
+  
+  <script src="{{ URL::asset('js/jquery-3.2.1.min.js') }}" charset="utf-8"></script>
   <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
   <script src="{{ URL::asset('js/jquery.fileuploader.js') }}" charset="utf-8"></script>
   <script src="{{ URL::asset('js/app.js') }}" charset="utf-8"></script>

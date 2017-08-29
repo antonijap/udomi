@@ -81,21 +81,19 @@ class AdsController extends Controller
             'is_adopted' => false
         ]);
 
-        $images = public_path() . '/images/';
-        $userDir = $images . $ad->user->username . '/';
+        // $images = public_path() . '/images/';
+        // $userDir = $images . $ad->user->username . '/';
+        $path = storage_path('/app/public/' . $ad->user->username . '/');
 
-        if (file_exists($userDir)) {
-            $path = public_path() . '/images/' . $ad->user->username . '/';
-
+        if (file_exists($path)) {
             // initialize FileUploader
             $FileUploader = new FileUploader('files', array(
               'uploadDir' => $path,
               'title' => 'name'
             ));
         } else {
-            File::makeDirectory($images . $ad->user->username, 0777, true);
-            $path = public_path() . '/images/' . $ad->user->username . '/';
-
+            File::makeDirectory($path, 0777, true);
+            // $path = public_path() . '/images/' . $ad->user->username . '/';
             // initialize FileUploader
             $FileUploader = new FileUploader('files', array(
               'uploadDir' => $path,
@@ -111,11 +109,11 @@ class AdsController extends Controller
         if($data['isSuccess'] && count($data['files']) > 0) {
 
           $uploadedFiles = $data['files'];
-
+        //   return $uploadedFiles;
           foreach ($uploadedFiles as $photo) {
               AdPhotos::create([
                   'ad_id' => $ad->id,
-                  'filename' => $photo['file'],
+                  'filename' => 'storage/' . $ad->user->username . '/' . $photo['name'],
                   'name' => $photo['title'],
                   'size' => $photo['size'],
                   'type' => $photo['type']
