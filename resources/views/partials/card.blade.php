@@ -18,7 +18,10 @@
         </a>
       </div>
     </div>
-    <div class="content">{{$ad->description}}</div>
+    <div class="content">
+      {{-- {!! Str::words($ad->description, 5,'...')  !!} --}}
+      {{$ad->description}}
+    </div>
     <div class="tags">
       @if ($ad->sex == 'female')
           <span class="tag is-primary">Ž</span>

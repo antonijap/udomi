@@ -69,3 +69,17 @@ img {
 .tabs {
   margin-bottom: 1em;
 }
+
+.flash-message {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #23D160;
+  padding: 2em;
+  z-index: 10;
+  color: white;
+  font-size: 1.5em;
+  text-align: center;
+  left: 0;
+  right: 0;
+}

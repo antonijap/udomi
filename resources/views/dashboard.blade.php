@@ -1,6 +1,9 @@
 @extends('templates.master')
 
 @section('content')
+
+  @include('partials.flash-message')
+
   <div class="container is-fluid is-marginless">
     <section class="hero is-light">
       <div class="hero-body">

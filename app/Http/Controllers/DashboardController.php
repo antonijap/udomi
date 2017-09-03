@@ -117,7 +117,7 @@ class DashboardController extends Controller
           // Upload new photos
           AdPhotos::create([
             'ad_id' => $ad->id,
-            'filename' => $photo['name'],
+            'filename' => 'storage/' . $ad->user->username . '/' . $photo['name'],
             'name' => $photo['title'],
             'size' => $photo['size'],
             'type' => $photo['type']

@@ -4,6 +4,8 @@
 
   @include('partials.search')
 
+  @include('partials.flash-message')
+
   <section class="section">
     <div class="container">
       <div class="columns is-multiline ">

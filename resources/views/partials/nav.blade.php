@@ -1,7 +1,7 @@
 <nav class="navbar">
   <div class="navbar-brand">
     <a class="navbar-item" href="/" style="font-weight:bold;">
-      UDOMI
+      UDOMI.net
     </a>
 
     <div class="navbar-burger" data-target="navMenu">

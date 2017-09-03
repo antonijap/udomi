@@ -121,7 +121,7 @@ class AdsController extends Controller
           }
 
         }
-
+        session()->flash('message', 'Oglas uspješno objavljen.');
         return redirect('/dashboard');
 
     }

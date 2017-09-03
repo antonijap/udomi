@@ -10,6 +10,8 @@ $(function() {
     cssEase: 'linear'
   });
 
+  $('.flash-message').delay(1000).fadeOut(1000);;
+
   var input = $('input[name="files"]').fileuploader({
     addMore: true,
     fileMaxSize: 2,

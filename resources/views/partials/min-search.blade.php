@@ -1,4 +1,4 @@
-<div class="columns is-centered">
+<div class="columns">
   <div class="column is-narrow">
     <form action="/results" method="post">
       {{ csrf_field() }}

@@ -1,9 +1,9 @@
 <section class="hero is-light">
   <div class="hero-body">
     <div class="container">
-      <div class="has-text-centered intro">
+      <div class="intro">
         <h1 class="title">
-          Pronadi svog novog krznenog prijatelja
+          Pronađi svog novog krznenog prijatelja
         </h1>
         <h2 class="subtitle">
           Filtriraj oglase i udomi

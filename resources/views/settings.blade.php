@@ -2,6 +2,8 @@
 
 @section('content')
 
+  @include('partials.flash-message')
+
   <section class="hero is-light">
     <div class="hero-body">
       <div class="container">
@@ -9,7 +11,6 @@
       </div>
     </div>
   </section>
-
 
   <section class="section">
     <div class="container">
@@ -39,7 +40,7 @@
                 <div class="field">
                   <label class="label">Opis (opcionalno)</label>
                   <div class="control">
-                    <textarea class="textarea" name="description" value="{{$user->description}}"></textarea>
+                    <textarea class="textarea" name="description">{{$user->description}}</textarea>
                   </div>
                 </div>
               </div>
@@ -53,7 +54,7 @@
                 <div class="field">
                   <label class="label">Email (opcionalno)</label>
                   <div class="control">
-                    <input class="input" type="text" name="name" value="{{$user->contact_email}}">
+                    <input class="input" type="text" name="contact_email" value="{{$user->contact_email}}">
                   </div>
                 </div>
               </div>
@@ -62,7 +63,7 @@
                 <div class="field">
                   <label class="label">Mobitel (opcionalno)</label>
                   <div class="control">
-                    <input class="input" type="text" name="name" value="{{$user->phone}}">
+                    <input class="input" type="text" name="phone" value="{{$user->phone}}">
                   </div>
                 </div>
               </div>
@@ -87,6 +88,8 @@
             </div>
           </form>
         </div>
+
+        @include('partials/errors')
 
       </div>
     </div>

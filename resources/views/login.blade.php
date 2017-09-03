@@ -39,6 +39,8 @@
                 </div>
 
               </form>
+
+              <a href="/password/reset" style="padding-top: 3em; display: block;">Zaboravljena lozinka?</a>
             </div>
           </div>
         </div>
