@@ -40,7 +40,6 @@ $dropdownmenu-arrows: false;
   }
   .subtitle {
     padding-top: .5em;
-
   }
 }
 
@@ -104,7 +103,10 @@ p.photos-error {
 }
 
 .intro {
-  padding: 5em 0 5em;
+  padding: 1em 0 1em;
+  @include breakpoint(medium) {
+    padding: 5em 0 5em;
+  }
 }
 
 .top {
@@ -112,8 +114,12 @@ p.photos-error {
 }
 
 .has-padding {
-  padding-top: 4em;
-  padding-bottom: 4em;
+  padding-top: 3em;
+  padding-bottom: 3em;
+  @include breakpoint(medium) {
+    padding-top: 4em;
+    padding-bottom: 4em;
+  }
 }
 
 .search {

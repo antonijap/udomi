@@ -2,6 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&amp;subset=latin-ext" rel="stylesheet">
+  
   <title>Udomi.net</title>
   <link rel="stylesheet" href="{{ URL::asset('css/jquery.fileuploader.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
