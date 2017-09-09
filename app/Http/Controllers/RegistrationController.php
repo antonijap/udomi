@@ -56,7 +56,7 @@ class RegistrationController extends Controller
 
         // Add to Mailchimp
         Newsletter::subscribe($user->email);
-        Newsletter::subscribe($user->email, ['firstName'=>$user->name]);
+        Newsletter::subscribe($user->email, ['firstName'=>$user->name, 'lastName'=>'']);
 
         // Redirect
         return redirect()->home();
