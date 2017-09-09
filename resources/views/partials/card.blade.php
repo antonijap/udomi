@@ -52,9 +52,9 @@
 
     @if ($ad->chip == 1)
       @if ($ad->sex == 'female')
-        <span class="label success">Ćipirana</span>
+        <span class="label success">Čipirana</span>
       @else
-        <span class="label success">Ćipiran</span>
+        <span class="label success">Čipiran</span>
       @endif
     @endif
   </div>
