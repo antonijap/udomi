@@ -117,6 +117,14 @@
                 <input name="sterilization" type="checkbox" id="sterilization"><label for="sterilization">Sterilizacija</label>
               </div>
 
+              <div class="cell small-12">
+                <input name="vaccines" type="checkbox" id="vaccines"><label for="vaccines">Cijepljenje</label>
+              </div>
+
+              <div class="cell small-12">
+                <input name="chip" type="checkbox" id="chip"><label for="chip">Cipiranje</label>
+              </div>
+
               <div class="cell small-12" style="padding-top:2em;">
                 <input type="submit" value="Kreiraj oglas" class="button">
               </div>

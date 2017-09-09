@@ -9,6 +9,7 @@
         "bogardo/mailgun": "^5.0",
         "chriskonnertz/open-graph": "^1.0",
         "cviebrock/eloquent-sluggable": "^4.2",
+        "doctrine/dbal": "^2.5",
         "guzzlehttp/guzzle": "^6.3",
         "intervention/image": "^2.4",
         "laravel/framework": "5.4.*",

@@ -60,6 +60,18 @@ class DashboardController extends Controller
       $invalidity = 'on';
     }
 
+    if (request('vaccines') == 'on') {
+      $vaccines = 1;
+    } else {
+      $vaccines = 0;
+    }
+
+    if (request('chip') == 'on') {
+            $chip = 1;
+        } else {
+            $chip = 0;
+        }
+
     $this->validate(request(), [
       'name' => 'required|min:2',
       'description' => 'required|min:32|max:1000',
@@ -79,6 +91,8 @@ class DashboardController extends Controller
       'type' => request('type'),
       'castration' => $castration,
       'sterilization' => $sterilization,
+      'vaccines' => $vaccines,
+      'chip' => $chip,
       'invalidity' => $invalidity
     ]);
 
@@ -154,7 +168,7 @@ class DashboardController extends Controller
   public function markAdopted(Ad $ad)
   {
     Ad::where('id', $ad->id)
-        ->update(['is_adopted' => 1]);
+    ->update(['is_adopted' => 1]);
 
     $ads = auth()->user()->ads->sortByDesc('updated_at');
     return redirect('/dashboard')->with('ads', $ads);
@@ -163,7 +177,7 @@ class DashboardController extends Controller
   public function restore(Ad $ad)
   {
     Ad::where('id', $ad->id)
-        ->update(['is_adopted' => 0]);
+    ->update(['is_adopted' => 0]);
 
     $ads = auth()->user()->ads->sortByDesc('updated_at');
     return redirect('/dashboard')->with('ads', $ads);
@@ -174,14 +188,14 @@ class DashboardController extends Controller
 
     foreach ($ad->photos as $photo) {
       AdPhotos::where('id', $photo->id)
-          ->delete();
+      ->delete();
 
       $path = public_path() . '/' . $ad->username . $photo->filename;
       File::delete($path);
     }
 
     Ad::where('id', $ad->id)
-        ->delete();
+    ->delete();
 
     // Delete all photos from disk
 
@@ -192,10 +206,10 @@ class DashboardController extends Controller
   public function boost(Ad $ad)
   {
     Ad::where('id', $ad->id)
-        ->update(['updated_at' => Carbon::now()]);
+    ->update(['updated_at' => Carbon::now()]);
 
     Boost::where('user_id', $ad->user->id)
-        ->update(['updated_at' => Carbon::now()]);
+    ->update(['updated_at' => Carbon::now()]);
 
     $ads = auth()->user()->ads->sortByDesc('updated_at');
     return redirect('/dashboard')->with('ads', $ads);

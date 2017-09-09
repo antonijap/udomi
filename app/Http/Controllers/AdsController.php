@@ -28,10 +28,10 @@ class AdsController extends Controller
 
         $og = new OpenGraph();
         $og->title('Udomi.net')
-            ->type('website')
-            ->image('/images/facebook.jpg')
-            ->description('Udomi.net je oglasnik za udomljavanje životinja. Posebno napravljen za udruge.')
-            ->url('http://udomi.net');
+        ->type('website')
+        ->image('/images/facebook.jpg')
+        ->description('Udomi.net je oglasnik za udomljavanje životinja. Posebno napravljen za udruge.')
+        ->url('http://udomi.net');
 
         return view('index')->with('ads', $ads)->with('og', $og);
     }
@@ -61,6 +61,18 @@ class AdsController extends Controller
             $invalidity = 'on';
         }
 
+        if (request('vaccines') == 'on') {
+            $vaccines = 1;
+        } else {
+            $vaccines = 0;
+        }
+
+        if (request('chip') == 'on') {
+            $chip = 1;
+        } else {
+            $chip = 0;
+        }
+
         // Create username
         $name = request('name');
         $slug = str_replace(' ', '-', strtolower($name));
@@ -87,6 +99,8 @@ class AdsController extends Controller
             'castration' => $castration,
             'sterilization' => $sterilization,
             'invalidity' => $invalidity,
+            'vaccines' => $vaccines,
+            'chip' => $chip,
             'is_adopted' => false
         ]);
 
@@ -97,16 +111,16 @@ class AdsController extends Controller
         if (file_exists($path)) {
             // initialize FileUploader
             $FileUploader = new FileUploader('files', array(
-              'uploadDir' => $path,
-              'title' => 'name'
+                'uploadDir' => $path,
+                'title' => 'name'
             ));
         } else {
             File::makeDirectory($path, 0777, true);
             // $path = public_path() . '/images/' . $ad->user->username . '/';
             // initialize FileUploader
             $FileUploader = new FileUploader('files', array(
-              'uploadDir' => $path,
-              'title' => 'name'
+                'uploadDir' => $path,
+                'title' => 'name'
             ));
         }
 
@@ -117,17 +131,17 @@ class AdsController extends Controller
         // if uploaded and success
         if($data['isSuccess'] && count($data['files']) > 0) {
 
-          $uploadedFiles = $data['files'];
-        //   return $uploadedFiles;
-          foreach ($uploadedFiles as $photo) {
-              AdPhotos::create([
-                  'ad_id' => $ad->id,
-                  'filename' => 'storage/' . $ad->user->username . '/' . $photo['name'],
-                  'name' => $photo['title'],
-                  'size' => $photo['size'],
-                  'type' => $photo['type']
-              ]);
-          }
+            $uploadedFiles = $data['files'];
+            //   return $uploadedFiles;
+            foreach ($uploadedFiles as $photo) {
+                AdPhotos::create([
+                    'ad_id' => $ad->id,
+                    'filename' => 'storage/' . $ad->user->username . '/' . $photo['name'],
+                    'name' => $photo['title'],
+                    'size' => $photo['size'],
+                    'type' => $photo['type']
+                ]);
+            }
 
         }
         session()->flash('message', 'Oglas uspješno objavljen.');
@@ -213,10 +227,10 @@ class AdsController extends Controller
 
         $og = new OpenGraph();
         $og->title($ad->name . ' | ' . 'Udomi.net')
-            ->type('website')
-            ->image('/' . $ad->photos->first()->filename)
-            ->description($ad->description)
-            ->url($url);
+        ->type('website')
+        ->image('/' . $ad->photos->first()->filename)
+        ->description($ad->description)
+        ->url($url);
 
         return view('ad')->with('ad', $ad)->with('location', $locationFinal)->with('og', $og);
     }

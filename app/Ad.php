@@ -19,6 +19,8 @@ class Ad extends Model
       'invalidity',
       'slug',
       'location',
+      'vaccines',
+      'chip',
       'fileuploader-list-files',
       'is_adopted'
   ];
