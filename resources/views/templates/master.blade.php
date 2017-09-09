@@ -18,6 +18,7 @@
   @yield('content')
 
   @include('partials.footer')
+  @include('partials.analytics')
 
   <script src="{{ URL::asset('js/jquery-3.2.1.min.js') }}" charset="utf-8"></script>
   <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
