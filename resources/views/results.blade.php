@@ -2,25 +2,34 @@
 
 @section('content')
 
-  <section class="hero is-light">
-    <div class="hero-body">
-      <div class="container">
-        @include('partials.min-search')
+  <div class="grid-container fluid has-bottom-border">
+    <div class="grid-container">
+      <div class="grid-x">
+        <div class="cell">
+          @include('partials.min-search')
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="section">
-    <div class="container">
-      <div class="columns is-multiline">
+  <div class="grid-container fluid is-gray">
+    <div class="grid-container has-padding">
+      <div class="grid-x grid-margin-x">
         @foreach($ads as $ad)
-          <div class="column is-one-third">
-            <a href="/ads/{{$ad->id}}">
-              @include('partials.card')
-            </a>
+          <div class="small-12 medium-6 large-4 cell">
+            @include('partials.card')
           </div>
         @endforeach
       </div>
     </div>
-  </section>
+  </div>
+
+  <div class="grid-container">
+    <div class="grid-x">
+      <div class="cell">
+        {{ $ads->links('pagination.simple-default') }}
+      </div>
+    </div>
+  </div>
+
 @endsection

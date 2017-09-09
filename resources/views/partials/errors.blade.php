@@ -1,15 +1,22 @@
 @if ($errors->count() > 0)
-  <section class="section" style="padding-top:0;">
-    <div class="container">
-      <article class="message is-danger">
-        <div class="message-body">
-          @foreach ($errors->all() as $error)
-            <ul>
-              <li>{{$error}}</li>
-            </ul>
-          @endforeach
+  <div class="grid-container">
+    <div class="grid-x">
+      <div class="cell" data-sticky-container>
+        <div class="sticky" data-sticky data-stick-to="bottom">
+          <div class="alert callout" data-closable>
+            <h5>Ups!</h5>
+            @foreach ($errors->all() as $error)
+              <ul>
+                <li>{{$error}}</li>
+              </ul>
+            @endforeach
+            <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
         </div>
-      </article>
+      </div>
     </div>
   </div>
+
 @endif

@@ -17,7 +17,7 @@ class CreateAdsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('type');
-            $table->string('description');
+            $table->text('description');
             $table->string('sex');
             $table->string('age');
             $table->string('location');

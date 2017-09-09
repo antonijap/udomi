@@ -1,50 +1,38 @@
-<nav class="navbar">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="/" style="font-weight:bold;">
-      UDOMI.net
-    </a>
-
-    <div class="navbar-burger" data-target="navMenu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-  </div>
-
-  <div class="navbar-menu" id="navMenu">
-    <div class="navbar-start">
-      <div class="navbar-item">
-        <a href="/">Početna</a>
-      </div>
-
-      @if (! Auth::check())
-        <div class="navbar-item">
-          <a href="/login">Login</a>
-        </div>
-
-        <div class="navbar-item">
-          <a href="/register">Registracija</a>
-        </div>
-      @endif
-
-      <div class="navbar-item">
-        <a href="/ads/new">Novi oglas</a>
-      </div>
+<div class="grid-container fluid has-bottom-border">
+  <div class="grid-container">
+    <div class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="medium">
+      <button type="button" data-toggle="responsive-menu" class="hamburger"><i class="ion-navicon"></i></button>
+      <div class="title-bar-title">Izbornik</div>
     </div>
 
-    <div class="navbar-end">
+    <div class="top-bar" id="responsive-menu">
+      <div class="top-bar-left">
+        <ul class="vertical medium-horizontal menu">
+          <li><a href="/" style="padding-left:0;"><img src="/images/logo.svg" alt="Udomi.net" class="logo"></a></li>
+          @if (! Auth::check())
+            <li><a href="/login" class="item">Login</a></li>
+            <li><a href="/register" class="item">Registracija</a></li>
+          @endif
+          <li><a href="/ads/new" class="item">Novi Oglas</a></li>
+        </ul>
+      </div>
+
       @if (Auth::check())
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link " href="/dashboard">{{Auth::user()->name}}</a>
-
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="/{{Auth::user()->username}}">Moj Profil</a>
-            <a class="navbar-item" href="/dashboard">Dashboard</a>
-            <a class="navbar-item" href="/settings">Postavke</a>
-            <a class="navbar-item" href="/logout">Logout</a>
-          </div>
+        <div class="top-bar-right">
+          <ul class="medium-horizontal vertical dropdown menu" data-responsive-menu="accordion medium-dropdown">
+            <li>
+              <a href="/{{Auth::user()->username}}">{{Auth::user()->name}} <i class="ion-ios-arrow-down arrow-down"></i></a>
+              <ul class="menu vertical main-dropdown">
+                <a href="/{{Auth::user()->username}}">Moj Profil</a>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/settings">Postavke</a>
+                <a href="/logout">Logout</a>
+              </ul>
+            </li>
+          </ul>
         </div>
       @endif
     </div>
+
   </div>
-</nav>
+</div>

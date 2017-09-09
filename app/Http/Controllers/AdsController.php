@@ -58,7 +58,7 @@ class AdsController extends Controller
 
         $this->validate(request(), [
             'name' => 'required|min:2',
-            'description' => 'required|min:20|max:140',
+            'description' => 'required|min:32|max:1000',
             'sex' => 'required',
             'age' => 'required',
             'location' => 'required',
@@ -140,7 +140,7 @@ class AdsController extends Controller
             'location' => request('location')
         ];
 
-        $ads = Ad::all();
+        $ads = Ad::orderBy('updated_at', 'desc')->where('is_adopted', 0);
 
         if ($sex == 'all') {
             $sex = ['female', 'male'];
@@ -180,9 +180,8 @@ class AdsController extends Controller
             ];
         }
 
-        $results = $ads->whereIn('sex', (array) $sex)->whereIn('age', (array) $age)->whereIn('location', (array) $location)->whereIn('type', (array) $type);
+        $results = $ads->whereIn('sex', (array) $sex)->whereIn('age', (array) $age)->whereIn('location', (array) $location)->whereIn('type', (array) $type)->simplePaginate(30);
 
-        // return $dropdownData;
         return view('results')->with('ads', $results)->with('data', $dropdownData);
 
     }
@@ -191,8 +190,17 @@ class AdsController extends Controller
     {
         $user = User::where('username', $username)->first();
         $ad = $user->ads->where('slug', '=', $slug)->first();
-        // return $ad;
-        return view('ad')->with('ad', $ad);
+
+        // Parse location
+        $locationArray = explode("-", $ad->location);
+        $locationFinal = [];
+        if (count($locationArray) > 0) {
+            foreach ($locationArray as $location) {
+                $locationFinal[] = ucfirst($location);
+            }
+        }
+        // return $locationFinal;
+        return view('ad')->with('ad', $ad)->with('location', $locationFinal);
     }
 
 }

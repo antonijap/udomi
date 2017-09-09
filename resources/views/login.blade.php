@@ -1,51 +1,47 @@
 @extends('templates.master')
 
 @section('content')
-  <section class="hero is-light">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          Login
-        </h1>
+  <div class="grid-container fluid has-bottom-border">
+    <div class="grid-container">
+      <div class="grid-x">
+        <div class="cell top">
+          <h1>Login</h1>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="section">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-half">
+  <div class="grid-container fluid is-gray">
+    <div class="grid-container">
+      <div class="grid-x has-padding ">
+        <div class="cell small-12 medium-6">
           <form action="/login" method="post">
             {{ csrf_field() }}
-
-            <div class="field">
-              <label class="label">Email<label>
-                <div class="control">
+            <div class="grid-x">
+              <div class="cell small-12">
+                <label>Email
                   <input class="input" type="email" name="email">
-                </div>
+                </label>
               </div>
 
-              <div class="field">
-                <label class="label">Lozinka<label>
-                  <div class="control">
-                    <input class="input" type="password" name="password">
-                  </div>
-                </div>
+              <div class="cell small-12">
+                <label>Lozinka
+                  <input class="input" type="password" name="password">
+                </label>
+              </div>
 
-                <div class="field">
-                  <div class="control">
-                    <button type="submit" class="button is-primary">Login</button>
-                  </div>
-                </div>
+              <div class="cell small-12">
+                <button type="submit" class="button is-primary">Login</button>
+              </div>
 
-              </form>
-
-              <a href="/password/reset" style="padding-top: 3em; display: block;">Zaboravljena lozinka?</a>
+              <div class="cell small-12">
+                <a href="/password/reset" style="padding-top: 3em; display: block;">Zaboravljena lozinka?</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
     @include('partials.errors')
 

@@ -62,7 +62,7 @@ class DashboardController extends Controller
 
     $this->validate(request(), [
       'name' => 'required|min:2',
-      'description' => 'required|min:20|max:140',
+      'description' => 'required|min:32|max:1000',
       'sex' => 'required',
       'age' => 'required',
       'location' => 'required',
@@ -147,7 +147,7 @@ class DashboardController extends Controller
       $path = public_path() . '/';
       File::delete($path . $value['filename']);
     }
-
+    session()->flash('message', 'Oglas uspješno ažuriran.');
     return redirect('/dashboard');
   }
 

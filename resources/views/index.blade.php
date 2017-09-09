@@ -6,19 +6,24 @@
 
   @include('partials.flash-message')
 
-  <section class="section">
-    <div class="container">
-      <div class="columns is-multiline ">
-        @foreach($ads as $ad)
-          <div class="column is-one-third">
-            @include('partials.card')
-          </div>
-        @endforeach
+    <div class="grid-container fluid is-gray">
+      <div class="grid-container has-padding">
+        <div class="grid-x grid-margin-x">
+          @foreach($ads as $ad)
+            <div class="small-12 medium-6 large-4 cell">
+              @include('partials.card')
+            </div>
+          @endforeach
+        </div>
       </div>
     </div>
 
-    <div class="container">
-      {{ $ads->links('pagination.simple-default') }}
+    <div class="grid-container">
+      <div class="grid-x">
+        <div class="cell">
+          {{ $ads->links('pagination.simple-default') }}
+        </div>
+      </div>
     </div>
-  </section>
+
 @endsection

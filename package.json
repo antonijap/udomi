@@ -21,6 +21,9 @@
     "babel-preset-es2015": "^6.24.1",
     "browser-sync": "^2.18.13",
     "browser-sync-webpack-plugin": "^1.2.0",
-    "bulma": "^0.5.1"
+    "bulma": "^0.5.1",
+    "foundation-sites": "^6.4.3",
+    "jquery-text-counter": "^0.7.0",
+    "jquery-word-and-character-counter-plugin": "^2.5.1"
   }
 }

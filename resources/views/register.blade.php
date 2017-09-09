@@ -1,56 +1,51 @@
 @extends('templates.master')
 
 @section('content')
-
-
-  <section class="hero is-light">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          Registracija
-        </h1>
-        <h2 class="subtitle">
-          Pridužite se oglasniku napravljenom samo za životinje. Optimizirano za udruge.
-        </h2>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-half">
-          <form action="/register" method="post">
-            {{ csrf_field() }}
-
-            <div class="field">
-              <label class="label">Ime</label>
-              <div class="control">
-                <input class="input" type="text" name="name">
-              </div>
-            </div>
-
-            <div class="field">
-              <label class="label">Email</label>
-              <div class="control">
-                <input class="input" type="text" name="email">
-              </div>
-            </div>
-
-            <div class="field">
-              <label class="label">Lozinka</label>
-              <div class="control">
-                <input class="input" type="password" name="password">
-              </div>
-            </div>
-
-            <input class="button is-primary" type="submit" value="Pošalji">
-
-          </form>
+  <div class="grid-container fluid has-bottom-border">
+    <div class="grid-container">
+      <div class="grid-x">
+        <div class="cell top">
+          <h1>Registracija</h1>
+          <h2 class="subtitle">Pridužite se oglasniku napravljenom samo za životinje. Optimizirano za udruge.</h2>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+
+  <div class="grid-container fluid is-gray">
+    <div class="grid-container">
+      <div class="grid-x has-padding ">
+        <div class="cell small-12 medium-6">
+          <form action="/register" method="post">
+            {{ csrf_field() }}
+            <div class="grid-x">
+              <div class="cell small-12">
+                <label>Ime
+                  <input class="input" type="text" name="name">
+                </label>
+              </div>
+
+              <div class="cell small-12">
+                <label>Email
+                  <input class="input" type="email" name="email">
+                </label>
+              </div>
+
+              <div class="cell small-12">
+                <label>Lozinka
+                  <span class="input-helper">Mora sadržavati više od 6 znakova</span>
+                  <input class="input" type="password" name="password">
+                </label>
+              </div>
+
+              <div class="cell small-12">
+                <button type="submit" class="button is-primary">Registriraj se</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
   @include('partials.errors')
 

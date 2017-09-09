@@ -4,113 +4,122 @@
 
   @include('partials.flash-message')
 
-  <div class="container is-fluid is-marginless">
-    <section class="hero is-light">
-      <div class="hero-body">
-        <div class="container">
-          <div class="columns">
-
-            <div class="column">
-              <h1 class="title is-size-2">
-                Dashboard
-              </h1>
-            </div>
-
-            <div class="column is-narrow is-pulled-right">
-              @if ($user->boost->isAvailable())
-                <span class="tag is-success">Boost dostupan</span>
-              @else
-                <span class="tag is-danger">Boost nedostupan. {{ $user->boost->nextBoostAvailable() }} </span>
-              @endif
-            </div>
-
-          </div>
+  <div class="grid-container fluid has-bottom-border">
+    <div class="grid-container">
+      <div class="grid-x top align-middle">
+        <div class="auto cell">
+          <h1>Dashboard</h1>
         </div>
+
+        <div class="cell shrink">
+          @if ($user->boost->isAvailable())
+            {{-- <span class="tag is-success"></span> --}}
+            <h3>Boost dostupan</h3>
+          @else
+            {{-- <span class="tag is-danger">Boost nedostupan. {{ $user->boost->nextBoostAvailable() }} </span> --}}
+            <h3>Boost nedostupan. {{ $user->boost->nextBoostAvailable() }}</h3>
+          @endif
+        </div>
+
       </div>
     </div>
-  </section>
+  </div>
 </div>
 
+<div class="grid-container fluid has-padding is-gray">
+  <div class="grid-container">
+    <ul class="tabs" data-tabs id="tabs">
+      <li class="tabs-title is-active"><a href="#aktivni" aria-selected="true">Aktivni</a></li>
+      <li class="tabs-title"><a href="#udomljeni">Udomljeni</a></li>
+    </ul>
+    <div class="tabs-content" data-tabs-content="tabs">
 
-<section class="section">
-  <div class="container">
-    <div class="tabs is-large">
-      <ul>
-        <li class="is-active" id="one"><a id="active">Aktivni</a></li>
-        <li id="two"><a id="adopted">Udomljeni</a></li>
-      </ul>
+      <div class="tabs-panel is-active" id="aktivni">
+        <div class="grid-x">
+          @if (count($ads) > 0)
+            @foreach($ads as $ad)
+              @if($ad->is_adopted == 0)
+                <div class="cell small-12">
+                  <div class="grid-x grid-margin-x align-middle">
+                    <div class="shrink cell has-bottom-margin">
+                      <img class="small-image" src="{{$ad->photos->first()->filename}}" alt="{{$ad->name}}">
+                    </div>
+
+                    <div class="auto cell">
+                      <h3>{{$ad->name}}</h3>
+                      <p>{!! \Illuminate\Support\Str::words($ad->description, 15,'...')  !!}</p>
+                    </div>
+
+                    <div class="shrink cell">
+                      <div class="button-group">
+                        <a href="ad/{{$ad->id}}/edit" name="uredi" class="button clear">Uredi</a>
+
+                        @if($ad->sex == 'female')
+                          <a href="ad/{{$ad->id}}/adopted" name="is-adopted" class="button clear">Udomljena</a>
+                        @elseif($ad->sex == 'male')
+                          <a href="ad/{{$ad->id}}/adopted" name="is-adopted" class="button clear">Udomljen</a>
+                        @endif
+
+                        <a data-open="obrisi" name="delete" class="button alert clear">Obriši</a>
+
+                        <div class="reveal" id="obrisi" data-reveal>
+                          <div class="grid-x grid-padding-x text-center">
+                            <div class="cell has-padding">
+                              <h4>Potvrdi brisanje oglasa</h4>
+                              <a href="ad/{{$ad->id}}/delete" data-open="obrisi" name="delete" class="button alert expanded">Da, Obriši</a>
+
+                              <button class="close-button" data-close aria-label="Close modal" type="button">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+
+                        @if ($user->boost->isAvailable())
+                          <a href="ad/{{$ad->id}}/boost" name="boost" class="button success">Boost</a>
+                        @else
+                          <a type="button" name="boost" class="success button" disabled>Boost</a>
+                        @endif
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              @endif
+            @endforeach
+          @endif
+        </div>
+      </div>
+
+      <div class="tabs-panel" id="udomljeni">
+        <div class="grid-x">
+          @if (count($ads) > 0)
+            @foreach($ads as $ad)
+              @if($ad->is_adopted == 1)
+                <div class="cell small-12">
+                  <div class="grid-x grid-margin-x align-middle">
+                    <div class="shrink cell has-bottom-margin">
+                      <img class="small-image" src="{{$ad->photos->first()->filename}}" alt="{{$ad->name}}">
+                    </div>
+
+                    <div class="auto cell">
+                      <h3>{{$ad->name}}</h3>
+                      <p>{!! \Illuminate\Support\Str::words($ad->description, 15,'...')  !!}</p>
+                    </div>
+
+                    <div class="shrink cell">
+                      <a href="ad/{{$ad->id}}/restore" name="delete" class="hollow button">Vrati u aktivne</a>
+                    </div>
+
+                  </div>
+                </div>
+              @endif
+            @endforeach
+          @endif
+
+        </div>
+
+      </div>
     </div>
   </div>
-
-  <div class="container" id="udomljeni">
-
-    @if (count($ads) > 0)
-      @foreach($ads as $ad)
-        @if($ad->is_adopted == 1)
-          <article class="media">
-            <figure class="media-left">
-              <p class="image is-64x64">
-                <img src="http://bulma.io/images/placeholders/128x128.png">
-              </p>
-            </figure>
-            <div class="media-content">
-              <div class="content">
-                <p>
-                  <strong>{{$ad->name}}</strong>
-                  <br>
-                  {{$ad->description}}
-                </p>
-              </div>
-            </div>
-            <div class="media-right">
-              <a href="ad/{{$ad->id}}/restore" type="button" name="restore" class="button">Vrati u aktivne</a>
-            </div>
-          </article>
-        @endif
-      @endforeach
-    @endif
-
-  </div>
-
-  <div class="container" id="aktivni">
-
-    @if (count($ads) > 0)
-      @foreach($ads as $ad)
-        @if($ad->is_adopted == 0)
-          <article class="media">
-            <div class="media-content">
-              <div class="content">
-                <p>
-                  <strong>{{$ad->name}}</strong>
-                  <br>
-                  {{$ad->description}}
-                </p>
-              </div>
-            </div>
-            <div class="media-right">
-              <a href="ad/{{$ad->id}}/edit" type="button" name="uredi" class="button">Uredi</a>
-
-              @if($ad->sex == 'female')
-                <a href="ad/{{$ad->id}}/adopted" type="button" name="is-adopted" class="button">Udomljena</a>
-              @elseif($ad->sex == 'male')
-                <a href="ad/{{$ad->id}}/adopted" type="button" name="is-adopted" class="button">Udomljen</a>
-              @endif
-
-              <a href="ad/{{$ad->id}}/delete" type="button" name="delete" class="button is-danger">Obriši</a>
-
-              @if ($user->boost->isAvailable())
-                <a href="ad/{{$ad->id}}/boost" type="button" name="boost" class="button is-success">Boost</a>
-              @else
-                <a type="button" name="boost" class="button is-success" disabled>Boost</a>
-              @endif
-
-
-            </div>
-          </article>
-        @endif
-      @endforeach
-    @endif
-
-  </div>
-</section>
+</div>
 @endsection

@@ -1,16 +1,17 @@
-<section class="hero is-light">
-  <div class="hero-body">
-    <div class="container">
-      <div class="intro">
-        <h1 class="title">
-          Pronađi svog novog krznenog prijatelja
-        </h1>
-        <h2 class="subtitle">
-          Filtriraj oglase i udomi
-        </h2>
+<div class="grid-container fluid has-bottom-border">
+  <div class="grid-container">
+    <div class="grid-x">
+      <div class="cell intro">
+        <h1>Pronađi svog novog krznenog prijatelja</h1>
+        <h2>Filtriraj oglase i udomi</h2>
       </div>
-
-      @include('partials.min-search')
     </div>
   </div>
-</section>
+</div>
+
+
+<div class="grid-container fluid has-bottom-border">
+  <div class="grid-container">
+    @include('partials.min-search')
+  </div>
+</div>

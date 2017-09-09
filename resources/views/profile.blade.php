@@ -2,46 +2,48 @@
 
 @section('content')
 
-  <section class="hero is-light">
-    <div class="hero-body">
-      <div class="container">
-
-        <div class="columns">
-          <div class="column">
-            <h1 class="is-size-2"><strong>{{$user->name}}</strong></h1>
-            <p>{{$user->description}}</p>
-          </div>
+  <div class="grid-container fluid has-bottom-border has-padding">
+    <div class="grid-container">
+      <div class="grid-x">
+        <div class="cell top">
+          <h1>{{$user->name}}</h1>
+          <h2 class="subtitle">{{$user->description}}</h2>
         </div>
+      </div>
 
-        <div class="columns">
-          <div class="column is-narrow">
+      <div class="grid-x grid-margin-x">
+        @if (! empty($user->contact_email))
+          <div class="cell small-12 medium-shrink">
             <i class="ion-ios-email" style="font-size:25px; top:3px; position:relative; padding-right:.3em;"></i> {{$user->contact_email}}
           </div>
+        @endif
 
-          <div class="column is-narrow">
+        @if (! empty($user->phone))
+          <div class="cell small-12 medium-shrink">
             <i class="ion-ios-telephone" style="font-size:25px; top:3px; position:relative; padding-right:.3em;"></i> {{$user->phone}}
           </div>
+        @endif
 
-          <div class="column is-narrow">
+        @if (! empty($user->iban))
+          <div class="cell small-12 medium-shrink">
             <i class="ion-card" style="font-size:25px; top:3px; position:relative; padding-right:.3em;"></i> {{$user->iban}}
           </div>
-        </div>
-
+        @endif
       </div>
-    </div>
-  </section>
-
-
-<section class="section">
-  <div class="container">
-
-    <div class="columns is-multiline">
-      @foreach($ads as $ad)
-      <div class="column is-one-third">
-        @include('partials.card')
-      </div>
-      @endforeach
     </div>
   </div>
-</section>
+
+
+  <div class="grid-container fluid is-gray">
+    <div class="grid-container has-padding">
+      <div class="grid-x grid-margin-x">
+        @foreach($ads as $ad)
+          <div class="small-12 medium-6 large-4 cell">
+            @include('partials.card')
+          </div>
+        @endforeach
+      </div>
+    </div>
+  </div>
+
 @endsection

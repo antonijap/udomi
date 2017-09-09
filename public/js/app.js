@@ -75,9 +75,33 @@ module.exports = __webpack_require__(2);
 /* 1 */
 /***/ (function(module, exports) {
 
-$(function () {
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-  $('#udomljeni').hide();
+$(document).foundation();
+$(window).on('changed.zf.mediaquery', function () {
+  $('.is-dropdown-submenu.invisible').removeClass('invisible');
+});
+
+$(function () {
+  $('#counter').textcounter(_defineProperty({
+    type: "character",
+    max: 100,
+    min: 32,
+    stopInputAtMaximum: true,
+    minimumErrorText: 'Opis mora imati barem 32 znaka.',
+    counterText: 'Broj znakova: %d',
+    maximumErrorText: 'Maksimalan broj znakova 1000.',
+    inputErrorClass: 'danger',
+    displayErrorText: true
+  }, 'stopInputAtMaximum', false));
+
+  $('.owl-carousel').owlCarousel({
+    items: 1,
+    margin: 10,
+    autoHeight: true,
+    nav: true,
+    loop: true
+  });
 
   $('.gallery').slick({
     dots: true,
@@ -115,50 +139,6 @@ $(function () {
 
   // get API methods
   window.api = $.fileuploader.getInstance(input);
-
-  $('#adopted').click(function () {
-    // Show #adopted
-    $('#aktivni').fadeOut();
-    $('#udomljeni').slideUp(300).delay(400).fadeIn(400);
-
-    // Append is-active
-    $('#one').removeClass('is-active');
-    $('#two').addClass('is-active');
-  });
-
-  $('#active').click(function () {
-    // Show #adopted
-    $('#aktivni').slideUp(300).delay(400).fadeIn(400);
-    $('#udomljeni').fadeOut();
-
-    // Append is-active
-    $('#one').addClass('is-active');
-    $('#two').removeClass('is-active');
-  });
-});
-
-document.addEventListener('DOMContentLoaded', function () {
-
-  // Get all "navbar-burger" elements
-  var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-
-  // Check if there are any nav burgers
-  if ($navbarBurgers.length > 0) {
-
-    // Add a click event on each of them
-    $navbarBurgers.forEach(function ($el) {
-      $el.addEventListener('click', function () {
-
-        // Get the target from the "data-target" attribute
-        var target = $el.dataset.target;
-        var $target = document.getElementById(target);
-
-        // Toggle the class on both the "navbar-burger" and the "navbar-menu"
-        $el.classList.toggle('is-active');
-        $target.classList.toggle('is-active');
-      });
-    });
-  }
 });
 
 /***/ }),

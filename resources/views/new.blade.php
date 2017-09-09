@@ -2,83 +2,63 @@
 
 @section('content')
 
-  <section class="hero is-light">
-    <div class="hero-body">
-      <div class="container">
-
-        <h1 class="title is-size-1">
-          Novi Oglas
-        </h1>
-
-        <h2 class="subtitle">
-          Budite kreativni i probajte nabaviti kvalitetne fotografije.
-        </h2>
-
+  <div class="grid-container fluid has-bottom-border">
+    <div class="grid-container">
+      <div class="grid-x">
+        <div class="cell top">
+          <h1>Novi Oglas</h1>
+          <h2 class="subtitle">Budite kreativni i probajte nabaviti kvalitetne fotografije.</h2>
+        </div>
       </div>
     </div>
-  </section>
-
-  <section class="section">
-
-    <div class="container">
-
-      <div class="columns">
-        <div class="column is-6">
+  </div>
 
 
+  <div class="grid-container fluid is-gray">
+    <div class="grid-container">
+      <div class="grid-x has-padding ">
+        <div class="cell small-12 medium-6 new">
           <form action="/ads/new" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
-
-            <div class="field">
-              <label class="label">Ime</label>
-              <div class="control">
-                <input class="input" type="text" name="name">
+            <div class="grid-x">
+              <div class="cell small-12">
+                <label>Ime
+                  <input class="input" type="text" name="name">
+                </label>
               </div>
-            </div>
 
-            <div class="field">
-              <label class="label">Vrsta</label>
-              <div class="control">
-                <span class="select">
+              <div class="cell small-12">
+                <label>Vrsta
                   <select name="type">
                     <option disabled selected>Odaberi vrstu</option>
                     <option value="dog">Pas</option>
                     <option value="cat">Mačka</option>
                   </select>
-                </span>
+                </label>
               </div>
-            </div>
 
-            <div class="field">
-              <label class="label">Spol</label>
-              <div class="control">
-                <span class="select">
+              <div class="cell small-12">
+                <label>Spol
                   <select name="sex">
                     <option disabled selected>Odaberi spol</option>
                     <option value="female">Ženka</option>
                     <option value="male">Mužjak</option>
                   </select>
-                </span>
+                </label>
               </div>
-            </div>
 
-            <div class="field">
-              <label class="label">Starost</label>
-              <div class="control">
-                <span class="select">
+              <div class="cell small-12">
+                <label>Starost
                   <select name="age">
                     <option disabled selected>Odaberi starost</option>
                     <option value="junior">Mladi</option>
                     <option value="adult">Odrasli</option>
                   </select>
-                </span>
+                </label>
               </div>
-            </div>
 
-            <div class="field">
-              <label class="label">Lokacija</label>
-              <div class="control">
-                <span class="select">
+              <div class="cell small-12">
+                <label>Lokacija
                   <select name="location">
                     <option disabled selected>Odaberi lokaciju</option>
                     <option value="bjelovarsko-bilogorska">Bjelovarsko-bilogorska</option>
@@ -103,72 +83,49 @@
                     <option value="zadarska">Zadarska</option>
                     <option value="zagrebacka">Zagrebačka</option>
                   </select>
-                </span>
-              </div>
-            </div>
-
-            <div class="field">
-              <label class="label">Opis</label>
-              <div class="control">
-                <textarea name="description" class="textarea"></textarea><br>
-              </div>
-            </div>
-
-            <div class="field">
-              <label class="additional-title">Slike</label>
-              <label class="additional-subtitle">
-                Prva slika će biti na oglasu, ostale u galeriji. Maksimalna veličina svake slike je 2MB.
-              </label>
-            </div>
-
-
-            <div class="field extra">
-              <input type="file" name="files" data-fileuploader-listInput="photos">
-            </div>
-
-            <div class="field">
-              <div class="control">
-                <label class="checkbox">
-                  <input name="invalidity" type="checkbox">
-                  Invaliditet
                 </label>
               </div>
 
-              <div class="control">
-                <label class="checkbox">
-                  <input name="castration" type="checkbox">
-                  Kastracija
-                </label>
+              <div class="cell small-12">
+                <label>Opis</label>
+                  <textarea name="description" class="textarea" rows="10" id="counter"></textarea><br>
               </div>
 
-              <div class="control">
-                <label class="checkbox">
-                  <input name="sterilization" type="checkbox">
-                  Sterilizacija
-                </label>
+              <div class="cell small-12">
+                <label>Slike</label>
+                  <p>Prva slika će biti na oglasu, ostale u galeriji. Maksimalna veličina svake slike je 2MB.</p>
               </div>
+
+              <div class="cell small-12">
+                <input type="file" name="files" data-fileuploader-listInput="photos">
+              </div>
+
+              <div class="cell small-12">
+                <label>Ostale informacije</label>
+                  <p>Ako životinja ima invaliditet molimo opišite ga i u opisu oglasa.</p>
+              </div>
+
+              <div class="cell small-12">
+                <input name="invalidity" type="checkbox" id="invaliditet"><label for="invaliditet">Invaliditet</label>
+              </div>
+
+              <div class="cell small-12">
+                <input name="castration" type="checkbox" id="castration"><label for="castration">Kastracija</label>
+              </div>
+
+              <div class="cell small-12">
+                <input name="sterilization" type="checkbox" id="sterilization"><label for="sterilization">Sterilizacija</label>
+              </div>
+
+              <div class="cell small-12" style="padding-top:2em;">
+                <input type="submit" value="Kreiraj oglas" class="button">
+              </div>
+
             </div>
-
-
-            <div class="field">
-              <div class="control">
-                <input type="submit" value="Pošalji" class="button is-primary">
-              </div>
-            </div>
-
-
-          </form>
-
-
+          </div>
         </div>
       </div>
-
-      @include('partials.errors')
-
     </div>
 
-
-
-  </section>
-
+    @include('partials.errors')
 @endsection

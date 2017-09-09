@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Boost;
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
+use Newsletter;
 
 class RegistrationController extends Controller
 {
@@ -24,7 +27,7 @@ class RegistrationController extends Controller
         $this->validate(request(), [
             'name' => 'required',
             'email' => 'required|unique:users|email',
-            'password' => 'required'
+            'password' => 'required|min:6'
         ]);
 
         // Create username
@@ -46,6 +49,14 @@ class RegistrationController extends Controller
 
         // Sign in
         auth()->login($user);
+
+
+        Mail::to($user->email)
+            ->send(new WelcomeMail($user));
+
+        // Add to Mailchimp
+        Newsletter::subscribe($user->email);
+        Newsletter::subscribe($user->email, ['firstName'=>$user->name]);
 
         // Redirect
         return redirect()->home();

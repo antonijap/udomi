@@ -1,28 +1,72 @@
 @extends('templates.master')
 
 @section('content')
-<section class="section">
-  <div class="container">
-
-    <div class="columns">
-      <div class="column is-half">
-        <h1 class="is-size-1">{{$ad->name}}</h1>
-        <h2>{{$ad->user->name}}</h2>
-        <p>{{$ad->description}}</p>
-      </div>
-
-      <div class="column is-half">
-        <div class="gallery">
-          @foreach ($ad->photos as $photo)
-            <div>
-              <img src="/{{$photo->filename}}" alt="{{$ad->name}}">
-            </div>
-          @endforeach
+  <div class="grid-container fluid has-bottom-border">
+    <div class="grid-container">
+      <div class="grid-x">
+        <div class="cell top">
+          <h1>{{$ad->name}}</h1>
+          <a href="/{{$ad->user->username}}">
+            {{$ad->user->name}}
+          </a>
         </div>
       </div>
-
     </div>
   </div>
 
-</section>
+  <div class="grid-container fluid is-gray has-padding animal">
+    <div class="grid-container">
+        <div class="grid-x">
+          <div class="cell small-12 medium-6 has-right-padding ">
+            <div class="grid-x grid-margin-x">
+              <div class="cell small-12 large-shrink">
+                <h2>Spol</h2>
+                @if ($ad->sex == 'female')
+                  <p>Ženka</p>
+                @else
+                  <p>Mužjak</p>
+                @endif
+              </div>
+
+              <div class="cell small-12 large-shrink">
+                <h2>Lokacija</h2>
+                <p>
+                @foreach ($location as $value)
+                  {{$value}}
+                @endforeach
+              </div>
+
+              <div class="cell small-12 large-shrink">
+                <h2>Kontakt</h2>
+                @if ($ad->user->contact_email)
+                  <p style="margin-bottom:0;">{{$ad->user->contact_email}}</p>
+                  @if ($ad->user->phone)
+                    <p>{{$ad->user->phone}}</p>
+                  @endif
+                @else
+                  <p style="margin-bottom:0;">{{$ad->user->email}}</p>
+                  @if ($ad->user->phone)
+                    <p>{{$ad->user->phone}}</p>
+                  @endif
+                @endif
+              </div>
+            </div>
+
+            <h2>Opis</h2>
+            <p>{{$ad->description}}</p>
+          </div>
+
+          <div class="cell small-12 medium-6">
+            <div class="owl-carousel owl-theme">
+              @foreach ($ad->photos as $photo)
+                <div>
+                  <img src="/{{$photo->filename}}" alt="{{$ad->name}}">
+                </div>
+              @endforeach
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 @endsection

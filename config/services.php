@@ -16,7 +16,7 @@ return [
 
     'mailgun' => [
         'domain' => 'mail.udomi.net',
-        'secret' => 'key-81a731bcd5ddfb307f04623c104badf6',
+        'secret' => env('MAILGUN_SECRET'),
     ],
 
     'ses' => [

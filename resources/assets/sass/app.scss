@@ -1,48 +1,47 @@
-@import "../../../public/css/bulma/bulma.sass";
+$topbar-background: white;
+$header-font-family: 'Roboto';
+$header-font-weight: 500;
+$global-radius: 4px;
+$primary: #23D160;
+$tab-item-font-size: 1em;
+$tab-background-active: none;
+$tab-color: black;
+$dropdownmenu-padding: 1.2em;
+$dropdownmenu-arrows: false;
+
+@import '../foundation-sites/scss/foundation';
+@include foundation-everything(true);
+
+.no-js {
+  @include breakpoint(small only) {
+    .top-bar {
+      display: none;
+    }
+  }
+
+  @include breakpoint(medium) {
+    .title-bar {
+      display: none;
+    }
+  }
+}
+
+.logo  {
+  width: 4em;
+}
 
 .pagination {
   margin-top: 2em;
 }
 
-footer {
-    min-height: 10em;
-}
-
 .intro {
-    margin-bottom: 3em;
+  .title {
+    font-weight: 500;
+  }
+  .subtitle {
+    padding-top: .5em;
 
-    h2 {
-        padding-top: .5em;
-    }
-}
-
-.status {
-  display: block;
-  margin: 0 0 2em;
-}
-
-.additional-title {
-  display: block;
-  font-weight: bold;
-  margin-top: 2em;
-}
-
-.additional-subtitle {
-  display: block;
-  color: #a9a9a9;
-}
-
-.extra {
-  margin-top: 2em;
-}
-
-.gallery {
-  max-width: 100%;
-}
-
-.helper-label {
-  display: block;
-  font-weight: bold;
+  }
 }
 
 p.photos-error {
@@ -62,19 +61,12 @@ p.photos-error {
   }
 }
 
-img {
-  object-fit: cover;
-}
-
-.tabs {
-  margin-bottom: 1em;
-}
 
 .flash-message {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background: #23D160;
+  background: $primary;
   padding: 2em;
   z-index: 10;
   color: white;
@@ -82,4 +74,213 @@ img {
   text-align: center;
   left: 0;
   right: 0;
+}
+
+.has-bottom-border {
+  border-bottom: 1px solid #efefef;
+}
+
+.is-gray {
+  background: #fbfbfb;
+}
+
+.navbar {
+  a {
+    color: black;
+    font-weight: 500;
+
+    &:hover {
+      color: #FD9800;
+    }
+  }
+}
+
+.is-500 {
+  font-weight: 500;
+}
+
+.intro {
+  padding: 5em 0 5em;
+}
+
+.top {
+  padding: 2em 0 2em;
+}
+
+.has-padding {
+  padding-top: 4em;
+  padding-bottom: 4em;
+}
+
+.search {
+  padding: 1.3em 0 1em;
+}
+
+.search-button {
+  top: 1.6em;
+  position: relative;
+}
+
+footer {
+  padding: 2em 0 0;
+}
+
+.input-helper {
+  display: block;
+  color: gray;
+}
+
+.subtitle {
+  color: #717171;
+  font-size: 1.3em;
+  font-weight: 400;
+}
+
+.top-bar {
+  a {
+    color: black;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+  .item {
+    color: black;
+    position: relative;
+    top: 5px;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+}
+
+
+.animal {
+  h2 {
+    font-size: 1em;
+  }
+
+  .has-right-padding {
+    @include breakpoint(medium) {
+      padding-right: 3em;
+    }
+  }
+}
+
+.new {
+  label {
+    font-weight: 600;
+    @include breakpoint(medium) {
+      font-size: 1em;
+    }
+  }
+}
+
+.edit {
+  label {
+    font-weight: 600;
+    @include breakpoint(medium) {
+      font-size: 1em;
+    }
+  }
+}
+
+.fileuploader-input-button {
+  background: $primary;
+}
+
+.fileuploader-input-caption {
+  color: $primary;
+}
+
+.callout {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.card {
+  h4 {
+    margin-bottom: 0;
+  }
+
+  a {
+    color: black;
+    font-weight: 500;
+    &:hover {
+      color: $primary;
+
+    }
+  }
+}
+
+.card-image {
+  object-fit: cover;
+  height: 270px;
+}
+
+* {
+  outline:0;
+}
+
+.small-image {
+  max-width: 10em;
+}
+
+.has-bottom-margin {
+  margin-bottom: 1em;
+}
+
+.tabs {
+  .is-active {
+    border-bottom: 2px $primary solid;
+    color: $primary;
+  }
+}
+
+.js-dropdown-active {
+  border-radius: 4px;
+  box-shadow: 0px 0px 15px -6px rgba(0,0,0,0.24);
+  border: 1px solid #efefef;
+}
+
+.main-dropdown {
+  a {
+    border-bottom: 1px solid #efefef;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.arrow-down {
+  color: #b9b9b9;
+  top: 1px;
+  position: relative;
+  left: 4px;
+}
+
+.title-bar {
+  background: white;
+  color: black;
+}
+
+.menu {
+  .is-active {
+    a {
+      background: none;
+      color: black;
+
+      &:hover {
+        color: $primary;
+      }
+    }
+  }
+}
+
+.hamburger {
+  font-size: 2em;
+  padding-right: .3em;
 }
