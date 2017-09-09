@@ -36,11 +36,11 @@
                                     <td class="content-cell">
                                         Pozdrav {{$user->name}}
                                         <br><br>
-                                        Udomi.net je jedinstven oglasnik na kojem možete udomiti životinje.
-                                        Možeš kreirati <a href="http://udomi.net/ads/new">novi oglas</a> ili tražiti svog novog ljubimca.
+                                        Udomi.net je oglasnik na kojem možete oglašavati životinje posve besplatno. Opcija BOOST kojom možete resetirati redosljed oglasa je BESPLATNA i obnavlja se svakih 48h.
+                                        Kreirajte <a href="http://udomi.net/ads/new">novi oglas</a> ili potražite svog novog ljubimca.
                                         <br><br>
                                         Ukoliko ste udruga molimo popunite svoje podatke u <a href="http://udomi.net/settings">postavkama</a>, kako bi na profilu imali kontakt telefon, email i IBAN za donacije.
-                                        {{-- Za bilo kakva pitanja javite se na Facebook stranicu ili info@udomi.net --}}
+                                        Za bilo kakva pitanja javite se na <a href="https://www.facebook.com/udomi.net/">Facebook stranici</a> ili info@udomi.net.
                                         <br><br>
                                         Lijep pozdrav,<br>
                                         Udomi.net tim
