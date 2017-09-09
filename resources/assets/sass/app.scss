@@ -27,7 +27,7 @@ $dropdownmenu-arrows: false;
 }
 
 .logo  {
-  width: 6em;
+  width: 4em;
 }
 
 .pagination {
@@ -154,8 +154,8 @@ footer {
   }
   .item {
     color: black;
-    // position: relative;
-    // top: 5px;
+    position: relative;
+    top: 4px;
 
     &:hover {
       color: $primary;

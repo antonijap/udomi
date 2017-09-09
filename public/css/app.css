@@ -8292,7 +8292,7 @@ a.thumbnail image {
 }
 
 .logo {
-  width: 6em;
+  width: 4em;
 }
 
 .pagination {
@@ -8414,6 +8414,8 @@ footer p {
 
 .top-bar .item {
   color: black;
+  position: relative;
+  top: 4px;
 }
 
 .top-bar .item:hover {
