@@ -4,6 +4,13 @@ $(window).on('changed.zf.mediaquery', function() {
 });
 
 $(function() {
+
+  $('.chocolat-parent').Chocolat({
+    loop: true,
+    imageSize: 'native',
+    enableZoom: true
+  });
+
   $('#counter').textcounter({
       type: "character",
       max: 100,
@@ -23,14 +30,6 @@ $(function() {
       autoHeight: true,
       nav: true,
       loop: true
-  });
-
-  $('.gallery').slick({
-    dots: true,
-    infinite: true,
-    speed: 500,
-    fade: true,
-    cssEase: 'linear'
   });
 
   $('.flash-message').delay(1000).fadeOut(1000);;

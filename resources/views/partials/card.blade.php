@@ -44,17 +44,17 @@
 
     @if ($ad->vaccines == 1)
       @if ($ad->sex == 'female')
-        <span class="label">Cijepljena</span>
+        <span class="label success">Cijepljena</span>
       @else
-        <span class="label">Cijepljen</span>
+        <span class="label success">Cijepljen</span>
       @endif
     @endif
 
     @if ($ad->chip == 1)
       @if ($ad->sex == 'female')
-        <span class="label">Ćipirana</span>
+        <span class="label success">Ćipirana</span>
       @else
-        <span class="label">Ćipiran</span>
+        <span class="label success">Ćipiran</span>
       @endif
     @endif
   </div>
