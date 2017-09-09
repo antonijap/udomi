@@ -231,6 +231,7 @@ footer {
 .card-image {
   object-fit: cover;
   height: 270px;
+  min-width: 100%;
 }
 
 * {
