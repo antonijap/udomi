@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="{{ URL::asset('css/owl.carousel.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('css/owl.theme.default.css') }}">
 
+  <meta name="description" content="Udomi.net je oglasnik za udomljavanje životinja. Posebno napravljen za udruge.">
+  <meta name="keywords" content="udomljavanje životinja, mačke na poklon, psi na poklon">
+
 @if (! empty($og))
 {!! $og->renderTags() !!}
 @else
