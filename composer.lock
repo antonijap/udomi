@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f8db42a7745fa3611168f0e54cc2ef89",
-    "content-hash": "5ca444f55604c0628c98cc1b936e0b17",
+    "hash": "7b8621965cd27b8056c1af9806a9f6c1",
+    "content-hash": "04cb74e4ca6704c3cd43386c1bfdb371",
     "packages": [
         {
             "name": "bogardo/mailgun",
@@ -67,6 +67,51 @@
                 "mailgun"
             ],
             "time": "2017-02-15 20:34:50"
+        },
+        {
+            "name": "chriskonnertz/open-graph",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/chriskonnertz/open-graph.git",
+                "reference": "b111acbd60589fabe5d4c266b267e774d88d5dee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/chriskonnertz/open-graph/zipball/b111acbd60589fabe5d4c266b267e774d88d5dee",
+                "reference": "b111acbd60589fabe5d4c266b267e774d88d5dee",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.7"
+            },
+            "require-dev": {
+                "nesbot/carbon": "~1.14"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "ChrisKonnertz\\OpenGraph": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Chris Konnertz"
+                }
+            ],
+            "description": "Class that assists in building Open Graph meta tags",
+            "keywords": [
+                "laravel",
+                "laravel4",
+                "laravel5",
+                "open graph",
+                "opengraph"
+            ],
+            "time": "2017-05-13 10:54:37"
         },
         {
             "name": "clue/stream-filter",

@@ -163,6 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Spatie\Newsletter\NewsletterServiceProvider::class,
+        ChrisKonnertz\OpenGraph\OpenGraphServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -230,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Newsletter' => Spatie\Newsletter\NewsletterFacade::class,
+        'OpenGraph' => ChrisKonnertz\OpenGraph\OpenGraph::class,
 
     ],
 

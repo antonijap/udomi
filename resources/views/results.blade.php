@@ -24,12 +24,14 @@
     </div>
   </div>
 
-  <div class="grid-container">
-    <div class="grid-x">
-      <div class="cell">
-        {{ $ads->links('pagination.simple-default') }}
+  @if($ads instanceof \Illuminate\Pagination\LengthAwarePaginator )
+    <div class="grid-container">
+      <div class="grid-x">
+        <div class="cell">
+          {{ $ads->links('pagination.simple-default') }}
+        </div>
       </div>
     </div>
-  </div>
+  @endif
 
 @endsection

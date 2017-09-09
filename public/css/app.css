@@ -8342,6 +8342,10 @@ p.photos-error {
   border-bottom: 1px solid #efefef;
 }
 
+.has-top-border {
+  border-top: 1px solid #efefef;
+}
+
 .is-gray {
   background: #fbfbfb;
 }
@@ -8382,7 +8386,11 @@ p.photos-error {
 }
 
 footer {
-  padding: 2em 0 0;
+  padding: 3em 0 1em;
+}
+
+footer p {
+  margin-bottom: 0;
 }
 
 .input-helper {

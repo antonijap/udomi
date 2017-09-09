@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use App\Classes\Fileuploader;
 use File;
 use Illuminate\Pagination\Paginator;
+use OpenGraph;
 
 class AdsController extends Controller
 {
@@ -24,7 +25,15 @@ class AdsController extends Controller
     public function index()
     {
         $ads = Ad::orderBy('updated_at', 'desc')->where('is_adopted', 0)->simplePaginate(30);
-        return view('index')->with('ads', $ads);
+
+        $og = new OpenGraph();
+        $og->title('Udomi.net')
+            ->type('website')
+            ->image('/images/facebook.jpg')
+            ->description('Udomi.net je oglasnik za udomljavanje životinja. Posebno napravljen za udruge.')
+            ->url('http://udomi.net');
+
+        return view('index')->with('ads', $ads)->with('og', $og);
     }
 
     public function new()
@@ -199,8 +208,17 @@ class AdsController extends Controller
                 $locationFinal[] = ucfirst($location);
             }
         }
-        // return $locationFinal;
-        return view('ad')->with('ad', $ad)->with('location', $locationFinal);
+
+        $url = 'http://udomi.net/' . $ad->user->username . '/' . $ad->slug;
+
+        $og = new OpenGraph();
+        $og->title($ad->name . ' | ' . 'Udomi.net')
+            ->type('website')
+            ->image('/' . $ad->photos->first()->filename)
+            ->description($ad->description)
+            ->url($url);
+
+        return view('ad')->with('ad', $ad)->with('location', $locationFinal)->with('og', $og);
     }
 
 }
