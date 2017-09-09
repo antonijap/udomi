@@ -47,8 +47,8 @@
                 <div class="cell small-12">
                   <label>Starost
                       <select name="age">
-                        <option value="female" {{ $ad->age == 'junior' ? 'selected' : '' }}>Mladi</option>
-                        <option value="male" {{ $ad->age == 'adult' ? 'selected' : '' }}>Odrasli</option>
+                        <option value="junior" {{ $ad->age == 'junior' ? 'selected' : '' }}>Mladi</option>
+                        <option value="adult" {{ $ad->age == 'adult' ? 'selected' : '' }}>Odrasli</option>
                       </select>
                   </label>
                 </div>
