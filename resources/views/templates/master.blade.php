@@ -9,7 +9,20 @@
   <link rel="stylesheet" href="{{ URL::asset('css/owl.carousel.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('css/owl.theme.default.css') }}">
 
+@if (! empty($og))
+{!! $og->renderTags() !!}
+@else
+  @php
+  $og = new OpenGraph();
+      $og->title('Udomi.net')
+          ->type('website')
+          ->image('/images/facebook.jpg')
+          ->description('Udomi.net je oglasnik za udomljavanje životinja. Posebno napravljen za udruge.')
+          ->url('http://udomi.net');
+  @endphp
   {!! $og->renderTags() !!}
+@endif
+
 
 </head>
 <body>
