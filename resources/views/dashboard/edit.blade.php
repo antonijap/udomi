@@ -120,7 +120,7 @@
                             </div>
 
                             <div class="cell small-12">
-                                <input name="chip" type="checkbox" id="chip" {{ $ad->chip == true ? 'checked' : '' }}><label for="chip">Ćipiranje</label>
+                                <input name="chip" type="checkbox" id="chip" {{ $ad->chip == true ? 'checked' : '' }}><label for="chip">Čipiranje</label>
                             </div>
 
                             <div class="cell small-12" style="padding-top:2em;">
