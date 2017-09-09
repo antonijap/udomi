@@ -25,15 +25,7 @@ class AdsController extends Controller
     public function index()
     {
         $ads = Ad::orderBy('updated_at', 'desc')->where('is_adopted', 0)->simplePaginate(30);
-
-        $og = new OpenGraph();
-        $og->title('Udomi.net')
-        ->type('website')
-        ->image('/storage/share.jpg')
-        ->description('Udomi.net je oglasnik za udomljavanje životinja. Posebno napravljen za udruge.')
-        ->url('http://udomi.net');
-
-        return view('index')->with('ads', $ads)->with('og', $og);
+        return view('index')->with('ads', $ads)-);
     }
 
     public function new()
