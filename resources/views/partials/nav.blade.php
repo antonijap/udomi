@@ -8,7 +8,7 @@
     <div class="top-bar" id="responsive-menu">
       <div class="top-bar-left">
         <ul class="vertical medium-horizontal menu">
-          <li><a href="/" style="padding-left:0;"><img src="/images/logo.svg" alt="Udomi.net" class="logo"></a></li>
+          <li><a href="/" style="padding-left:0;"><img src="/storage/logo.svg" alt="Udomi.net" class="logo"></a></li>
           @if (! Auth::check())
             <li><a href="/login" class="item">Login</a></li>
             <li><a href="/register" class="item">Registracija</a></li>

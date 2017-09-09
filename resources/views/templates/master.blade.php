@@ -19,7 +19,7 @@
   $og = new OpenGraph();
       $og->title('Udomi.net')
           ->type('website')
-          ->image('/images/share.jpg')
+          ->image('/storage/share.jpg')
           ->description('Udomi.net je oglasnik za udomljavanje životinja. Posebno napravljen za udruge.')
           ->url('http://udomi.net');
   @endphp
