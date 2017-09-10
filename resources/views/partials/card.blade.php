@@ -3,7 +3,10 @@
     <img src="{{$ad->photos->first()->filename}}" alt="{{$ad->name}}" class="card-image">
   </a>
   <div class="card-section">
-    <h4>{{$ad->name}}</h4>
+    <a href="{{$ad->user->username}}/{{$ad->slug}}">
+      <h4>{{$ad->name}}</h4>
+    </a>
+
     <a href="{{$ad->user->username}}">
       {{$ad->user->name}}
     </a>

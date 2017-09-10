@@ -82,6 +82,7 @@
                     <option value="vukovarsko-srijemska">Vukovarsko-srijemska</option>
                     <option value="zadarska">Zadarska</option>
                     <option value="zagrebacka">Zagrebačka</option>
+                    <option value="izvan-hrvatske">Izvan Hrvatske</option>
                   </select>
                 </label>
               </div>

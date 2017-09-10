@@ -78,6 +78,7 @@
                                         <option value="vukovarsko-srijemska" {{ $ad->location == 'vukovarsko-srijemska' ? 'selected' : '' }}>Vukovarsko-srijemska</option>
                                         <option value="zadarska" {{ $ad->location == 'zadarska' ? 'selected' : '' }}>Zadarska</option>
                                         <option value="zagrebacka" {{ $ad->location == 'zagrebacka' ? 'selected' : '' }}>Zagrebačka</option>
+                                        <option value="izvan-hrvatske" {{ $ad->location == 'izvan-hrvatske' ? 'selected' : '' }}>Izvan Hrvatske</option>
                                     </select>
                                 </label>
                             </div>

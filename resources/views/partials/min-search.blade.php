@@ -76,6 +76,7 @@
           <option value="vukovarsko-srijemska" {{ $data['location'] == 'vukovarsko-srijemska' ? 'selected' : '' }}>Vukovarsko-srijemska</option>
           <option value="zadarska" {{ $data['location'] == 'zadarska' ? 'selected' : '' }}>Zadarska</option>
           <option value="zagrebacka" {{ $data['location'] == 'zagrebacka' ? 'selected' : '' }}>Zagrebačka</option>
+          <option value="izvan-hrvatske" {{ $data['location'] == 'izvan-hrvatske' ? 'selected' : '' }}>Izvan Hrvatske</option>
         @else
           <option value="all">Svejedno</option>
           <option value="bjelovarsko-bilogorska">Bjelovarsko-bilogorska</option>
@@ -99,6 +100,7 @@
           <option value="vukovarsko-srijemska">Vukovarsko-srijemska</option>
           <option value="zadarska">Zadarska</option>
           <option value="zagrebacka">Zagrebačka</option>
+          <option value="izvan-hrvatske">Izvan Hrvatske</option>
         @endif
       </select>
     </label>
