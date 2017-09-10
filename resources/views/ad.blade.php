@@ -5,7 +5,7 @@
     <div class="grid-container">
       <div class="grid-x">
         <div class="cell top">
-          <h1>{{$ad->name}}</h1>
+          <h1 style="margin:0;">{{$ad->name}}</h1>
           <a href="/{{$ad->user->username}}">
             {{$ad->user->name}}
           </a>
@@ -17,8 +17,8 @@
   <div class="grid-container fluid is-gray has-padding animal">
     <div class="grid-container">
         <div class="grid-x">
-          <div class="cell small-12 medium-6 has-right-padding ">
-            <div class="grid-x grid-margin-x">
+          <div class="cell small-12 medium-6 has-right-padding">
+            <div class="grid-x grid-margin-x has-margin">
               <div class="cell small-12 large-shrink">
                 <h2>Spol</h2>
                 @if ($ad->sex == 'female')

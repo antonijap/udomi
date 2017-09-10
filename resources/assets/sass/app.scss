@@ -114,8 +114,8 @@ p.photos-error {
 }
 
 .has-padding {
-  padding-top: 3em;
-  padding-bottom: 3em;
+  padding-top: 1em;
+  padding-bottom: 2em;
   @include breakpoint(medium) {
     padding-top: 4em;
     padding-bottom: 4em;
@@ -133,6 +133,13 @@ p.photos-error {
 
 footer {
   padding: 3em 0 1em;
+
+  .grid-x {
+    margin-bottom: 2em;
+    @include breakpoint(medium) {
+      margin-bottom: 0;
+    }
+  }
 
   p {
     margin-bottom: 0;
@@ -173,6 +180,14 @@ footer {
 .animal {
   h2 {
     font-size: 1em;
+    margin-bottom: 0;
+  }
+
+  .has-margin {
+    margin-bottom: 2em;
+    @include breakpoint(medium) {
+      margin-bottom: 0;
+    }
   }
 
   .has-right-padding {
