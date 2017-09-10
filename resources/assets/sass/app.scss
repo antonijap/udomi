@@ -134,7 +134,7 @@ p.photos-error {
 footer {
   padding: 3em 0 1em;
 
-  .grid-x {
+  .cell {
     margin-bottom: 2em;
     @include breakpoint(medium) {
       margin-bottom: 0;

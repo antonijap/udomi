@@ -3,23 +3,19 @@
     <div class="grid-container">
 
       <div class="grid-x grid-margin-x">
-        <div class="cell">
+        <div class="small-12 medium-auto cell">
           <h4>Udomi.net</h4>
           <p>Najbolji oglasnik za životinje.</p>
           <p>Copyright (c) 2017 Udomi.net All Rights Reserved.</p>
         </div>
-      </div>
 
-      <div class="grid-x grid-margin-x">
-        <div class="cell">
+        <div class="small-12 medium-auto cell">
           <h4>Kontakt</h4>
           <p>Za sve upite javite se na mail ili Facebook page.</p>
           <a href="mailto:info@udomi.net?subject=Kontakt">info@udomi.net</a>
         </div>
-      </div>
 
-      <div class="grid-x grid-margin-x">
-        <div class="cell">
+        <div class="small-12 medium-auto cell">
           <div id="fb-root"></div>
           <script>
             (function(d, s, id) {
