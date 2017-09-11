@@ -58,6 +58,7 @@
 
   @include('partials.footer')
   @include('partials.analytics')
+  @include('partials.drift')
 
   <script src="{{ URL::asset('js/jquery-3.2.1.min.js') }}" charset="utf-8"></script>
   <script src="{{ URL::asset('js/jquery.fileuploader.js') }}" charset="utf-8"></script>
