@@ -6,7 +6,7 @@
       <div class="grid-x">
         <div class="cell top">
           <h1>Registracija</h1>
-          <h2 class="subtitle">Pridužite se oglasniku napravljenom samo za životinje. Optimizirano za udruge.</h2>
+          <h2 class="subtitle">Pridužite se oglasniku napravljenom samo za životinje. Svi koji imaju dobre namjere u udomljavanju su dobrodošli na ovom oglasniku.</h2>
         </div>
       </div>
     </div>
