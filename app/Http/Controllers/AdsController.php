@@ -24,7 +24,7 @@ class AdsController extends Controller
 
     public function index()
     {
-        $ads = Ad::orderBy('updated_at', 'desc')->where('is_adopted', 0)->simplePaginate(2);
+        $ads = Ad::orderBy('updated_at', 'desc')->where('is_adopted', 0)->simplePaginate(20);
         return view('index')->with('ads', $ads);
     }
 
@@ -195,7 +195,7 @@ class AdsController extends Controller
             ];
         }
 
-        $results = $ads->whereIn('sex', (array) $sex)->whereIn('age', (array) $age)->whereIn('location', (array) $location)->whereIn('type', (array) $type)->simplePaginate(30);
+        $results = $ads->whereIn('sex', (array) $sex)->whereIn('age', (array) $age)->whereIn('location', (array) $location)->whereIn('type', (array) $type)->simplePaginate(20);
 
         return view('results')->with('ads', $results)->with('data', $dropdownData);
 
