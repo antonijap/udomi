@@ -18,7 +18,6 @@
       </div>
     </div>
 
-    @if($ads instanceof \Illuminate\Pagination\LengthAwarePaginator )
       <div class="grid-container">
         <div class="grid-x">
           <div class="cell">
@@ -26,7 +25,4 @@
           </div>
         </div>
       </div>
-    @endif
-
-
 @endsection

@@ -1,21 +1,17 @@
-<nav class="pagination is-right" role="navigation" aria-label="pagination">
-        @if ($paginator->hasPages())
-                {{-- Previous Page Link --}}
-                @if ($paginator->onFirstPage())
-                    {{-- <li class="disabled"><span>@lang('pagination.previous')</span></li> --}}
-                    <a class="pagination-previous" disabled>Predhodno</a>
-                @else
-                    {{-- <li><a href="{{ $paginator->previousPageUrl() }}" rel="prev">@lang('pagination.previous')</a></li> --}}
-                    <a href="{{ $paginator->previousPageUrl() }}" rel="prev" class="pagination-previous">Predhodno</a>
-                @endif
+<ul class="pagination" role="navigation" aria-label="Pagination">
+  @if ($paginator->hasPages())
+          {{-- Previous Page Link --}}
+          @if ($paginator->onFirstPage())
+                <li class="pagination-previous disabled">Previous</li>
+          @else
+              <li class="pagination-previous"><a href="{{ $paginator->previousPageUrl() }}">Predhodno</a></li>
+          @endif
 
-                {{-- Next Page Link --}}
-                @if ($paginator->hasMorePages())
-                  <a href="{{ $paginator->nextPageUrl() }}" rel="next"  class="pagination-next">Sljedeće</a>
-                  {{-- <li><a href="{{ $paginator->nextPageUrl() }}" rel="next">@lang('pagination.next')</a></li> --}}
-                @else
-                  <a class="pagination-next" disabled>Sljedeće</a>
-                  {{-- <li class="disabled"><span>@lang('pagination.next')</span></li> --}}
-                @endif
-        @endif
-</nav>
+          {{-- Next Page Link --}}
+          @if ($paginator->hasMorePages())
+            <li class="pagination-next float-right"><a href="{{ $paginator->nextPageUrl() }}">Sljedeće</a></li>
+          @else
+            <li class="pagination-next disabled float-right">Sljedeće</li>
+          @endif
+  @endif
+</ul>
