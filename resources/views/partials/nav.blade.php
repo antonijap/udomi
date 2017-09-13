@@ -9,15 +9,15 @@
       <div class="top-bar-left">
         <ul class="vertical medium-horizontal menu">
           <li><a href="/" style="padding-left:0;"><img src="/storage/logo.svg" alt="Udomi.net" class="logo"></a></li>
-          @if (! Auth::check())
+          @guest
             <li><a href="/login" class="item">Login</a></li>
             <li><a href="/register" class="item">Registracija</a></li>
-          @endif
+          @endguest
           <li><a href="/ads/new" class="item">Novi Oglas</a></li>
         </ul>
       </div>
 
-      @if (Auth::check())
+      @auth
         <div class="top-bar-right">
           <ul class="medium-horizontal vertical dropdown menu" data-responsive-menu="accordion medium-dropdown">
             <li>
@@ -31,7 +31,7 @@
             </li>
           </ul>
         </div>
-      @endif
+      @endauth
     </div>
 
   </div>

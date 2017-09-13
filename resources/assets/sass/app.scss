@@ -109,6 +109,13 @@ p.photos-error {
   }
 }
 
+.CTA {
+  margin-top: .3em;
+  @include breakpoint(medium) {
+    margin-top: 1em;
+  }
+}
+
 .top {
   padding: 2em 0 2em;
 }
@@ -153,8 +160,10 @@ footer {
 
 .subtitle {
   color: #717171;
-  font-size: 1.3em;
   font-weight: 400;
+  @include breakpoint(medium) {
+    font-size: 1.3em;
+  }
 }
 
 .top-bar {
