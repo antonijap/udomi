@@ -64,42 +64,42 @@
               @endif
               @if ($ad->invalidity == 'on')
                 <div style="margin-right:0;" class="cell shrink">
-                  <span class="label warning">Posebna</span>
+                  <span class="label special">Posebna</span>
                 </div>
               @endif
               @if ($ad->castration == 'on')
                 <div style="margin-right:0;" class="cell shrink">
                   @if ($ad->sex == 'female')
-                    <span class="label success">Kastrirana</span>
+                    <span class="label positive">Kastrirana</span>
                   @else
-                    <span class="label success">Kastriran</span>
+                    <span class="label positive">Kastriran</span>
                   @endif
                 </div>
               @endif
               @if ($ad->sterilization == 'on')
                 <div style="margin-right:0;" class="cell shrink">
                   @if ($ad->sex == 'female')
-                    <span class="label">Sterilizirana</span>
+                    <span class="label positive">Sterilizirana</span>
                   @else
-                    <span class="label">Steriliziran</span>
+                    <span class="label positive">Steriliziran</span>
                   @endif
                 </div>
               @endif
               @if ($ad->vaccines == 1)
                 <div style="margin-right:0;" class="cell shrink">
                   @if ($ad->sex == 'female')
-                    <span class="label success">Cijepljena</span>
+                    <span class="label positive">Cijepljena</span>
                   @else
-                    <span class="label success">Cijepljen</span>
+                    <span class="label positive">Cijepljen</span>
                   @endif
                 </div>
               @endif
               @if ($ad->chip == 1)
                 <div style="margin-right:0;" class="cell shrink">
                   @if ($ad->sex == 'female')
-                    <span class="label success">Čipirana</span>
+                    <span class="label positive">Čipirana</span>
                   @else
-                    <span class="label success">Čipiran</span>
+                    <span class="label positive">Čipiran</span>
                   @endif
                 </div>
               @endif
