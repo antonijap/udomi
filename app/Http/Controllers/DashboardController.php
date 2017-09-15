@@ -67,10 +67,10 @@ class DashboardController extends Controller
     }
 
     if (request('chip') == 'on') {
-            $chip = 1;
-        } else {
-            $chip = 0;
-        }
+      $chip = 1;
+    } else {
+      $chip = 0;
+    }
 
     $this->validate(request(), [
       'name' => 'required|min:2',
@@ -179,7 +179,7 @@ class DashboardController extends Controller
     Ad::where('id', $ad->id)
     ->update(['is_adopted' => 0]);
 
-    $ads = auth()->user()->ads->sortByDesc('updated_at');
+    $ads = auth()->user()->ads->sortByDesc('created_at');
     return redirect('/dashboard')->with('ads', $ads);
   }
 
@@ -199,19 +199,19 @@ class DashboardController extends Controller
 
     // Delete all photos from disk
 
-    $ads = auth()->user()->ads->sortByDesc('updated_at');
+    $ads = auth()->user()->ads->sortByDesc('created_at');
     return redirect('/dashboard')->with('ads', $ads);
   }
 
   public function boost(Ad $ad)
   {
     Ad::where('id', $ad->id)
-    ->update(['updated_at' => Carbon::now()]);
+    ->update(['created_at' => Carbon::now()]);
 
     Boost::where('user_id', $ad->user->id)
-    ->update(['updated_at' => Carbon::now()]);
+    ->update(['created_at' => Carbon::now()]);
 
-    $ads = auth()->user()->ads->sortByDesc('updated_at');
+    $ads = auth()->user()->ads->sortByDesc('created_at');
     return redirect('/dashboard')->with('ads', $ads);
   }
 

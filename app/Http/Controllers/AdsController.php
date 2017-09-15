@@ -24,7 +24,7 @@ class AdsController extends Controller
 
     public function index()
     {
-        $ads = Ad::orderBy('updated_at', 'desc')->where('is_adopted', 0)->simplePaginate(21);
+        $ads = Ad::orderBy('created_at', 'desc')->where('is_adopted', 0)->simplePaginate(21);
         return view('index')->with('ads', $ads);
     }
 
@@ -96,8 +96,6 @@ class AdsController extends Controller
             'is_adopted' => false
         ]);
 
-        // $images = public_path() . '/images/';
-        // $userDir = $images . $ad->user->username . '/';
         $path = storage_path('/app/public/' . $ad->user->username . '/');
 
         if (file_exists($path)) {
@@ -108,8 +106,6 @@ class AdsController extends Controller
             ));
         } else {
             File::makeDirectory($path, 0777, true);
-            // $path = public_path() . '/images/' . $ad->user->username . '/';
-            // initialize FileUploader
             $FileUploader = new FileUploader('files', array(
                 'uploadDir' => $path,
                 'title' => 'name'
@@ -124,7 +120,6 @@ class AdsController extends Controller
         if($data['isSuccess'] && count($data['files']) > 0) {
 
             $uploadedFiles = $data['files'];
-            //   return $uploadedFiles;
             foreach ($uploadedFiles as $photo) {
                 AdPhotos::create([
                     'ad_id' => $ad->id,
@@ -155,7 +150,7 @@ class AdsController extends Controller
             'location' => request('location')
         ];
 
-        $ads = Ad::orderBy('updated_at', 'desc')->where('is_adopted', 0);
+        $ads = Ad::orderBy('created_at', 'desc')->where('is_adopted', 0);
 
         if ($sex == 'all') {
             $sex = ['female', 'male'];
