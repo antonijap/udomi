@@ -21,6 +21,7 @@
             <div class="grid-x">
               <div class="cell small-12">
                 <label>Ime
+                  <span class="input-helper">Može se kasnije promijeniti u postavkama.</span>
                   <input class="input" type="text" name="name">
                 </label>
               </div>
