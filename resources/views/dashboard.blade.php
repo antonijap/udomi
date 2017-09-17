@@ -14,10 +14,10 @@
         <div class="cell shrink">
           @if ($user->boost->isAvailable())
             {{-- <span class="tag is-success"></span> --}}
-            <h3>Boost dostupan</h3>
+            <h5>Boost dostupan</h5>
           @else
             {{-- <span class="tag is-danger">Boost nedostupan. {{ $user->boost->nextBoostAvailable() }} </span> --}}
-            <h3>Boost nedostupan. {{ $user->boost->nextBoostAvailable() }}</h3>
+            <h5>Boost nedostupan. {{ $user->boost->nextBoostAvailable() }}</h5>
           @endif
         </div>
 
@@ -39,28 +39,27 @@
           @if (count($ads) > 0)
             @foreach($ads as $ad)
               @if($ad->is_adopted == 0)
-                <div class="cell small-12">
+                <div class="cell small-12 dashboard-ad-has-bottom-border">
                   <div class="grid-x grid-margin-x align-middle">
-                    <div class="shrink cell has-bottom-margin">
+                    <div class="small-12 medium-2 cell has-bottom-margin">
                       <img class="small-image" src="{{$ad->photos->first()->filename}}" alt="{{$ad->name}}">
                     </div>
 
                     <div class="auto cell">
                       <h3>{{$ad->name}}</h3>
-                      <p>{!! \Illuminate\Support\Str::words($ad->description, 15,'...')  !!}</p>
                     </div>
 
-                    <div class="shrink cell">
-                      <div class="button-group">
-                        <a href="ad/{{$ad->id}}/edit" name="uredi" class="button clear">Uredi</a>
+                    <div class="small-12 medium-5 cell">
+                      <div class="button-group expanded stacked-for-small">
+                        <a href="ad/{{$ad->id}}/edit" name="uredi" class="button hollow secondary">Uredi</a>
 
                         @if($ad->sex == 'female')
-                          <a href="ad/{{$ad->id}}/adopted" name="is-adopted" class="button clear">Udomljena</a>
+                          <a href="ad/{{$ad->id}}/adopted" name="is-adopted" class="button hollow secondary">Udomljena</a>
                         @elseif($ad->sex == 'male')
-                          <a href="ad/{{$ad->id}}/adopted" name="is-adopted" class="button clear">Udomljen</a>
+                          <a href="ad/{{$ad->id}}/adopted" name="is-adopted" class="button hollow secondary">Udomljen</a>
                         @endif
 
-                        <a data-open="obrisi" name="delete" class="button alert clear">Obriši</a>
+                        <a data-open="obrisi" name="delete" class="button alert">Obriši</a>
 
                         <div class="reveal" id="obrisi" data-reveal>
                           <div class="grid-x grid-padding-x text-center">
@@ -95,19 +94,18 @@
           @if (count($ads) > 0)
             @foreach($ads as $ad)
               @if($ad->is_adopted == 1)
-                <div class="cell small-12">
+                <div class="cell small-12 dashboard-ad-has-bottom-border">
                   <div class="grid-x grid-margin-x align-middle">
-                    <div class="shrink cell has-bottom-margin">
+                    <div class="small-12 medium-2  cell has-bottom-margin">
                       <img class="small-image" src="{{$ad->photos->first()->filename}}" alt="{{$ad->name}}">
                     </div>
 
                     <div class="auto cell">
                       <h3>{{$ad->name}}</h3>
-                      <p>{!! \Illuminate\Support\Str::words($ad->description, 15,'...')  !!}</p>
                     </div>
 
-                    <div class="shrink cell">
-                      <a href="ad/{{$ad->id}}/restore" name="delete" class="hollow button">Vrati u aktivne</a>
+                    <div class="small-12 medium-2  cell">
+                      <a href="ad/{{$ad->id}}/restore" name="delete" class="hollow secondary button">Vrati u aktivne</a>
                     </div>
 
                   </div>

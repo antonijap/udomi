@@ -34,7 +34,6 @@
     /></noscript>
     <!-- End Facebook Pixel Code -->
 
-
 @if (! empty($og))
 {!! $og->renderTags() !!}
 @else
