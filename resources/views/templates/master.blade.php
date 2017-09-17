@@ -68,5 +68,7 @@
   <script src="{{ URL::asset('js/jquery.chocolat.js') }}" charset="utf-8"></script>
   <script src="{{ URL::asset('js/app.js') }}" charset="utf-8"></script>
 
+  <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=59be64077028e9001126048f&product=inline-share-buttons"></script>
+
 </body>
 </html>

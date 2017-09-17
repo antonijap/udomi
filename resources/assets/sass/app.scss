@@ -134,6 +134,13 @@ p.photos-error {
   padding: 2em 0 2em;
 }
 
+.social-buttons {
+  margin: 0 0 2em;
+  @include breakpoint(medium) {
+    margin: 2em 0 2em;
+  }
+}
+
 .has-padding {
   padding-top: 1em;
   padding-bottom: 2em;
