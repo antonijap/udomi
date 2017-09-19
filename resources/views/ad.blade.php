@@ -93,7 +93,7 @@
 
       <div class="cell small-12 medium-6">
         <div class="owl-carousel owl-theme chocolat-parent">
-          @foreach ($ad->photos as $photo) {{-- <img src="/{{$photo->filename}}" alt="{{$ad->name}}" class="chocolat-image">          --}}
+          @foreach ($ad->photos as $photo)
           <a class="chocolat-image" href="/{{$photo->filename}}" title="{{$ad->name}}">
                   <img src="/{{$photo->filename}}" />
                 </a> @endforeach

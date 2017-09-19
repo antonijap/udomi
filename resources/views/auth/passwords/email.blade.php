@@ -2,45 +2,40 @@
 @extends('templates.master')
 
 @section('content')
-  <section class="hero is-light">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          Resetiranje Lozinke
-        </h1>
-      </div>
-    </div>
-  </section>
-
-  @include('partials.flash-message')
-
-  <section class="section">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-half">
-          <form action="{{ route('password.email') }}" method="post">
-            {{ csrf_field() }}
-
-            <div class="field">
-              <label class="label">Email<label>
-                <div class="control">
-                  <input class="input" type="email" name="email">
-                </div>
-              </div>
-
-                <div class="field">
-                  <div class="control">
-                    <button type="submit" class="button is-primary">Reset</button>
-                  </div>
-                </div>
-
-              </form>
-            </div>
-          </div>
+  <div class="grid-container fluid has-bottom-border">
+    <div class="grid-container">
+      <div class="grid-x">
+        <div class="cell top">
+          <h1>Resetiraj lozinku</h1>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
 
-    @include('partials.errors')
+  @include('partials/flash-message')
+
+  <div class="grid-container fluid is-gray">
+    <div class="grid-container">
+      <div class="grid-x has-padding ">
+        <div class="cell small-12 medium-6">
+          <form method="POST" action="{{ route('password.email') }}">
+            {{ csrf_field() }}
+
+            <div class="cell small-12">
+              <label>Email
+                <input class="input" type="email" name="email">
+              </label>
+            </div>
+
+            <div class="cell small-12">
+              <button type="submit" class="button is-primary">Resetiraj lozinku</button>
+            </div>
+
+            </form>
+        </div>
+      </div>
+    </div>
+
+  @include('partials.errors')
 
 @endsection
