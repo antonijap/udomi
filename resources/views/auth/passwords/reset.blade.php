@@ -1,15 +1,15 @@
 @extends('templates.master')
 
 @section('content')
-  <section class="hero is-light">
-    <div class="hero-body">
-      <div class="container">
-        <h1 class="title">
-          Nova Lozinka
-        </h1>
+  <div class="grid-container fluid has-bottom-border">
+    <div class="grid-container">
+      <div class="grid-x">
+        <div class="cell top">
+          <h1>Nova lozinka</h1>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
 
 
   @include('partials.errors')
