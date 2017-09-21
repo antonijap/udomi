@@ -69,13 +69,13 @@ p.photos-error {
 
 .flash-message {
   position: absolute;
-  bottom: 0;
+  top: 0;
   width: 100%;
   background: $primary;
-  padding: 2em;
+  padding: 1em;
   z-index: 10;
   color: white;
-  font-size: 1.5em;
+  font-size: 1em;
   text-align: center;
   left: 0;
   right: 0;
@@ -211,6 +211,7 @@ footer {
   h2 {
     font-size: 1em;
     margin-bottom: 0;
+    color: #949494;
   }
 
   .has-margin {

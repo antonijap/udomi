@@ -54,3 +54,4 @@ Route::get('/ad/{ad}/boost', 'DashboardController@boost');
 
 Route::get('/{username}', 'UserController@profile');
 Route::get('/{username}/{ad}', 'AdsController@show');
+Route::post('/{ad}/contact', 'AdsController@contact');

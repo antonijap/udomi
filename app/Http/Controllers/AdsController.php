@@ -14,12 +14,14 @@ use App\Classes\Fileuploader;
 use File;
 use Illuminate\Pagination\Paginator;
 use OpenGraph;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PotentialAdoption;
 
 class AdsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show', 'filter']);
+        $this->middleware('auth')->except(['index', 'show', 'filter', 'contact']);
     }
 
     public function index()
@@ -220,6 +222,23 @@ class AdsController extends Controller
         ->url($url);
 
         return view('ad')->with('ad', $ad)->with('location', $locationFinal)->with('og', $og);
+    }
+
+    public function contact(Ad $ad, Request $request)
+    {
+        $this->validate(request(), [
+            'email' => 'required',
+            'poruka' => 'required|min:1|max:1000'
+        ]);
+
+        // return request('email');
+
+        Mail::to($ad->user->email)
+            ->send(new PotentialAdoption($ad, request('email'), request('poruka')));
+
+        // Redirect
+        session()->flash('message', 'Poruka poslana.');
+        return redirect()->back();
     }
 
 }
