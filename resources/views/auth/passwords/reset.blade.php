@@ -11,48 +11,40 @@
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="columns">
-        <div class="column is-half">
+
+  @include('partials.errors')
+  
+  <div class="grid-container fluid is-gray">
+    <div class="grid-container">
+      <div class="grid-x has-padding ">
+        <div class="cell small-12 medium-6">
           <form action="{{ route('password.request') }}" method="post">
             {{ csrf_field() }}
-            <input type="hidden" name="token" value="{{ $token }}">
 
-            <div class="field">
-              <label class="label">Email<label>
-                <div class="control">
-                  <input class="input" type="email" name="email">
-                </div>
-              </div>
-
-            <div class="field">
-              <label class="label">Nova lozinka<label>
-                <div class="control">
-                  <input class="input" type="password" name="password">
-                </div>
-              </div>
-
-              <div class="field">
-                <label class="label">Lozinka još jednom<label>
-                  <div class="control">
-                    <input class="input" type="password" name="password_confirmation">
-                  </div>
-                </div>
-
-                <div class="field">
-                  <div class="control">
-                    <button type="submit" class="button is-primary">Spremi</button>
-                  </div>
-                </div>
-
-              </form>
+            <div class="cell small-12">
+              <label>Email
+                <input class="input" type="email" name="email">
+              </label>
             </div>
-          </div>
+
+            <div class="cell small-12">
+              <label>Lozinka
+                <input class="input" type="password" name="password">
+              </label>
+            </div>
+
+            <div class="cell small-12">
+              <label>Potvrdi lozinku
+                <input class="input" type="password" name="password_confirmation">
+              </label>
+            </div>
+
+            <div class="cell small-12">
+              <button type="submit" class="button is-primary">Resetiraj lozinku</button>
+            </div>
+
+            </form>
         </div>
       </div>
-    </section>
-
-    @include('partials.errors')
-
+    </div>
 @endsection
