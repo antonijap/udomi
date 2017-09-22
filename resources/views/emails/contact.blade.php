@@ -37,7 +37,7 @@
                                         <img src="https://i.imgur.com/7CwiSGb.png" alt="Udomi.net logotip" /> <br /><br />
                                         Pozdrav {{$ad->user->name}},
                                         <br><br>
-                                        Ovo je poruka s <a href="http://udomi.net">udomi.net</a> oglasnika:<hr>
+                                        Ovo je poruka s <a href="http://udomi.net">udomi.net</a> oglasnika, za oglas {{$ad->name}}<hr>
                                         {{$email}} šalje poruku: <br />
                                         {{$poruka}}
                                         <hr />
