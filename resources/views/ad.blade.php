@@ -3,7 +3,16 @@
     <div class="grid-container">
         <div class="grid-x align-middle">
             <div class="medium-auto small-12 cell top">
-                <h1 style="margin:0;">{{$ad->name}}</h1>
+                <h1 style="margin:0;">
+                    {{$ad->name}}
+                    @if ($ad->is_adopted)
+                        @if ($ad->sex == 'female')
+                            je udomljena!
+                        @else
+                            je udomljen!                        
+                        @endif
+                    @endif
+                </h1>
                 <a href="/{{$ad->user->username}}">
                     {{$ad->user->name}}
                 </a>
@@ -83,8 +92,9 @@
                     </div>
                     @endif
                 </div>
-
-                <div class="cell small-12" style="margin-top: 2em;">
+                
+                @if (!$ad->is_adopted)
+                    <div class="cell small-12" style="margin-top: 2em;">
                     <h2>Kontakt</h2>
                     <form action="/{{$ad->id}}/contact" method="post">
                         {{ csrf_field() }}
@@ -97,6 +107,8 @@
                         <input type="submit" value="Pošalji" class="button" />
                     </form>
                 </div>
+                @endif
+                
 
             </div>
             <div class="cell small-12 medium-6">
