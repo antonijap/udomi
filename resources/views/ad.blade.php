@@ -33,20 +33,14 @@
                     </p>
                 </div>
                 
-                <div class="cell small-12">
-                    <h2>Kontakt</h2>
-                    @if ($ad->user->contact_email)
-                        <p>{{$ad->user->contact_email}}</p>
-                        @if ($ad->user->phone)
-                            <p>{{$ad->user->phone}}</p>
-                        @endif
-                    @else
-                        <p>{{$ad->user->email}}</p>
-                        @if ($ad->user->phone)
-                            <p>{{$ad->user->phone}}</p>
-                        @endif 
-                    @endif
-                </div>
+                
+                @if ($ad->user->phone)
+                    <div class="cell small-12">
+                        <h2>Telefon</h2>
+                        <p>{{$ad->user->phone}}</p>
+                    </div>
+                @endif 
+                
                 
                 <div class="cell small-12">
                     <h2>Opis</h2>
