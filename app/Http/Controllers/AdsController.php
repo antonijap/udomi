@@ -72,7 +72,7 @@ class AdsController extends Controller
         $slug = str_replace(' ', '-', strtolower($name));
 
         $this->validate(request(), [
-            'name' => 'required|min:2',
+            'name' => 'required|min:2|max:10',
             'description' => 'required|min:32|max:1000',
             'sex' => 'required',
             'age' => 'required',

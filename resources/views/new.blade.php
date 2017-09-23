@@ -22,9 +22,10 @@
             {{ csrf_field() }}
             <div class="grid-x">
               <div class="cell small-12">
-                <label>Ime
+                <label>Ime</label>
+                  <p>Molimo napišite samo ime životinje, ograničenje je na 10 znakova.</p>
                   <input class="input" type="text" name="name">
-                </label>
+                
               </div>
 
               <div class="cell small-12">
