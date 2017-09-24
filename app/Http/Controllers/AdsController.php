@@ -13,9 +13,11 @@ use Carbon\Carbon;
 use App\Classes\Fileuploader;
 use File;
 use Illuminate\Pagination\Paginator;
-use OpenGraph;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\PotentialAdoption;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Client;
+use SEO;
 
 class AdsController extends Controller
 {
@@ -26,7 +28,24 @@ class AdsController extends Controller
 
     public function index()
     {
-        $ads = Ad::orderBy('created_at', 'desc')->where('is_adopted', 0)->simplePaginate(21);
+        // $client = new Client();
+        // $url = 'http://geoportal.dgu.hr/api/search';
+
+        // $request = $client->post($url, [
+        //     'json' => ['token' => 'varaždin'],
+        // ]);
+
+        // $data = $request->getBody()->getContents();
+
+        // $burek = json_decode($data);
+        // foreach ($burek->ungrouped->results as $key => $value) {
+        //     if ($value->priority == "1") {
+        //         dd($value);
+        //     }
+        // }
+        // dd($burek->ungrouped->results);
+
+        $ads = Ad::orderBy('created_at', 'desc')->where('is_adopted', 0)->paginate(21);
         return view('index')->with('ads', $ads);
     }
 
@@ -133,6 +152,7 @@ class AdsController extends Controller
             }
 
         }
+
         session()->flash('message', 'Oglas uspješno objavljen.');
         return redirect('/dashboard');
 
@@ -203,25 +223,14 @@ class AdsController extends Controller
         $user = User::where('username', $username)->first();
         $ad = $user->ads->where('slug', '=', $slug)->first();
 
-        // Parse location
-        $locationArray = explode("-", $ad->location);
-        $locationFinal = [];
-        if (count($locationArray) > 0) {
-            foreach ($locationArray as $location) {
-                $locationFinal[] = ucfirst($location);
-            }
-        }
+        SEO::setTitle($ad->name . ' | ' . 'Udomi.net');
+        SEO::setDescription($ad->description);
+        SEO::opengraph()->setUrl(url()->current());
+        SEO::setCanonical(url()->current());
+        SEO::opengraph()->addProperty('type', 'articles');
+        SEO::addImages('/' . $ad->photos->first()->filename);
 
-        $url = 'http://udomi.net/' . $ad->user->username . '/' . $ad->slug;
-
-        $og = new OpenGraph();
-        $og->title($ad->name . ' | ' . 'Udomi.net')
-        ->type('website')
-        ->image('/' . $ad->photos->first()->filename)
-        ->description($ad->description)
-        ->url($url);
-
-        return view('ad')->with('ad', $ad)->with('location', $locationFinal)->with('og', $og);
+        return view('ad')->with('ad', $ad)->with('location', $ad->location);
     }
 
     public function contact(Ad $ad, Request $request)
@@ -234,7 +243,7 @@ class AdsController extends Controller
         // return request('email');
 
         Mail::to($ad->user->email)
-            ->send(new PotentialAdoption($ad, request('email'), request('poruka')));
+        ->send(new PotentialAdoption($ad, request('email'), request('poruka')));
 
         // Redirect
         session()->flash('message', 'Poruka poslana.');

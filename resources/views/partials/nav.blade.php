@@ -1,5 +1,5 @@
 <div class="grid-container fluid has-bottom-border">
-  <div class="grid-container">
+  <div class="grid-container no-js">
     <div class="title-bar" data-responsive-toggle="responsive-menu" data-hide-for="medium">
       <button type="button" data-toggle="responsive-menu" class="hamburger"><i class="ion-navicon"></i></button>
       <div class="title-bar-title">Izbornik</div>

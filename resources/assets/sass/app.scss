@@ -18,6 +18,11 @@ $buttongroup-spacing: 5px;
   margin-bottom: 2em;
 }
 
+.pagination {
+    padding-top: 1em;
+    border-top: 1px solid #efefef;
+}
+
 .no-js {
   @include breakpoint(small only) {
     .top-bar {

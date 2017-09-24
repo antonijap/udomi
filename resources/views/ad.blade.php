@@ -37,9 +37,51 @@
                 </div>
                 <div class="cell small-12">
                     <h2>Lokacija</h2>
-                    <p>
-                        @foreach ($location as $value) {{$value}} @endforeach
-                    </p>
+                    @if ($ad->location == 'bjelovarsko-bilogorska')
+                        <p>Bjelovarsko-bilogorska</p>
+                    @elseif ($ad->location == 'brodsko-posavska')
+                        <p>Brodsko-posavska</p>
+                    @elseif ($ad->location == 'dubrovacko-neretvanska')
+                        <p>Dubrovačko-neretvanska</p>
+                    @elseif ($ad->location == 'grad-zagreb')
+                        <p>Grad Zagreb</p>
+                    @elseif ($ad->location == 'istarska')
+                        <p>Istarska</p>
+                    @elseif ($ad->location == 'karlovacka')
+                        <p>Karlovačka</p>
+                    @elseif ($ad->location == 'koprivnicko-krizevacka')
+                        <p>Koprivničko-križevačka</p>
+                    @elseif ($ad->location == 'krapinsko-zagorska')
+                        <p>Krapinsko-zagorska</p>
+                    @elseif ($ad->location == 'licko-senjska')
+                        <p>Ličko-senjska</p>
+                    @elseif ($ad->location == 'medimurska')
+                        <p>Međimurska</p>
+                    @elseif ($ad->location == 'osjecko-baranjska')
+                        <p>Osječko-baranjska</p>
+                    @elseif ($ad->location == 'pozesko-slavonska')
+                        <p>Požeško-slavonska</p>
+                    @elseif ($ad->location == 'primorsko-goranska')
+                        <p>Primorsko-goranska</p>
+                    @elseif ($ad->location == 'sisasko-moslavcka')
+                        <p>Sisačko-moslavačka</p>
+                    @elseif ($ad->location == 'splitsko-dalmatinska')
+                        <p>Splitsko-dalmatinska</p>
+                    @elseif ($ad->location == 'sibensko-kninska')
+                        <p>Šibensko-kninska</p>
+                    @elseif ($ad->location == 'varazdinska')
+                        <p>Varaždinska</p>
+                    @elseif ($ad->location == 'viroviticko-podravska')
+                        <p>Virovitičko-podravska</p>
+                    @elseif ($ad->location == 'vukovarsko-srijemska')
+                        <p>Vukovarsko-srijemska</p>
+                    @elseif ($ad->location == 'zadarska')
+                        <p>Zadarska</p>
+                    @elseif ($ad->location == 'zagrebacka')
+                        <p>Zagrebačka</p>
+                    @elseif ($ad->location == 'izvan-hrvatske')
+                        <p>Izvan Hrvatske</p>
+                    @endif
                 </div>
                 
                 

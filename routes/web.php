@@ -18,7 +18,6 @@ Route::get('send_test_email', function(){
 	});
 });
 
-
 Auth::routes();
 
 Route::get('/home', function(){
