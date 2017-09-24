@@ -12,6 +12,8 @@
     </div>
   </div>
 
+  @include('partials.flash-message')
+
   <div class="grid-container fluid is-gray">
     <div class="grid-container">
       <div class="grid-x has-padding ">

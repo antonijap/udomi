@@ -34,30 +34,38 @@ class RegistrationController extends Controller
         $name = request('name');
         $username = str_replace(' ', '-', strtolower($name));
 
-        // Create and save the user
-        $user = User::create([
-            'name' => request('name'),
-            'email' => request('email'),
-            'username' => $username,
-            'password' => bcrypt(request('password'))
-        ]);
+        // Check if username exists
+        if (User::where('username', $username)->count() > 0) {
+            // Ime zauzeto
+            session()->flash('message', 'Ime je već zauzeto.');
+            return back();
+        } else {
+            // Create and save the user
+            $user = User::create([
+                'name' => request('name'),
+                'email' => request('email'),
+                'username' => $username,
+                'password' => bcrypt(request('password'))
+            ]);
 
-        Boost::create([
-            'user_id' => $user->id,
-            'cooldown' => 48
-        ]);
+            Boost::create([
+                'user_id' => $user->id,
+                'cooldown' => 48
+            ]);
 
         // Sign in
-        auth()->login($user);
+            auth()->login($user);
 
-
-        Mail::to($user->email)
+            Mail::to($user->email)
             ->send(new WelcomeMail($user));
 
         // Add to Mailchimp
-        Newsletter::subscribe($user->email, ['FNAME'=>$user->name, 'LNAME'=>' ']);
+            Newsletter::subscribe($user->email, ['FNAME'=>$user->name, 'LNAME'=>' ']);
 
         // Redirect
-        return redirect()->home();
+            return redirect()->home();
+        }
+
+        
     }
 }
