@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  
+
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&amp;subset=latin-ext" rel="stylesheet">
 
   <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
@@ -40,6 +40,12 @@
   @include('partials.analytics')
   @include('partials.drift')
 
+  <script src="{{ URL::asset('js/jquery.js') }}" charset="utf-8"></script>
+  <script src="{{ URL::asset('js/jquery.chocolat.js') }}" charset="utf-8"></script>
+  <script src="{{ URL::asset('js/jquery.fileuploader.min.js') }}" charset="utf-8"></script>
+  <script src="{{ URL::asset('js/jquery-text-counter/textcounter.min.js') }}" charset="utf-8"></script>
+  <script src="{{ URL::asset('css/foundation-sites/dist/js/foundation.min.js') }}" charset="utf-8"></script>
+  <script src="{{ URL::asset('js/owl.carousel.js') }}" charset="utf-8"></script>
   <script src="{{ URL::asset('js/app.js') }}" charset="utf-8"></script>
 
   <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=59be64077028e9001126048f&product=inline-share-buttons"></script>

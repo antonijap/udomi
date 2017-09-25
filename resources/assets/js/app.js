@@ -1,9 +1,9 @@
-import "./jquery-3.2.1.min.js";
-import "./jquery.fileuploader.js";
-import "./owl.carousel.js";
-import "../foundation-sites/dist/js/foundation.js";
-import "./jquery-text-counter/textcounter.min.js";
-import "./jquery.chocolat.js";
+// import "jquery/dist/jquery.js";
+// import "./jquery.fileuploader.js";
+// import "owl.carousel/dist/owl.carousel.js";
+// import "../foundation-sites/dist/js/foundation.js"; // zamjeni s yarnom
+// import "textcounter/jquery.textcounter.js";
+// import "chocolat/dist/js/jquery.chocolat.js";
 
 $(document).foundation();
 $(window).on('changed.zf.mediaquery', function() {
