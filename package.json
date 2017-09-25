@@ -22,8 +22,11 @@
     "browser-sync": "^2.18.13",
     "browser-sync-webpack-plugin": "^1.2.0",
     "bulma": "^0.5.1",
+    "chocolat": "^0.4.18",
     "foundation-sites": "^6.4.3",
+    "ionicons": "^3.0.0",
     "jquery-text-counter": "^0.7.0",
-    "jquery-word-and-character-counter-plugin": "^2.5.1"
+    "jquery-word-and-character-counter-plugin": "^2.5.1",
+    "owl.carousel": "^2.2.0"
   }
 }
