@@ -20,6 +20,8 @@
       <div class="cell small-12 medium-6">
         <form action="{{ route('password.request') }}" method="post">
           {{ csrf_field() }}
+          
+          <input type="hidden" name="token" value="{{ $token }}">
 
           <div class="cell small-12">
             <label>Email
@@ -44,6 +46,8 @@
           </div>
 
         </form>
+
+        @include('partials.errors')
       </div>
     </div>
   </div>

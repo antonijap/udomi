@@ -86,8 +86,13 @@ class AdsController extends Controller
             $chip = 0;
         }
 
-        // Create username
         $name = request('name');
+
+        // Provjeriti jel ime postoji
+        if (Ad::where()) {
+          # code...
+        }
+        
         $slug = str_replace(' ', '-', strtolower($name));
 
         $this->validate(request(), [
