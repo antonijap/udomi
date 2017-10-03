@@ -88,11 +88,6 @@ class AdsController extends Controller
 
         $name = request('name');
 
-        // Provjeriti jel ime postoji
-        if (Ad::where()) {
-          # code...
-        }
-        
         $slug = str_replace(' ', '-', strtolower($name));
 
         $this->validate(request(), [
@@ -223,10 +218,10 @@ class AdsController extends Controller
 
     }
 
-    public function show($username, $slug)
+    public function show($username, $id, $slug)
     {
         $user = User::where('username', $username)->first();
-        $ad = $user->ads->where('slug', '=', $slug)->first();
+        $ad = $user->ads->where('id', '=', $id)->first();
 
         SEO::setTitle($ad->name . ' | ' . 'Udomi.net');
         SEO::setDescription($ad->description);

@@ -59,7 +59,9 @@
                           <a href="ad/{{$ad->id}}/adopted" name="is-adopted" class="button hollow secondary">Udomljen</a>
                         @endif
 
-                        <a data-open="obrisi" name="delete" class="button alert">Obriši</a>
+                        <!-- <a data-open="obrisi" name="delete" class="button alert">Obriši</a> -->
+
+                        <a href="/ad/{{$ad->id}}/delete" class="button alert">Delete</a>
 
                         <div class="reveal" id="obrisi" data-reveal>
                           <div class="grid-x grid-padding-x text-center">

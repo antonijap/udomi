@@ -1,9 +1,9 @@
 <div class="card">
-  <a href="{{$ad->user->username}}/{{$ad->slug}}">
+  <a href="{{$ad->user->username}}/{{$ad->id}}/{{$ad->slug}}">
     <img src="{{$ad->photos->first()->filename}}" alt="{{$ad->name}}" class="card-image">
   </a>
   <div class="card-section">
-    <a href="{{$ad->user->username}}/{{$ad->slug}}">
+    <a href="{{$ad->user->username}}/{{$ad->id}}/{{$ad->slug}}">
       <h4>{{$ad->name}}</h4>
     </a>
 
