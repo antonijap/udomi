@@ -13,6 +13,9 @@ $buttongroup-spacing: 5px;
 @import '../foundation-sites/scss/foundation';
 @include foundation-everything(true);
 
+.fileuploader-items {
+}
+
 .dashboard-ad-has-bottom-border {
   border-bottom: 1px solid #e2e2e2;
   margin-bottom: 2em;
@@ -305,10 +308,12 @@ h3 {
   max-width: 100%;
   min-width: 100%;
   max-height: auto;
+  object-fit: cover;
 
   @include breakpoint(medium) {
     max-width: 10em;
     max-height: 6em;
+    object-fit: cover;
   }
 }
 

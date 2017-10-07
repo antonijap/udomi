@@ -7,6 +7,8 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,500&amp;subset=latin-ext" rel="stylesheet">
   <link rel="sayutylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.css">
   <link rel="stylesheet" href="{{ URL::asset('css/jquery.fileuploader.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('css/thumbnails-theme.css') }}">
+
   <link rel="stylesheet" href="{{ URL::asset('css/owl.carousel.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('css/owl.theme.default.css') }}">
   <link rel="stylesheet" href="{{ URL::asset('css/chocolat.css') }}">

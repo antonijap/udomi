@@ -11,7 +11,7 @@ return [
         /*
          * When not specifying a listname in the various methods, use the list with this name
          */
-        'defaultListName' => 'Svi korisnici',
+        'defaultListName' => 'registirani_korisnici',
 
         /*
          * Here you can define properties of the lists you want to
@@ -26,7 +26,7 @@ return [
              * You can set it to any string you want and you can add
              * as many lists as you want.
              */
-            'subscribers' => [
+            'registirani_korisnici' => [
 
                 /*
                  * A mail chimp list id. Check the mailchimp docs if you don't know

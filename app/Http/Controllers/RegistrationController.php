@@ -56,16 +56,15 @@ class RegistrationController extends Controller
         // Sign in
             auth()->login($user);
 
-            Mail::to($user->email)
-            ->send(new WelcomeMail($user));
+            Mail::to($user->email)->send(new WelcomeMail($user));
 
         // Add to Mailchimp
-            Newsletter::subscribe($user->email, ['FNAME'=>$user->name, 'LNAME'=>' ']);
+            Newsletter::subscribe($user->email, ['FNAME'=>$user->name, 'LNAME'=> '']);
 
         // Redirect
             return redirect()->home();
         }
 
-        
+
     }
 }

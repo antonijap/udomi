@@ -91,13 +91,13 @@ class AdsController extends Controller
         $slug = str_replace(' ', '-', strtolower($name));
 
         $this->validate(request(), [
-            'name' => 'required|min:2|max:10',
+            'name' => 'required|min:2|max:15',
             'description' => 'required|min:32|max:1000',
             'sex' => 'required',
             'age' => 'required',
             'location' => 'required',
             'type' => 'required',
-            'photos' => 'required'
+            'files' => 'required'
         ]);
 
         $ad = Ad::create([
@@ -123,16 +123,28 @@ class AdsController extends Controller
             // initialize FileUploader
             $FileUploader = new FileUploader('files', array(
                 'uploadDir' => $path,
-                'title' => 'name'
+                'title' => 'name',
+                'editor' => array(
+        			'maxWidth' => 600,
+        			'maxHeight' => 1000,
+        			'crop' => false,
+        			'quality' => 90
+        		)
             ));
         } else {
             File::makeDirectory($path, 0777, true);
             $FileUploader = new FileUploader('files', array(
                 'uploadDir' => $path,
-                'title' => 'name'
+                'title' => 'name',
+                'editor' => array(
+        			'maxWidth' => 600,
+        			'maxHeight' => 1000,
+        			'crop' => false,
+        			'quality' => 90
+        		)
             ));
         }
-
+        // {file_name}_{timestamp}
 
         // call to upload the files
         $data = $FileUploader->upload();
@@ -141,6 +153,11 @@ class AdsController extends Controller
         if($data['isSuccess'] && count($data['files']) > 0) {
 
             $uploadedFiles = $data['files'];
+
+            foreach ($uploadedFiles as $source) {
+                FileUploader::resize($source['file'], $width = 600, $height = null, $destination = null, $quality = 90);
+            }
+
             foreach ($uploadedFiles as $photo) {
                 AdPhotos::create([
                     'ad_id' => $ad->id,
@@ -230,7 +247,17 @@ class AdsController extends Controller
         SEO::opengraph()->addProperty('type', 'articles');
         SEO::addImages('/' . $ad->photos->first()->filename);
 
-        return view('ad')->with('ad', $ad)->with('location', $ad->location);
+        $slike = [];
+
+        foreach ($ad->photos as $slika) {
+            if ($slika->is_primary == 1) {
+                array_unshift($slike, $slika);
+            } else {
+                array_push($slike, $slika);
+            }
+        }
+
+        return view('ad')->with('ad', $ad)->with('location', $ad->location)->with('slike', $slike);
     }
 
     public function contact(Ad $ad, Request $request)

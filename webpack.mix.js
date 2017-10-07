@@ -20,21 +20,7 @@ mix.sass('resources/assets/sass/app.scss', 'public/css')
     'node_modules/chocolat/dist/js/jquery.chocolat.js',
     'node_modules/owl.carousel/dist/owl.carousel.js',
     'node_modules/jquery-text-counter/textcounter.js',
-    'resources/assets/js/jquery.fileuploader.min.js',
+    'resources/assets/js/jquery.fileuploader.js',
     'node_modules/foundation-sites/dist/js/foundation.js',
     'resources/assets/js/app.js'
   ], 'public/js/all.js')
-
-
-
-mix.webpackConfig( {
-    plugins: [
-        new ImageminPlugin( {
-//            disable: process.env.NODE_ENV !== 'production', // Disable during development
-            pngquant: {
-                quality: '95-100',
-            },
-            test: /\.(jpe?g|png|gif|svg)$/i,
-        } ),
-    ],
-} )

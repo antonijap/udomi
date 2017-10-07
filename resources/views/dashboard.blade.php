@@ -42,7 +42,21 @@
                 <div class="cell small-12 dashboard-ad-has-bottom-border">
                   <div class="grid-x grid-margin-x align-middle">
                     <div class="small-12 medium-2 cell has-bottom-margin">
-                      <img class="small-image" src="{{$ad->photos->first()->filename}}" alt="{{$ad->name}}">
+                      @php
+                        $check = 0
+                      @endphp
+                      @foreach ($ad->photos as $photo)
+                        @if ($photo->is_primary == true)
+                          <img src="{{$photo->filename}}" alt="{{$ad->name}}" class="class="small-image"">
+                          @php
+                            $check = 1
+                          @endphp
+                        @endif
+                      @endforeach
+
+                      @if ($check != 1)
+                        <img src="{{$ad->photos->first()->filename}}" alt="{{$ad->name}}" class="class="small-image"">
+                      @endif
                     </div>
 
                     <div class="auto cell">

@@ -9,7 +9,7 @@
                         @if ($ad->sex == 'female')
                             je udomljena!
                         @else
-                            je udomljen!                        
+                            je udomljen!
                         @endif
                     @endif
                 </h1>
@@ -83,21 +83,21 @@
                         <p>Izvan Hrvatske</p>
                     @endif
                 </div>
-                
-                
+
+
                 @if ($ad->user->phone)
                     <div class="cell small-12">
                         <h2>Telefon</h2>
                         <p>{{$ad->user->phone}}</p>
                     </div>
-                @endif 
-                
-                
+                @endif
+
+
                 <div class="cell small-12">
                     <h2>Opis</h2>
                     <p>{{$ad->description}}</p>
                 </div>
-                
+
                 {{-- Tagovi --}}
                 <div class="grid-x grid-margin-x has-margin">
                     @if ($ad->age == 'junior')
@@ -134,7 +134,7 @@
                     </div>
                     @endif
                 </div>
-                
+
                 @if (!$ad->is_adopted)
                     <div class="cell small-12" style="margin-top: 2em;">
                     <h2>Kontakt</h2>
@@ -150,12 +150,12 @@
                     </form>
                 </div>
                 @endif
-                
+
 
             </div>
             <div class="cell small-12 medium-6">
                 <div class="owl-carousel owl-theme chocolat-parent">
-                    @foreach ($ad->photos as $photo)
+                    @foreach ($slike as $photo)
                     <a class="chocolat-image" href="/{{$photo->filename}}" title="{{$ad->name}}">
                         <img src="/{{$photo->filename}}" />
                     </a> @endforeach

@@ -1,6 +1,22 @@
 <div class="card">
   <a href="{{$ad->user->username}}/{{$ad->id}}/{{$ad->slug}}">
-    <img src="{{$ad->photos->first()->filename}}" alt="{{$ad->name}}" class="card-image">
+
+    @php
+      $check = 0
+    @endphp
+    @foreach ($ad->photos as $photo)
+      @if ($photo->is_primary == true)
+        <img src="{{$photo->filename}}" alt="{{$ad->name}}" class="card-image">
+        @php
+          $check = 1
+        @endphp
+      @endif
+    @endforeach
+
+    @if ($check != 1)
+      <img src="{{$ad->photos->first()->filename}}" alt="{{$ad->name}}" class="card-image">
+    @endif
+
   </a>
   <div class="card-section">
     <a href="{{$ad->user->username}}/{{$ad->id}}/{{$ad->slug}}">
@@ -13,11 +29,7 @@
     {{-- <p>{!! \Illuminate\Support\Str::words($ad->description, 15,'...')  !!}</p> --}}
     <p>{{ str_limit($ad->description, 80) }}</p>
     {{-- Tags --}}
-    @if ($ad->sex == 'female')
-        <span class="label">Ž</span>
-    @elseif ($ad->sex == 'male')
-        <span class="label ">M</span>
-    @endif
+
 
     @if ($ad->age == 'junior')
         <span class="label">Mladi</span>

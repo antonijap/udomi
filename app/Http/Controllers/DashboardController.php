@@ -16,6 +16,7 @@ use File;
 
 class DashboardController extends Controller
 {
+
   public function __construct()
   {
     $this->middleware('auth');
@@ -23,8 +24,12 @@ class DashboardController extends Controller
 
   public function show(Ad $ad)
   {
+
+    $original = $ad->photos;
+
     foreach($ad->photos as $file) {
       $appendedFiles[] = array(
+        "is_primary" => $file['is_primary'],
         "name" => $file['name'],
         "type" => $file['type'],
         "size" => $file['size'],
@@ -34,6 +39,12 @@ class DashboardController extends Controller
         )
       );
     }
+
+    usort($appendedFiles, function($a, $b) {
+        return $b['is_primary'] <=> $a['is_primary'];
+    });
+
+    // return $appendedFiles;
 
     $appendedFiles = json_encode($appendedFiles);
     return view('dashboard.edit')->with('ad', $ad)->with('photos', $appendedFiles);
@@ -116,9 +127,17 @@ class DashboardController extends Controller
     $FileUploader = new FileUploader('files', array(
       'uploadDir' => $path,
       'title' => 'name',
+      'editor' => array(
+            'maxWidth' => 600,
+            'maxHeight' => 1000,
+            'crop' => false,
+            'quality' => 90
+          ),
       'files' => $appendedFiles
     ));
+
     $upload = $FileUploader->upload();
+    $newPhotoTitles = [];
 
     // Upload new photos
     if($upload['isSuccess'] && count($upload['files']) > 0) {
@@ -136,6 +155,7 @@ class DashboardController extends Controller
             'size' => $photo['size'],
             'type' => $photo['type']
           ]);
+          $newPhotoTitles[] = $photo['title'];
         }
       }
     }
@@ -145,12 +165,36 @@ class DashboardController extends Controller
       echo $warnings;
     };
 
-    // Scan for photos
-    $photosSurvivedPotentialRemoving = $FileUploader->getListInput('photos');
-
+    // Scan for all photos
+    $photosSurvivedPotentialRemoving = $FileUploader->getListInput();
     $photos = [];
-    foreach ($photosSurvivedPotentialRemoving as $photo) {
-      $photos[] = AdPhotos::where('filename', substr($photo, 1))->first();
+
+    foreach ($photosSurvivedPotentialRemoving['values'] as $photo) {
+      if (!is_null($photo)) {
+        if (AdPhotos::where('filename', substr($photo['file'], 1))->count() > 0) {
+          $photos[] = AdPhotos::where('filename', substr($photo['file'], 1))->first();
+        } else {
+          foreach ($newPhotoTitles as $title) {
+            $photos[] = AdPhotos::where('name', $title)->first();
+          }
+        }
+      }
+    }
+
+    $toggle = true;
+    foreach (array_unique($photos) as $value) {
+      if ($toggle) {
+        // List contains reordered images, apply isPrimary = true on first
+        $makePrimary = AdPhotos::where('filename', $value['filename'])->first();
+        $makePrimary->is_primary = true;
+        $makePrimary->save();
+        $toggle = false;
+      } else {
+        // Then remove isPrimary on all others
+        $other = AdPhotos::where('filename', $value['filename'])->first();
+        $other->is_primary = false;
+        $other->save();
+      }
     }
 
     // Extract removed photos and do model and storage cleanup
@@ -159,17 +203,16 @@ class DashboardController extends Controller
     foreach ($removedPhotos as $key => $value) {
       AdPhotos::where('id', $value['id'])->first()->delete();
       $path = public_path() . '/';
-      File::delete($path . $value['filename']);
+      unlink($path . $value['filename']);
     }
+
     session()->flash('message', 'Oglas uspješno ažuriran.');
     return redirect('/dashboard');
   }
 
   public function markAdopted(Ad $ad)
   {
-    Ad::where('id', $ad->id)
-    ->update(['is_adopted' => 1]);
-
+    Ad::where('id', $ad->id)->update(['is_adopted' => 1]);
     $ads = auth()->user()->ads->sortByDesc('updated_at');
     return redirect('/dashboard')->with('ads', $ads);
   }
@@ -187,17 +230,13 @@ class DashboardController extends Controller
   {
 
     foreach ($ad->photos as $photo) {
-      AdPhotos::where('id', $photo->id)
-      ->delete();
+      AdPhotos::where('id', $photo->id)->delete();
 
       $path = public_path() . '/' . $ad->username . $photo->filename;
-      File::delete($path);
+      unlink($path);
     }
 
-    Ad::where('id', $ad->id)
-    ->delete();
-
-    // Delete all photos from disk
+    Ad::where('id', $ad->id)->delete();
 
     $ads = auth()->user()->ads->sortByDesc('created_at');
     return redirect('/dashboard')->with('ads', $ads);
