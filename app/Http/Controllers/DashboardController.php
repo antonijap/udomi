@@ -89,7 +89,8 @@ class DashboardController extends Controller
       'sex' => 'required',
       'age' => 'required',
       'location' => 'required',
-      'type' => 'required'
+      'type' => 'required',
+      'files' => 'required'
     ]);
 
     Ad::find($ad['id'])->update([
@@ -127,6 +128,7 @@ class DashboardController extends Controller
     $FileUploader = new FileUploader('files', array(
       'uploadDir' => $path,
       'title' => 'name',
+      'required' => true,
       'editor' => array(
             'maxWidth' => 600,
             'maxHeight' => 1000,

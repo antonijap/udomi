@@ -124,6 +124,7 @@ class AdsController extends Controller
             $FileUploader = new FileUploader('files', array(
                 'uploadDir' => $path,
                 'title' => 'name',
+                'required' => true,
                 'editor' => array(
         			'maxWidth' => 600,
         			'maxHeight' => 1000,
@@ -135,6 +136,7 @@ class AdsController extends Controller
             File::makeDirectory($path, 0777, true);
             $FileUploader = new FileUploader('files', array(
                 'uploadDir' => $path,
+                'required' => true,
                 'title' => 'name',
                 'editor' => array(
         			'maxWidth' => 600,

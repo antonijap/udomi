@@ -47,7 +47,7 @@
                       @endphp
                       @foreach ($ad->photos as $photo)
                         @if ($photo->is_primary == true)
-                          <img src="{{$photo->filename}}" alt="{{$ad->name}}" class="class="small-image"">
+                          <img src="{{$photo->filename}}" alt="{{$ad->name}}" class="small-image">
                           @php
                             $check = 1
                           @endphp
@@ -55,7 +55,7 @@
                       @endforeach
 
                       @if ($check != 1)
-                        <img src="{{$ad->photos->first()->filename}}" alt="{{$ad->name}}" class="class="small-image"">
+                        <img src="{{$ad->photos->first()->filename}}" alt="{{$ad->name}}" class="small-image">
                       @endif
                     </div>
 

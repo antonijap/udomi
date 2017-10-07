@@ -13,7 +13,8 @@ $buttongroup-spacing: 5px;
 @import '../foundation-sites/scss/foundation';
 @include foundation-everything(true);
 
-.fileuploader-items {
+.fileuploader {
+  background: none;
 }
 
 .dashboard-ad-has-bottom-border {
@@ -307,7 +308,7 @@ h3 {
 .small-image {
   max-width: 100%;
   min-width: 100%;
-  max-height: auto;
+  max-height: 10em;;
   object-fit: cover;
 
   @include breakpoint(medium) {
