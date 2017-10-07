@@ -90,7 +90,6 @@ class DashboardController extends Controller
       'age' => 'required',
       'location' => 'required',
       'type' => 'required',
-      'files' => 'required'
     ]);
 
     Ad::find($ad['id'])->update([

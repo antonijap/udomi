@@ -115,7 +115,23 @@ $(function() {
             plusInput.on('click', function() {
                 api.open();
             });
-        }
+        },
+        onRemove: function(item, listEl, parentEl, newInputEl, inputEl) {
+            if (api.getFiles().length == 1) {
+              // Disable Button
+              $(':input[type="submit"]').prop('disabled', true);
+              $(".photos-error").append('Obavezno mora biti barem jedna slika.');
+            } else {
+              // Enable Button
+              $(':input[type="submit"]').prop('disabled', false);
+              $(".photos-error").append('');
+            }
+            return true;
+          },
+          onSelect: function(item, listEl, parentEl, newInputEl, inputEl) {
+            $(".photos-error").empty();
+            $(':input[type="submit"]').prop('disabled', false);
+          }
     });
 
     // get API methods
