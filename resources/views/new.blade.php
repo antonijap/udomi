@@ -34,6 +34,8 @@
                     <option disabled selected>Odaberi vrstu</option>
                     <option value="cat" {{ old('type') == 'cat' ? 'selected' : '' }}>Mačka</option>
                     <option value="dog" {{ old('type') == 'dog' ? 'selected' : '' }}>Pas</option>
+                    <option value="kunici-i-glodavci" {{ old('type') == 'kunici-i-glodavci' ? 'selected' : '' }}>Kunići i glodavci</option>
+                    <option value="ostale-zivotinje" {{ old('type') == 'ostale-zivotinje' ? 'selected' : '' }}>Ostale životinje</option>
                   </select>
                 </label>
               </div>

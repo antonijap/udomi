@@ -27,6 +27,18 @@
     <div class="grid-container">
         <div class="grid-x">
             <div class="cell small-12 medium-6 has-right-padding">
+              <div class="cell small-12">
+                  <h2>Vrsta</h2>
+                  @if ($ad->type == 'dog')
+                  <p>Pas</p>
+              @elseif ($ad->type == 'cat')
+                  <p>Mačka</p>
+                  @elseif ($ad->type == 'kunici-i-glodavci')
+                  <p>Kunići i glodavci</p>
+                  @else
+                  <p>Ostale životinje</p>
+                  @endif
+              </div>
                 <div class="cell small-12">
                     <h2>Spol</h2>
                     @if ($ad->sex == 'female')

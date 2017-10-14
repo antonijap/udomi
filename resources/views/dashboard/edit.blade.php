@@ -31,6 +31,8 @@
                                     <select name="type">
                                         <option value="cat" {{ $ad->type == 'cat' ? 'selected' : '' }}>Mačka</option>
                                         <option value="dog" {{ $ad->type == 'dog' ? 'selected' : '' }}>Pas</option>
+                                        <option value="kunici-i-glodavci" {{ $ad->type == 'kunici-i-glodavci' ? 'selected' : '' }}>Kunići i glodavci</option>
+                                        <option value="ostale-zivotinje" {{ $ad->type == 'ostale-zivotinje' ? 'selected' : '' }}>Ostale životinje</option>
                                     </select>
                                 </label>
                             </div>

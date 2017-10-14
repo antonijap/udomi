@@ -9,10 +9,14 @@
           <option value="all" {{ $data['type'] == 'male' ? 'selected' : '' }}>Svejedno</option>
           <option value="cat" {{ $data['type'] == 'cat' ? 'selected' : '' }}>Mačka</option>
           <option value="dog" {{ $data['type'] == 'dog' ? 'selected' : '' }}>Pas</option>
+          <option value="kunici-i-glodavci" {{ $data['type'] == 'kunici-i-glodavci' ? 'selected' : '' }}>Kunići i glodavci</option>
+          <option value="ostale-zivotinje" {{ $data['type'] == 'ostale-zivotinje' ? 'selected' : '' }}>Ostale životinje</option>
         @else
           <option value="all">Svejedno</option>
           <option value="cat">Mačka</option>
           <option value="dog">Pas</option>
+          <option value="kunici-i-glodavci">Kunići i glodavci</option>
+          <option value="ostale-zivotinje">Ostale životinje</option>
         @endif
       </select>
     </label>

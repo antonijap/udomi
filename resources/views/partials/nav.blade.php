@@ -13,7 +13,7 @@
             <li><a href="/login" class="item">Login</a></li>
             <li><a href="/register" class="item">Registracija</a></li>
           @endguest
-          <li><a href="/ads/new" class="item">Novi Oglas</a></li>
+          <li><a href="/ads/new" class="item">Novi oglas</a></li>
         </ul>
       </div>
 
@@ -24,7 +24,7 @@
               <a href="/{{Auth::user()->username}}">{{Auth::user()->name}} <i class="ion-ios-arrow-down arrow-down"></i></a>
               <ul class="menu vertical main-dropdown">
                 <a href="/{{Auth::user()->username}}">Moj Profil</a>
-                <a href="/dashboard">Dashboard</a>
+                <a href="/dashboard">Moji oglasi</a>
                 <a href="/settings">Postavke</a>
                 <a href="/logout">Logout</a>
               </ul>
