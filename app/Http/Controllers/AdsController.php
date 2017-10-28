@@ -247,7 +247,7 @@ class AdsController extends Controller
         SEO::opengraph()->setUrl(url()->current());
         SEO::setCanonical(url()->current());
         SEO::opengraph()->addProperty('type', 'articles');
-        SEO::addImages('/' . $ad->photos->first()->filename);
+        SEO::addImages('http://udomi.net/' . $ad->photos->first()->filename);
 
         $slike = [];
 
