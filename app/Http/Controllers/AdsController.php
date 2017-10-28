@@ -275,8 +275,9 @@ class AdsController extends Controller
         ->send(new PotentialAdoption($ad, request('email'), request('poruka')));
 
         // Redirect
-        session()->flash('message', 'Poruka poslana.');
-        return redirect()->back();
+        // session()->flash('message', 'Poruka poslana.');
+        // return redirect()->back();
+        return view('success');
     }
 
 }
