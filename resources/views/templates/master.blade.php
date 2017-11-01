@@ -17,7 +17,7 @@
 
 
 
-  <meta name="keywords" content="udomljavanje životinja, mačke na poklon, psi na poklon">
+  <meta name="keywords" content="kucni ljubimci, kućni ljubimci, prodaja kućnih ljubimaca, udomljavanje životinja, mačke na poklon, psi na poklon">
   {!! SEO::generate() !!}
 
   <meta property="og:image:width" content="450"/>

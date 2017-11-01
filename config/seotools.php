@@ -7,7 +7,7 @@ return [
          */
         'defaults'       => [
             'title'        => "Udomi.net", // set false to total remove
-            'description'  => 'Besplatni oglasnik za oglašavanje i udomljavanje životinja.', // set false to total remove
+            'description'  => 'Besplatni oglasnik za oglašavanje životinja. Poklanjanje i udomljavanje kućnih ljubimaca i kućni ljubimci za udomljavanje u malim oglasima', // set false to total remove
             'separator'    => ' - ',
             'keywords'     => [],
             'canonical'    => false, // Set null for using Url::current(), set false to total remove
