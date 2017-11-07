@@ -98,6 +98,14 @@ p.photos-error {
   border-top: 1px solid #efefef;
 }
 
+.has-bottom-padding {
+  padding-bottom: 2em;
+
+  @include breakpoint(medium) {
+    padding-bottom: 3em;
+  }
+}
+
 .is-gray {
   background: #fbfbfb;
 }

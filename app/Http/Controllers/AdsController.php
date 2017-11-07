@@ -23,7 +23,12 @@ class AdsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show', 'filter', 'contact']);
+        $this->middleware('auth')->except(['index', 'show', 'filter', 'contact', 'about']);
+    }
+
+    public function about()
+    {
+      return view('about');
     }
 
     public function index()

@@ -18,11 +18,14 @@ Route::get('send_test_email', function(){
 	});
 });
 
+Route::get('/about', 'AdsController@about');
+
 Auth::routes();
 
 Route::get('/home', function(){
 		redirect('/');
 });
+
 
 Route::get('/', 'AdsController@index')->name('home');
 Route::get('/ads/new', 'AdsController@new');
