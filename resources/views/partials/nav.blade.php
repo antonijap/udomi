@@ -13,7 +13,8 @@
             <li><a href="/login" class="item">Login</a></li>
             <li><a href="/register" class="item">Registracija</a></li>
           @endguest
-          <li><a href="/ads/new" class="item">Novi Oglas</a></li>
+          <li><a href="/ads/new" class="item">Novi oglas</a></li>
+          <li><a href="/about" class="item">O Projektu</a></li>
         </ul>
       </div>
 
@@ -32,6 +33,7 @@
           </ul>
         </div>
       @endauth
+
     </div>
 
   </div>
