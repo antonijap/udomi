@@ -20,15 +20,15 @@ class SessionsController extends Controller
     {
         // Validate
         $this->validate(request(), [
-            'email' => 'required',
-            'password' => 'required'
+            'email' => 'required|email|exists:users,email',
+            'password' => 'required|min:6'
         ]);
 
         if (auth()->attempt(request(['email', 'password']))) {
             return redirect('dashboard');
         }
 
-        return back();
+        return back()->withInput();
     }
 
     public function logout()

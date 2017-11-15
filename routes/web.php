@@ -19,6 +19,7 @@ Route::get('send_test_email', function(){
 });
 
 Route::get('/about', 'AdsController@about');
+Route::get('/demo', 'AdsController@demo');
 
 Auth::routes();
 
@@ -54,6 +55,6 @@ Route::get('/ad/{ad}/delete', 'DashboardController@delete');
 Route::get('/ad/{ad}/boost', 'DashboardController@boost');
 
 
-Route::get('/{username}', 'UserController@profile');
+Route::get('/{username}/{id}', 'UserController@profile');
 Route::get('/{username}/{id}/{ad}', 'AdsController@show');
 Route::post('/{ad}/contact', 'AdsController@contact');

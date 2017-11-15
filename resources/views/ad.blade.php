@@ -13,7 +13,7 @@
                         @endif
                     @endif
                 </h1>
-                <a href="/{{$ad->user->username}}">
+                <a href="/{{$ad->user->clean($ad->user->username)}}/{{$ad->user->id}}">
                     {{$ad->user->name}}
                 </a>
             </div>

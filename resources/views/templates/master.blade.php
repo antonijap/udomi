@@ -15,7 +15,7 @@
 
   <link rel="stylesheet" href="{{ URL::asset('css/app.css') }}">
 
-
+  <script type="text/javascript" src="//js.growsurf.com/v1"></script>
 
   <meta name="keywords" content="kucni ljubimci, kućni ljubimci, prodaja kućnih ljubimaca, udomljavanje životinja, mačke na poklon, psi na poklon">
   {!! SEO::generate() !!}
@@ -32,12 +32,11 @@
 
   @include('partials.nav')
   @yield('content')
+
   @include('partials.adsense')
   @include('partials.footer')
   @include('partials.analytics')
   @include('partials.drift')
-
-
 
   <script src="{{ URL::asset('js/all.js') }}" charset="utf-8"></script>
 

@@ -19,9 +19,9 @@ class UserController extends Controller
         return view('dashboard')->with('ads', $ads)->with('user', $user);
     }
 
-    public function profile($username)
+    public function profile($username, $id)
     {
-        $user = User::where('username', $username)->first();
+        $user = User::where('id', $id)->first();
         $ads = $user->ads->sortByDesc('updated_at');
         return view('profile')->with('user', $user)->with('ads', $ads);
     }

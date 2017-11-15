@@ -34,7 +34,9 @@ $(function() {
         loop: true
     });
 
-    $('.flash-message').delay(1000).fadeOut(1000);;
+    $('.flash-message').fadeIn('slow', function() {
+        $('.flash-message').fadeOut('slow');
+    });
 
     // enable fileuploader plugin
     var input = $('input[name="files"]').fileuploader({

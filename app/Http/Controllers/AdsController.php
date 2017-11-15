@@ -23,7 +23,7 @@ class AdsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show', 'filter', 'contact', 'about']);
+        $this->middleware('auth')->except(['index', 'show', 'filter', 'contact', 'about', 'demo']);
     }
 
     public function about()
@@ -33,23 +33,6 @@ class AdsController extends Controller
 
     public function index()
     {
-        // $client = new Client();
-        // $url = 'http://geoportal.dgu.hr/api/search';
-
-        // $request = $client->post($url, [
-        //     'json' => ['token' => 'varaždin'],
-        // ]);
-
-        // $data = $request->getBody()->getContents();
-
-        // $burek = json_decode($data);
-        // foreach ($burek->ungrouped->results as $key => $value) {
-        //     if ($value->priority == "1") {
-        //         dd($value);
-        //     }
-        // }
-        // dd($burek->ungrouped->results);
-
         $ads = Ad::orderBy('created_at', 'desc')->where('is_adopted', 0)->paginate(21);
         return view('index')->with('ads', $ads);
     }
@@ -244,8 +227,9 @@ class AdsController extends Controller
 
     public function show($username, $id, $slug)
     {
-        $user = User::where('username', $username)->first();
-        $ad = $user->ads->where('id', '=', $id)->first();
+
+        $ad = Ad::where('id', $id)->first();
+        $user = User::where('id', $ad->user_id)->first();
 
         SEO::setTitle($ad->name . ' | ' . 'Udomi.net');
         SEO::setDescription($ad->description);
@@ -283,6 +267,11 @@ class AdsController extends Controller
         // session()->flash('message', 'Poruka poslana.');
         // return redirect()->back();
         return view('success');
+    }
+
+    public function demo()
+    {
+      return view('demo');
     }
 
 }

@@ -71,7 +71,6 @@ p.photos-error {
   }
 }
 
-
 .flash-message {
   position: absolute;
   top: 0;
@@ -84,6 +83,8 @@ p.photos-error {
   text-align: center;
   left: 0;
   right: 0;
+  visibility: hidden;
+  display: none;
 }
 
 .has-bottom-border {

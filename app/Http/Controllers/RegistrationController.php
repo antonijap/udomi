@@ -8,6 +8,7 @@ use App\Boost;
 use App\Mail\WelcomeMail;
 use Illuminate\Support\Facades\Mail;
 use Newsletter;
+use Illuminate\Support\Str;
 
 class RegistrationController extends Controller
 {
@@ -21,6 +22,25 @@ class RegistrationController extends Controller
         return view('register');
     }
 
+    function cleanURL($name)
+      {
+          $query = str_replace("Č", "c", $name);
+          $query = str_replace("č", "c", $query);
+          $query = str_replace("Ć", "c", $query);
+          $query = str_replace("ć", "c", $query);
+          $query = str_replace("Ž", "z", $query);
+          $query = str_replace("ž", "z", $query);
+          $query = str_replace("Đ", "d", $query);
+          $query = str_replace("đ", "d", $query);
+          $query = str_replace("Š", "s", $query);
+          $query = str_replace("š", "s", $query);
+          $query = str_replace(" ", "-", $query);
+          $query = str_replace('\\', '', $query);
+          $query = str_replace('//', '', $query);
+          $query = str_replace('"', '', $query);
+          return Str::lower($query);
+      }
+
     public function create()
     {
         // Validate
@@ -32,7 +52,7 @@ class RegistrationController extends Controller
 
         // Create username
         $name = request('name');
-        $username = str_replace(' ', '-', strtolower($name));
+        $username = $this->cleanURL($name);
 
         // Check if username exists
         if (User::where('username', $username)->count() > 0) {
