@@ -38,9 +38,23 @@
     <div class="grid-container has-padding">
       <div class="grid-x grid-margin-x">
         @foreach($ads as $ad)
-          <div class="small-12 medium-6 large-4 cell">
-            @include('partials.card')
-          </div>
+          @if ($ad->is_adopted == false)
+            <div class="small-12 medium-6 large-4 cell">
+              @include('partials.card')
+            </div>
+          @endif
+        @endforeach
+
+        <div class="small-12 cell">
+          <h2>Udomljeni</h2>
+        </div>
+
+        @foreach($ads as $ad)
+          @if ($ad->is_adopted == true)
+            <div class="small-12 medium-6 large-4 cell">
+              @include('partials.card')
+            </div>
+          @endif
         @endforeach
       </div>
     </div>
