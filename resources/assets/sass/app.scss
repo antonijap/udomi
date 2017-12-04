@@ -382,3 +382,12 @@ h3 {
   font-size: 2em;
   padding-right: .3em;
 }
+
+.profile-section {
+  padding-top: 2em;
+  font-weight: 500;
+
+  @include breakpoint(medium) {
+    padding-top: 3em;
+  }
+}

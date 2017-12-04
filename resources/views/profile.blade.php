@@ -45,8 +45,8 @@
           @endif
         @endforeach
 
-        <div class="small-12 cell profile-section">
-          <h2>Udomljeni</h2>
+        <div class="small-12 cell">
+          <h3 class="profile-section">Udomljeni</h3>
         </div>
 
         @foreach($ads as $ad)
