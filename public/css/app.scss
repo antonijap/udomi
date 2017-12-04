@@ -370,3 +370,10 @@ h3 {
   font-size: 2em;
   padding-right: .3em;
 }
+
+.profile-section {
+  margin-top: 1em;
+  @include breakpoint(medium) {
+    margin-top: 3em;
+  }
+}

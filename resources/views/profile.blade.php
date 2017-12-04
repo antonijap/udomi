@@ -45,7 +45,7 @@
           @endif
         @endforeach
 
-        <div class="small-12 cell">
+        <div class="small-12 cell profile-section">
           <h2>Udomljeni</h2>
         </div>
 
