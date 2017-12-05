@@ -6,10 +6,10 @@ return [
          * The default configurations to be used by the meta generator.
          */
         'defaults'       => [
-            'title'        => "Udomi.net", // set false to total remove
+            'title'        => "Udomi.net - Najbolji besplatni oglasnik za životinje", // set false to total remove
             'description'  => 'Besplatni oglasnik za oglašavanje životinja. Poklanjanje i udomljavanje kućnih ljubimaca i kućni ljubimci za udomljavanje u malim oglasima', // set false to total remove
             'separator'    => ' - ',
-            'keywords'     => [],
+            'keywords'     => [udomljavam mačku, udomljavam psa, pronađen pas, pronađena maca, udomljavanje, poklanjam psa, poklanjam, kucni ljubimci, kućni ljubimci],
             'canonical'    => false, // Set null for using Url::current(), set false to total remove
         ],
 
