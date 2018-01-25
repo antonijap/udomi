@@ -23,7 +23,7 @@ class AdsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show', 'filter', 'contact', 'about', 'demo']);
+        $this->middleware('auth')->except(['index', 'show', 'filter', 'contact', 'about', 'demo', 'search']);
     }
 
     public function about()
@@ -163,6 +163,13 @@ class AdsController extends Controller
         session()->flash('message', 'Oglas uspješno objavljen.');
         return redirect('/dashboard');
 
+    }
+
+    public function search(Request $request)
+    {
+        $type = $request->input('type');
+        $data = Ad::where('type', 'LIKE', "%$type%")->get();
+        return $data;
     }
 
     public function filter(Request $request)

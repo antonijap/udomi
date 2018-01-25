@@ -32,6 +32,7 @@ Route::get('/', 'AdsController@index')->name('home');
 Route::get('/ads/new', 'AdsController@new');
 Route::post('/ads/new', 'AdsController@create');
 Route::post('/results', 'AdsController@filter');
+Route::get('/search', 'AdsController@search');
 
 
 Route::get('/register', 'RegistrationController@show');
