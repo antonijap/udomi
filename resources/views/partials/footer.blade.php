@@ -6,7 +6,13 @@
         <div class="small-12 medium-auto cell">
           <h4>Udomi.net</h4>
           <p>Najbolji oglasnik za životinje.</p>
-          <p>Copyright (c) 2017 Udomi.net All Rights Reserved.</p>
+          <p>Copyright (c) 2017-2018 Udomi.net All Rights Reserved.</p>
+          <div class="langs">
+            <div class="button-group">
+              <a class="lang-item"><img src="https://lipis.github.io/flag-icon-css/flags/4x3/hr.svg" alt="Croatian">Croatian</a>
+              <a class="lang-item"><img src="https://lipis.github.io/flag-icon-css/flags/4x3/fi.svg" alt="Finnish">Finnish</a>
+              <a class="lang-item"><img src="https://lipis.github.io/flag-icon-css/flags/4x3/gb.svg" alt="English">English</a>
+            </div>
         </div>
 
         <div class="small-12 medium-auto cell">

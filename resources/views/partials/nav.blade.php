@@ -18,6 +18,21 @@
         </ul>
       </div>
 
+      <div class="top-bar-right">
+          <ul class="medium-horizontal vertical dropdown menu" data-responsive-menu="accordion medium-dropdown">
+            <li>
+              @if ($lang == 'hr')
+              @endif
+              <a href="/"><img src="images/hr.svg" alt="hr"> Language <i class="ion-ios-arrow-down arrow-down"></i></a>
+              <ul class="menu vertical main-dropdown">
+                <a href="/dashboard">English</a>
+                <a href="/settings">Finnish</a>
+                <a href="/logout">Croatian</a>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
       @auth
         <div class="top-bar-right">
           <ul class="medium-horizontal vertical dropdown menu" data-responsive-menu="accordion medium-dropdown">
@@ -34,8 +49,6 @@
         </div>
       @endauth
 
-
     </div>
-
   </div>
 </div>

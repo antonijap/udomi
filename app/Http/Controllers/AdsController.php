@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use App\Http\Requests\UploadRequest;
 use App\Ad;
@@ -18,6 +17,7 @@ use App\Mail\PotentialAdoption;
 use GuzzleHttp\Exception\GuzzleException;
 use GuzzleHttp\Client;
 use SEO;
+use App;
 
 class AdsController extends Controller
 {
@@ -32,9 +32,11 @@ class AdsController extends Controller
     }
 
     public function index()
-    {
+    {   
+        App::setLocale('hr');
+        $lang = App::getLocale();
         $ads = Ad::orderBy('created_at', 'desc')->where('is_adopted', 0)->paginate(21);
-        return view('index')->with('ads', $ads);
+        return view('index')->with('ads', $ads)->with('lang', $lang);
     }
 
     public function new()
