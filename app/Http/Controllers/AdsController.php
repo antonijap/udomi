@@ -38,7 +38,7 @@ class AdsController extends Controller
         $ads = Ad::orderBy('created_at', 'desc')->where('is_adopted', 0)->paginate(21);
         return view('index')->with('ads', $ads)->with('lang', $lang);
     }
-
+    
     public function new()
     {
         return view('new');

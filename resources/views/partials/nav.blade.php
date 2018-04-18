@@ -21,8 +21,6 @@
       <div class="top-bar-right">
           <ul class="medium-horizontal vertical dropdown menu" data-responsive-menu="accordion medium-dropdown">
             <li>
-              @if ($lang == 'hr')
-              @endif
               <a href="/"><img src="images/hr.svg" alt="hr"> Language <i class="ion-ios-arrow-down arrow-down"></i></a>
               <ul class="menu vertical main-dropdown">
                 <a href="/dashboard">English</a>

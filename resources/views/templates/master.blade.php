@@ -37,6 +37,7 @@
   @include('partials.footer')
   @include('partials.analytics')
   @include('partials.drift')
+  @include('partials.cookie')
 
   <script src="{{ URL::asset('js/all.js') }}" charset="utf-8"></script>
 
